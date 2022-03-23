@@ -1,0 +1,54 @@
+:root {  
+/* Colour Palette */
+    --black: #2A2A2A
+    --blue: #5782BB;
+    --dark-grey: #C7C7C7;
+    --light-grey: #F4F4F4;
+    --pink: #E7C3DD;
+    --red: #D95353;
+    --white: #FFFFFF; 
+
+/* Fonts */
+    --title: 6rem 'Roboto', sans-serif;
+    --lead: 3rem 'Roboto', sans-serif;
+    --paragraph: 1rem 'Space Mono', monospace;
+    --link: 1rem 'Space Mono', monospace;
+    --button: 0.875rem 'Space Mono', monospace;
+
+}
+
+/* Desktop */
+body {
+  background-color: var(--light-grey);
+
+  }
+
+h1 {
+  font: var(--lead);
+
+}
+
+a {
+    font: var(--link);
+  }
+
+li{
+  list-style: none;
+}
+
+
+  
+/* Tablet */
+  @media screen and (max-width: 768px) {
+    body {
+      background-color: red;
+    }
+  }
+  
+/* Mobile   */
+@media screen and (max-width: 600px) {
+    body {
+      background-color: olive;
+    }
+  }
+  
