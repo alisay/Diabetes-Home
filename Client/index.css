@@ -17,7 +17,7 @@
     --button: 0.875rem 'Space Mono', monospace;
 
     /* Margins */
-  --standard: 10px;
+  --standard: 1rem;
 
 }
 
@@ -37,6 +37,8 @@ body {
 
   nav {
     background: var(--pink);
+    padding: var(--standard);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   main {
@@ -47,7 +49,7 @@ body {
   section {
     background: var(--white);
     border-radius: 25px;
-    padding: 1rem;
+    padding: 2rem;
   }
 
   iframe {
@@ -57,6 +59,7 @@ body {
   h2 {
     font: var(--subtitle);
     text-align: center;
+    /* margin-top:0; */
   }
 
   p {
@@ -67,6 +70,8 @@ body {
 
   a {
       font: var(--link);
+      color: var(--black);
+      text-decoration: none;
     }
 
   ul {
@@ -79,27 +84,19 @@ body {
 
   button {
     background: var(--pink);
-    padding: 20px;
+    padding: 30px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 9px;
+    width: 75%
   }
 
   .container {
     display: flex;
     flex-direction: column;
+    flex-wrap:wrap;
     align-items: center;
     align-content: center;
     gap: 20px;
-  }
-
-  .container-double {
-    display: flex;
-    flex-wrap:wrap;
-  }
-
-  .item-abreast {
-    flex-basis:50%;
-    order: 1;
   }
 
   #mobile-nav {
