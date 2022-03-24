@@ -16,7 +16,7 @@
     --link: 1rem 'Space Mono', monospace;
     --button: 0.875rem 'Space Mono', monospace;
 
-    /* Margins */
+    /* Spacing */
   --standard: 1rem;
 
 }
@@ -54,12 +54,13 @@ body {
 
   iframe {
     background: var(--dark-grey);
+    padding: var(--standard)
   }
   
   h2 {
     font: var(--subtitle);
     text-align: center;
-    /* margin-top:0; */
+    margin:0;
   }
 
   p {
@@ -104,10 +105,15 @@ body {
   }
   
 /* Tablet */
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 810px) {
     body {
       /* background-color: red; */
     }
+
+    #mobile-nav {
+      visibility: visible;
+    }
+
   }
   
 /* Mobile   */
