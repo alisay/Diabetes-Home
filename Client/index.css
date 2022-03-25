@@ -1,0 +1,148 @@
+:root {  
+/* Colour Palette */
+    --black: #2A2A2A
+    --blue: #5782BB;
+    --dark-grey: #C7C7C7;
+    --light-grey: #F4F4F4;
+    --pink: #E7C3DD;
+    --red: #D95353;
+    --white: #FFFFFF; 
+
+/* Fonts */
+    --title: 6rem 'Roboto', sans-serif;
+    --lead: 3rem 'Space Mono', monospace;
+    --subtitle: 1.5rem 'Space Mono', monospace;
+    --body: 1rem 'Roboto', sans-serif;
+    --link: 1rem 'Space Mono', monospace;
+    --button: 0.875rem 'Space Mono', monospace;
+
+    /* Spacing */
+  --standard: 1rem;
+
+}
+
+  
+
+/* Desktop */
+
+body {
+  background: var(--light-grey);
+  margin:0;
+  margin-bottom: 200px;
+  }
+
+  header {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: var(--standard)
+  }
+
+  nav {
+    background: var(--pink);
+    padding: var(--standard);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  main {
+    background: var(--light-grey);
+    margin:var(--standard);
+  }
+
+  section {
+    background: var(--white);
+    border-radius: 25px;
+    padding: 2rem;
+    width: 50vw;
+  }
+
+  iframe {
+    background: var(--dark-grey);
+    padding: var(--standard)
+  }
+  
+  h2 {
+    font: var(--lead);
+    text-align: center;
+    margin:0;
+  }
+
+  p {
+    font: var(--body);
+    line-height: 20px;
+    text-align: justify;
+  }
+
+  a {
+      font: var(--link);
+      color: var(--black);
+      text-decoration: none;
+    }
+
+  ul {
+    font: var(--body);
+  }
+
+  ol {
+    list-style: none;
+  }
+
+  button {
+    background: var(--pink);
+    padding: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap:wrap;
+    align-items: center;
+    align-content: center;
+    gap: 20px;
+  }
+
+  #mobile-nav {
+    visibility: hidden;
+  }
+
+  
+/* Tablet */
+  @media screen and (max-width: 810px) {
+    body {
+      /* background-color: red; */
+    }
+
+    #mobile-nav {
+      visibility: visible;
+    }
+
+  }
+  
+/* Mobile   */
+@media screen and (max-width: 600px) {
+    body {
+      /* background-color: var(--light-grey); */
+    }
+
+    header {
+      position: static;
+      background: var(--white);
+      padding: var(--standard)
+    }  
+
+    section {
+      width: auto;
+    }
+
+    h2 {
+      font: var(--subtitle);
+    }  
+
+    #mobile-nav {
+      visibility: visible;
+    }
+
+  }
+  
