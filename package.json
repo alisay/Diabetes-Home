@@ -2,7 +2,7 @@
   "name": "diabetes-home",
   "version": "1.0.0",
   "description": "A diabetes symptom-tracking app for patients and clinicians.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
