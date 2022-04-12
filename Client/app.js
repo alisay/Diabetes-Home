@@ -22,11 +22,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/aboutDiabetes', (req, res) => {
-    res.render('aboutDiabetes', {})
+    res.render('aboutDiabetes', {headTitle: "About Diabetes"})
 })
 
 app.get('/aboutWebsite', (req, res) => {
-    res.render('aboutWebsite', {})
+    res.render('aboutWebsite', {headTitle: "About This Site"})
 })
 
 // default route to handle errors
