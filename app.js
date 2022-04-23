@@ -7,16 +7,13 @@ const MongoStore = require('connect-mongo');
 const passport = require("passport");
 // const fileUpload = require('express-fileupload');
 // const cors = require('cors')
-// const mongooseClient = require('./models')
 
-// const authRouter = require('./routes/auth')
 const authRouter = require('./routes/authRouter')
 
 // If we are not running in production, load our local .env
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
-
 
 const port = process.env.PORT || 8080;
 
@@ -33,21 +30,6 @@ app.use(session({
     store: MongoStore.create({ mongoUrl: process.env.MONGO_URL })
 }))
 
-// app.use(
-//     session({
-//         // The secret used to sign session cookies (ADD ENV VAR)
-//         secret: process.env.SESSION_SECRET || 'keyboard cat',
-//         name: 'demo', // The cookie name (CHANGE THIS)
-//         saveUninitialized: false,
-//         resave: false,
-//         cookie: {
-//             sameSite: 'strict',
-//             httpOnly: true,
-//             secure: process.env.NODE_ENV === 'production'
-//         },
-//     }))
-
-
 app.engine('hbs', exphbs.engine({
     defaultlayout: 'main',
     extname: 'hbs',
@@ -57,10 +39,6 @@ app.engine('hbs', exphbs.engine({
 
 app.set('view engine', 'hbs')
 
-
-//flash 
-const flash = require('express-flash')
-app.use(flash())
 
 // Connecting to database
 let dbConn = process.env.MONGO_URL || 'mongodb://localhost/test-app'
@@ -88,12 +66,9 @@ app.use(express.urlencoded({
 require("./config/passport");
 app.use(passport.initialize());
 app.use(passport.session())
-// const passport = require('./passport')
-// app.use(passport.authenticate('session'))
 
 //auth router
 app.use('/auth', authRouter)
-// app.use(authRouter)
 
 // index.html
 app.get('/', (req, res) => {
