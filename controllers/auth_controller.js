@@ -18,6 +18,7 @@ function sendAdmin(req, res) {
   })
 }
 
+
 // Admin logout
 function logout(req, res) {
   

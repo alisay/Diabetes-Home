@@ -7,9 +7,16 @@ const MongoStore = require('connect-mongo');
 const passport = require("passport");
 // const fileUpload = require('express-fileupload');
 // const cors = require('cors')
+// const mongooseClient = require('./models')
 
 // const authRouter = require('./routes/auth')
 const authRouter = require('./routes/authRouter')
+
+// If we are not running in production, load our local .env
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 
 const port = process.env.PORT || 8080;
 
@@ -18,31 +25,13 @@ const app = express()
 app.use(express.static('public'))
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.engine('hbs', exphbs.engine({
-    defaultlayout: 'main',
-    extname: 'hbs',
-    helpers: {
-    }
-}))
-
-app.set('view engine', 'hbs')
-
-
-//flash 
-const flash = require('express-flash')
-app.use(flash())
-
-
 app.use(session({
     secret: process.env.SESSION_SECRET || 'keyboard cat',
     resave: false,
     saveUninitialized: true,
     cookie: { expires: 600000 },
-    store: MongoStore.create({
-        mongoUrl: 'mongodb://localhost/test-app',
-        autoRemove: 'native' // Default
-      })
-  }))
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URL })
+}))
 
 // app.use(
 //     session({
@@ -58,6 +47,41 @@ app.use(session({
 //         },
 //     }))
 
+
+app.engine('hbs', exphbs.engine({
+    defaultlayout: 'main',
+    extname: 'hbs',
+    helpers: {
+    }
+}))
+
+app.set('view engine', 'hbs')
+
+
+//flash 
+const flash = require('express-flash')
+app.use(flash())
+
+// Connecting to database
+let dbConn = process.env.MONGO_URL || 'mongodb://localhost/test-app'
+
+const mongClient = mongoose.connect(dbConn, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    dbName: 'demo'
+},
+    (err) => {
+        if (err) {
+            console.log('Error connecting to database', err);
+        } else {
+            console.log('Connected to database!');
+        }
+    });
+
+app.use(express.json());
+app.use(express.urlencoded({
+    extended: true
+}));
 
 
 //passport

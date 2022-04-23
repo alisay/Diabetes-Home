@@ -17,8 +17,8 @@ router.post("/login", loginAdmin, sendAdmin);
 router.get('/logout', logout)
 
 // just for creating the Admin user account with an encrypted password
-// router.get('/register', registerNew);
-// router.post('/register', registerCreate);
+router.get('/register', registerNew);
+router.post('/register', registerCreate);
 
 // GET on /auth/admin
 // retrieving session info

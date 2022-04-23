@@ -13,5 +13,6 @@ const Admin = new Schema({
   }
 })
 
+
 Admin.plugin(require('mongoose-bcrypt'));
 module.exports = mongoose.model('Admin', Admin);
