@@ -33,7 +33,7 @@ function logout(req, res) {
 
 // registerNew and registerCreate are only for creating the Admin account
 function registerNew(req, res) {
-    res.render("authentication");
+    res.render("register");
 }
 
 async function registerCreate(req, res, next) {
