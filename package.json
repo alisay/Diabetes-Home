@@ -1,7 +1,6 @@
 {
   "name": "diabetes-home",
   "version": "1.0.0",
-  "type": "module",
   "description": "A diabetes symptom-tracking app for patients and clinicians.",
   "main": "app.js",
   "scripts": {
@@ -23,10 +22,17 @@
   },
   "homepage": "https://github.com/alisay/Diabetes-Home#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
+    "connect-mongo": "^4.6.0",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "express-flash": "^0.0.2",
     "express-handlebars": "^6.0.3",
-    "mongoose": "^6.2.10"
+    "express-session": "^1.17.2",
+    "mongoose": "^6.2.10",
+    "mongoose-bcrypt": "^1.9.0",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0"
   }
 }
