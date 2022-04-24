@@ -11,9 +11,9 @@ A user-friendly web app for Diabetes patients to keep track of their vitals, and
 
 ### Authorisation
 ----
-POST '/auth/login'
+POST '/user/login'
 - Login for Admin
 - requires fields 'username' and 'password'
 
-GET '/auth/logout'
+GET '/user/logout'
 - Logout for Admin

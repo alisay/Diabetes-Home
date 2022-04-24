@@ -1,12 +1,22 @@
+<script type="text/javascript">
+  const async handleLoginSubmit = () => {
+    console.log("hi")
+
+  }
+
+</script>
+
 <h1>Login</h1>
-{{#each flash}}
-<p class="alert">{{this}}</p>
-{{/each}}
+
+{{!-- <form id="myForm" onsubmit="handleLoginSubmit(); return false;">
+  <input id="textInput" type="text"></input>
+  <input type="submit"></input>
+</form> --}}
 
 <form action="login" method="POST">
-    <label for="username">Username:</label>
-    <input type="text" name="username" />
-    <label for="password">Password:</label>
-    <input type="password" name="password" />
-    <input type="submit" value="Submit" />
+  <label for="username">Username:</label>
+  <input type="text" name="username" />
+  <label for="password">Password:</label>
+  <input type="password" name="password" />
+  <input type="submit" value="Submit" />
 </form>
