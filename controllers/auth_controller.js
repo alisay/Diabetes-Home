@@ -15,7 +15,7 @@ async function loginAdmin(req, res, next) {
 // send admin session info to client
 function sendAdmin(req, res) {
   console.log('sending admin session info');
-  res.redirect()
+  // res.redirect()
   res.status(200)
   res.json({
     admin: req.user,
