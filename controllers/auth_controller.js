@@ -8,7 +8,10 @@ const login = (req, res) => {
 // admin login authentication with passport js
 async function loginAdmin(req, res, next) {
   console.log('logging in Admin');
-  const passportLogin = passport.authenticate("local");
+  const passportLogin = passport.authenticate("local", {
+    successRedirect: '/auth/logout', 
+    failureRedirect: '/auth/login'
+  });
   await passportLogin(req, res, next)
 }
 
@@ -30,7 +33,7 @@ function logout(req, res) {
   // checks if admin is logged on first
   if (req.isAuthenticated()) {
     req.logout()
-    return res.sendStatus(200)
+    return res.redirect('/')
   }
 
   return res.sendStatus(401)
