@@ -1,5 +1,14 @@
 <h1>Login</h1>
-{{#each flash}}
+
+<form action="login" method="POST">
+    <label for="username">Username:</label>
+    <input type="text" name="username" />
+    <label for="password">Password:</label>
+    <input type="password" name="password" />
+    <input type="submit" value="Submit" />
+</form>
+
+{{!-- {{#each flash}}
 <p class="alert">{{this}}</p>
 {{/each}}
 
@@ -9,4 +18,4 @@
     <label for="password">Password:</label>
     <input type="password" name="password" />
     <input type="submit" value="Submit" />
-</form>
+</form> --}}

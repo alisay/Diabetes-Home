@@ -1,12 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const { 
+  login,
   loginAdmin,
   sendAdmin,
   logout,
   registerNew,
   registerCreate
 } = require('../controllers/auth_controller')
+
+//GET on /auth/login
+router.get("/login", login)
 
 // POST on /auth/login
 // Login for Admin
