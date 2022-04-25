@@ -15,7 +15,7 @@ async function createGlucose(req, res, next) {
 async function getGlucose(req, res, next) {
     try {
         const glucose = await Glucose.find().lean()
-        return res.render('glucose', { glucose: glucose })
+        return res.render('glucose', { headTitle: 'Blood Glucose', glucose: glucose })
     } catch (err) {
         return next(err)
     }
