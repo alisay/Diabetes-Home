@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Glucose = Schema({
-    patient: mongoose.ObjectId,
+    metadata: {patient: mongoose.ObjectId,comment: String},
     glucose: Number,
     timestamp: Date,
 },
     {
         timeseries: {
             timeField: 'timestamp',
-            metaField: 'patient',
+            metaField: 'metadata',
             granularity: 'seconds'
         },
         autoCreate: false,

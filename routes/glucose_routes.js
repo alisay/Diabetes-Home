@@ -9,4 +9,4 @@ router.get("/glucose", getGlucose)
 
 router.post("/glucose", createGlucose);
 
-module.exports = router;
+module.exports = router; 
