@@ -8,11 +8,20 @@ async function createGlucose(req, res, next) {
     //     "glucose": "53.5",
     //     "timestamp": "2021-05-18T00:00:00.000Z"
     // }
-    await Glucose.create({ patient, glucose, timestamp});
+    await Glucose.create({ patient, glucose, timestamp });
     res.redirect('/')
-  }
+}
 
-  module.exports = {
+async function getGlucose(req, res, next) {
+    try {
+        const glucose = await Glucose.find().lean()
+        return res.render('glucose', { glucose: glucose })
+    } catch (err) {
+        return next(err)
+    }
+}
+
+module.exports = {
+    getGlucose,
     createGlucose
-  }
-  
+}

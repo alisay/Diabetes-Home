@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const {
+  getGlucose,
   createGlucose
 } = require('../controllers/glucose_controller')
 
-router.get("/glucose", (req, res) => res.render('login'))
+router.get("/glucose", getGlucose)
 
 router.post("/glucose", createGlucose);
 
