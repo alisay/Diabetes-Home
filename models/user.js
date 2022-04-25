@@ -20,22 +20,23 @@ const User = new Schema({
         required: true
     },
     user_type: {
-        patient: {type:Boolean, default:false},
-        clinician: {type:Boolean, default:true},
+        patient: { type: Boolean, default: false },
+        clinician: { type: Boolean, default: true },
     },
     profile: {
-        firstname:{type: String},
-        lastname: {type: String},
+        firstname: { type: String },
+        lastname: { type: String },
+        message: { type: String },
     },
     related_users: [
-        { id: {type: mongoose.ObjectID}, username: {type: String}, relationship: {type: String}}
+        { id: { type: mongoose.ObjectID }, username: { type: String }, relationship: { type: String }, notes: [{date: {type:Date}, text:{type:String}}] }
     ],
     metrics: {
-        glucose: {type:Boolean, default:true},
-        weight: {type:Boolean, default:true},
-        insulin: {type:Boolean, default:true},
-        steps: {type:Boolean, default:true},
-    }
+        glucose: { required: { type: Boolean, default: true }, threshold: { type: Number } },
+        weight: { required: { type: Boolean, default: true }, threshold: { type: Number } },
+        insulin: { required: { type: Boolean, default: true }, threshold: { type: Number } },
+        steps: { required: { type: Boolean, default: true }, threshold: { type: Number } },
+    },
 },
     {
         timestamps: { createdAt: 'created_at' }

@@ -16,8 +16,8 @@ module.exports =
                 {
                     id: 998,
                     username: 'My Patient',
-                    relationship: 'patient'
-                    // metrics:
+                    relationship: 'patient',
+                    notes: [{date: "25 Jan", text: "Monitor My's blood glucose"}, {date: "27 Jan", text: "I think this patient is annoying"}]
                 },
                 {
                     id: 997,
@@ -27,7 +27,7 @@ module.exports =
             ],
             patient_metrics: [
                 {
-                    glucose: false,
+                    glucose: {required: true, threshold: 7},
                     weight: true,
                     insulin: false,
                     exercise: false,
@@ -56,7 +56,7 @@ module.exports =
             ],
             patient_metrics: [
                 {
-                    glucose: false,
+                    glucose: {required: false, threshold: 7},
                     weight: false,
                     insulin: false,
                     exercise: false,
