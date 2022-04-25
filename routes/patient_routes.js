@@ -7,7 +7,7 @@ const {
     // createPatient,
     // removePatient,
 } = require('../controllers/patient_controller')
-
+ 
 //GET Route for Clinician Dashboard View All Patients
 router.get("/dashboard", displayPatients)
 
