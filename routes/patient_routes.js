@@ -9,7 +9,7 @@ const {
 } = require('../controllers/patient_controller')
  
 //GET Route for Clinician Dashboard View All Patients
-router.get("/dashboard", displayPatients)
+// router.get("/dashboard", displayPatients)
 
 // //GET Route for Single Patient Page
 // // router.get("/:id", patientParamValidationRules(),validate, displayPatient)

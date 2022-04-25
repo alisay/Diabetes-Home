@@ -9,7 +9,7 @@ const passport = require("passport");
 // const cors = require('cors')
 
 const authRouter = require('./routes/authRouter')
-const patientRouter = require('./routes/patient_routes')
+const pageRouter = require('./routes/page_routes')
 
 
 // If we are not running in production, load our local .env
@@ -71,7 +71,7 @@ app.use(passport.session())
 
 //ROUTES 
 app.use('/auth', authRouter)
-app.use('/page', patientRouter)
+app.use('/', pageRouter)
 
 // index.html
 app.get('/', (req, res) => {

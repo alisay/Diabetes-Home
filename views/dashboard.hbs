@@ -1,6 +1,13 @@
 <h1>Dash</h1>
-{{!-- <p>{{data[0]}}</p> --}}
-{{!-- 
+
+<h3>Loop through User array here</h3>
 {{#each data}}
-    <li>{{this.word}}</li>
-{{/each}} --}}
+    <li>{{this.id}}</li>
+    <li>{{this.username}}</li>
+    <h3>Loop through Related Users inner array here</h3>
+        {{#each this.related_users}}
+        {{!-- (access inner array properties) --}}
+            <li>{{this.id}}</li>
+            <li>{{this.username}}</li>
+        {{/each}}
+{{/each}}
