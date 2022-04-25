@@ -10,6 +10,7 @@ const passport = require("passport");
 
 const authRouter = require('./routes/authRouter')
 const pageRouter = require('./routes/page_routes')
+const glucoseRouter = require('./routes/glucose_routes')
 
 
 // If we are not running in production, load our local .env
@@ -72,6 +73,8 @@ app.use(passport.session())
 //ROUTES 
 app.use('/auth', authRouter)
 app.use('/', pageRouter)
+app.use('/', glucoseRouter)
+
 
 // index.html
 app.get('/', (req, res) => {
