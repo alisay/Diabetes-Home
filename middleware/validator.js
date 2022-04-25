@@ -19,7 +19,7 @@ const userValidationRules = () => {
             });
           });
         }),
-        body('password').isStrongPassword({ minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1}).withMessage('Password should not be empty, minimum eight characters, at least one letter, one number and one special character'),
+        // body('password').isStrongPassword({ minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1}).withMessage('Password should not be empty, minimum eight characters, at least one letter, one number and one special character'),
         body('username').isLength({ min: 5 }).withMessage('Must be 5 or more characters').custom(value => {
           return new Promise((resolve, reject) => {
             User.findOne({username:value}, function(err, user){
@@ -42,7 +42,7 @@ const userValidationRules = () => {
 const accountSettingValidationRules = () => {
     return [
         body('email').isEmail().normalizeEmail().withMessage('Must be a valid email format'),
-        body('password').isStrongPassword({ minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1}).withMessage('Password should not be empty, minimum eight characters, at least one letter, one number and one special character'),
+        // body('password').isStrongPassword({ minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1}).withMessage('Password should not be empty, minimum eight characters, at least one letter, one number and one special character'),
         //body('name').matches(/^[A-Za-z\s]+$/).withMessage('Must be text only'),
       ]
   }

@@ -42,4 +42,4 @@ Clinician.methods.isValidPassword = async function(password) {
     return compare;
 }
 
-module.exports = mongoose.model('user', Clinician);
+module.exports = mongoose.model('clinician', Clinician);

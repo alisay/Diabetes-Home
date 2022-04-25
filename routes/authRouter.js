@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require("passport");
 const {  Joi, celebrate,  } = require('celebrate');
 const {registerCreate, 
-  // registerNew , 
+  registerNew , 
   logOut, 
   loginNew, 
   loginCreate, 
@@ -17,11 +17,14 @@ const {userValidationRules, validate, accountSettingValidationRules} = require("
 // const User = require('../models/clinician');
 
 
-//GET Route for Register Page
-//router.get('/register',authRedirect, registerNew);
+// GET Route for Register Page
+// router.get('/register',authRedirect, registerNew);
+router.get('/register', registerNew);
+
 
 //POST Route for registering and creating a user
-router.post('/register', userValidationRules(), validate, registerCreate);
+// router.post('/register', userValidationRules(), validate, registerCreate);
+router.post('/register', registerCreate);
 
 //GET Route for Login page
 router.get("/login", loginNew)

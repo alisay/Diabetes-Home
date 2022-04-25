@@ -27,11 +27,13 @@ if (process.env.NODE_ENV === 'production') {
   configToken.sameSite = "none";
 }
 
-// function registerNew(req, res) {
-//     res.send("This is register Page");
-// }
 
 //REGISTER USER
+function registerNew(req, res) {
+  res.render('register');
+}
+
+
 function registerCreate(req, res, next) {
   const newUserHandler = (user) => {
     req.login(user, (err) => {
@@ -40,9 +42,9 @@ function registerCreate(req, res, next) {
       } else {
         const token = jwt.sign({ sub: req.user._id }, process.env.JWT_SECRET);
         res.cookie("jwt", token, configToken)
-        res.send(user);
+        res.render('login', user);
       }
-    })
+    }) 
   }
   const { email, password, username } = req.body;
 
@@ -50,6 +52,7 @@ function registerCreate(req, res, next) {
     .then(newUserHandler)
     .catch(x =>
       res.send(x))
+
 }
 
 //LOGOUT USER
@@ -224,7 +227,7 @@ function sendResetPassword(req, res) {
 
 
 module.exports = {
-  //registerNew,
+  registerNew,
   registerCreate,
   logOut,
   loginNew,
