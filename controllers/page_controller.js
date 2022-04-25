@@ -1,5 +1,5 @@
-const User = require('../models/dummyUser')
-const Weight = require('../models/dummyWeight')
+const User = require('../models/dummyData/dummyUser')
+const Weight = require('../models/dummyData/dummyWeight')
 
 const displayDashboard = (req, res) => {
     const myDetails = User.filter(datum=>datum.username==='Jones')
