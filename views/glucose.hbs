@@ -9,7 +9,14 @@
 
 <h1>YOUR GLUCOSE HISTORY:</h1>
 {{#each glucoseData}}
-    <li>
-        <b>{{this.timestamp}}</b> {{this.glucose}} nmol/L
+    <li
+     {{#when this.glucose 'gteq' 7}}
+   class="highlight_metric"
+ {{/when}}
+    >
+        <b>{{this.timestamp}}</b> {{this.glucose}} nmol/L 
+
+
     </li>
 {{/each}}
+

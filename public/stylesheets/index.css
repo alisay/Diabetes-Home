@@ -103,6 +103,10 @@ body {
     gap: 20px;
   }
 
+  .highlight_metric {
+    color: red;
+  }
+
   #mobile-nav {
     visibility: hidden;
   }
