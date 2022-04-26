@@ -14,7 +14,7 @@
 
         {{#each this.related_users}}
             {{#when this.relationship 'eq' 'patient'}}
-                 <a href="glucose">{{this.username}} </a>
+                <a href="/glucose">{{this.name}}</a>
             {{/when}}
         {{/each}}
     {{/when}}
