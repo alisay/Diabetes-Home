@@ -10,9 +10,9 @@ const differentiateDashboard = (req, res) => {
 }
 
 const displayDashboard = (req, res) => {
-    const myDetails = User.filter(datum=>datum.username==='Jones')
+    const myDetails = User.filter(datum=>datum.username==='Chris')
     const myWeight = Weight.filter(entry=>entry.metadata.patientID=='2002')
-    res.render('dashboard', {headTitle: 'Dashboard', weight: myWeight, data: myDetails})
+    res.render('dashboard', {headTitle: 'Dashboard', weight: myWeight, data: myDetails, TESTING: false})
 }  
 module.exports = {
     differentiateDashboard,
