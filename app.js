@@ -75,15 +75,20 @@ app.use('/auth', authRouter)
 
 // index.html
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('index', {css: "stylesheets/index.css"})
 })
 
 app.get('/aboutDiabetes', (req, res) => {
-    res.render('aboutDiabetes', { headTitle: "About Diabetes" })
+    res.render('aboutDiabetes', { headTitle: "About Diabetes" , css: "stylesheets/index.css" })
 })
 
 app.get('/aboutWebsite', (req, res) => {
-    res.render('aboutWebsite', { headTitle: "About This Site" })
+    res.render('aboutWebsite', { headTitle: "About This Site", css: "stylesheets/index.css" })
+})
+
+// patient dashboard
+app.get('/patientDashboard', (req, res) =>{
+    res.render('patientDashboard', { headTitle: "Home", css: "stylesheets/patientDashboard.css", script: "scripts/patientDashboard.js" })
 })
 
 
