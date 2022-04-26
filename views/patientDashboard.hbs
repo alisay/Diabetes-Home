@@ -1,0 +1,60 @@
+<nav>
+    <ul>
+        <li class="logo">DIABETES@HOME</li>
+        <li class="items"><a href="#">Home</a></li>
+        <li class="items"><a href="#">About</a></li>
+        <li class="items"><a href="#">Blogs</a></li>
+        <li class="items"><a href="#">Contact</a></li>
+        <li class="items"><a href="#">Feedback</a></li>
+        <li class="btn" onclick="show()"><a href="#"><i class="fas fa-bars"></i></a></li>
+    </ul>
+</nav>
+
+<script>
+    function show(){
+        var x = document.getElementsByClassName("items")[0];
+        var nav = document.getElementsByClassName("items");
+        if (x.style.display === "none") {
+            for (let i = 0; i < nav.length; i++) {
+                nav[i].classList.toggle('hide');
+            }
+        } else {
+            for (let i = 0; i < nav.length; i++) {
+                nav[i].classList.toggle('show');
+            }
+        }
+    }
+</script>
+
+<section class= "container">    
+    <div class = "column-1">
+        <div class = "glass">
+            <h2>Personal</h2>
+            <div class = 'personal widget'>
+            </div>
+        </div>
+
+        <div class = "glass">
+            <div>
+                <input type="checkbox" id = "collapsible-unread">
+                <label for="collapsible-unread"><h2>Unread</h2></label>
+
+                <div class = 'unread widget'>
+                </div>
+                
+                <div class = 'unread-under'></div>
+            </div>
+        </div>
+    </div>
+
+    <div class = "column-2">
+        <div class = "glass">
+            <div class = 'leaderboard'>
+                <h2>Leaderboard</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="circle1"></div>
+<div class="circle2"></div>
