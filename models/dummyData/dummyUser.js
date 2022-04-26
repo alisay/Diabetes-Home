@@ -1,7 +1,7 @@
 module.exports =
     [
         {
-            id: '999',
+            id: '999', 
             email: 'patient_doctor@dummy.com',
             password: 'hi',
             username: 'Chris',
@@ -11,6 +11,7 @@ module.exports =
             profile: {
                 firstname: 'Chris',
                 lastname: 'Jones',
+                address: ''
             },
             related_users: [
                 {
