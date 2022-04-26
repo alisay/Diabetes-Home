@@ -17,3 +17,8 @@ POST '/auth/login'
 
 GET '/auth/logout'
 - Logout for Admin
+
+Things to do: 
+Differentiate between patient/clinician dash 
+Create a few users using new schema 
+let clinician set threshold * use this to update view

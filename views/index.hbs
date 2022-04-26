@@ -3,7 +3,16 @@
         <li><a href=#>Home</a></li>
         <li><a href="/aboutDiabetes">About Diabetes</a></li>
         <li><a href="/aboutWebsite">About this website</a></li>
-        <li><a href="/glucose">My Dashboard</a></li>
+        {{!-- <li><a href="/dashboard">My Dashboard</a></li> --}}
+        <form action="/dashboard" method="POST">
+            <input type="text" name="userType" value="patient" style="display:none;">
+            <input type="submit" value="View patient dashboard" />
+        </form>
+        <form action="/dashboard" method="POST">
+            <input type="text" name="userType" value="clinician" style="display:none;">
+            <input type="submit" value="View clinician dashboard" />
+        </form>
+
     </ol>
 </nav>
 <h1>Diabetes@Home</h1>

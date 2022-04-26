@@ -2,7 +2,9 @@ const Glucose = require('../models/glucose')
 
 //GET all glucose measurements according to patient ID
 async function getGlucose(req, res, next) {
-    const myGlucose = await Glucose.find({"metadata.patient": "6265edce2cc273a8c7c696dc"}).lean()
+    const myGlucose = await Glucose.find({"metadata.patient": "6265edce2cc273a8c7c696dc"})
+                                    .sort({"timestamp":-1})
+                                    .lean()
     return res.render('glucose', {headTitle: 'Glucose', glucoseData: myGlucose})
 }
 

@@ -4,30 +4,30 @@ module.exports =
             id: '999',
             email: 'patient_doctor@dummy.com',
             password: 'hi',
-            username: 'Jones',
+            username: 'Chris',
             createDate: 1650849951713,
             modifyDate: 1650849961916,
             user_type: ['clinician', 'patient'],
             profile: {
-                firstname: 'Doctor',
+                firstname: 'Chris',
                 lastname: 'Jones',
             },
             related_users: [
                 {
-                    id: 998,
-                    username: 'My Patient',
+                    id: '6265edce2cc273a8c7c696dc',
+                    name: 'Pat Patient',
                     relationship: 'patient',
                     notes: [{date: "25 Jan", text: "Monitor My's blood glucose"}, {date: "27 Jan", text: "I think this patient is annoying"}]
                 },
                 {
                     id: 997,
-                    username: 'My Doctor',
+                    name: 'Doctor Two',
                     relationship: 'doctor'
                 }
             ],
             patient_metrics: [
                 {
-                    glucose: {required: true, threshold: 7},
+                    glucose: {required: true, threshold: 7, today: 4.5},
                     weight: true,
                     insulin: false,
                     exercise: false,
@@ -64,16 +64,16 @@ module.exports =
             ] 
         },
         {
-            id: '997',
+            id: '6265edce2cc273a8c7c696dc',
             email: 'patient@dummy.com',
             password: 'third',
-            username: 'My Patient',
+            username: 'Pat',
             createDate: 1650849951713,
             modifyDate: 1650849961916,
             user_type: ['patient'],
             profile: {
-                firstname: 'Patient',
-                lastname: 'One',
+                firstname: 'Pat',
+                lastname: 'Patient',
             },
             related_users: [
                 {
@@ -84,7 +84,7 @@ module.exports =
             ],
             patient_metrics: [
                 {
-                    glucose: true,
+                    glucose: {required: true, threshold: 7, today: 4.5},
                     weight: true,
                     insulin: true,
                     exercise: true,

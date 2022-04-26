@@ -1,3 +1,30 @@
+{{#each myProfile}}
+    <h1>Hello {{this.username}}</h1>
+
+
+    {{#when this.username 'eq' 'Pat'}}
+    <h3>Today's Blood Glucose Measurement is {{#each this.patient_metrics}}{{this.glucose.today}}{{/each}} nmol/L</h3>
+
+    <a href="/glucose">Add new blood glucose measurements</a>
+    {{/when}}
+
+
+    {{#when this.username 'eq' 'Chris'}}
+    <h3>View Your Patients</h3>
+
+        {{#each this.related_users}}
+            {{#when this.relationship 'eq' 'patient'}}
+                 <a href="glucose">{{this.username}} </a>
+            {{/when}}
+        {{/each}}
+    {{/when}}
+
+    
+{{/each}}
+
+
+
+{{#if TESTING}}
 <h3>Loop through User array here</h3>
 {{#each data}}
     <li>{{this.id}}</li>
@@ -14,6 +41,6 @@
 {{#each weight}}
 <li>{{this.value}}</li>
 {{/each}}
+{{/if}}
 
 
-<a href="/glucose">Click here to zoom in on your blood glucose measurements</a>
