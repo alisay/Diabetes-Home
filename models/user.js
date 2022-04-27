@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const User = new Schema({
     email: {
         type: String,
-        required: true, 
+        required: true,
     },
     password: {
         type: String,
@@ -15,27 +15,22 @@ const User = new Schema({
         type: String,
         required: true
     },
-    password: {
-        type: String,
-        required: true
-    },
-    user_type: {
-        patient: { type: Boolean, default: false },
-        clinician: { type: Boolean, default: true },
-    },
+    // user_type key: Clinician: 0, Patient: 1
+    user_type: { type: Number },
     profile: {
         firstname: { type: String },
         lastname: { type: String },
         message: { type: String },
     },
     related_users: [
-        { id: { type: mongoose.ObjectID }, username: { type: String }, relationship: { type: String }, notes: [{date: {type:Date}, text:{type:String}}] }
+        //relationship key: Clinician: 0, Patient: 1
+        { id: { type: mongoose.ObjectID }, username: { type: String }, relationship: { type: Number } }
     ],
     metrics: {
-        glucose: { required: { type: Boolean, default: true }, threshold: { type: Number } },
-        weight: { required: { type: Boolean, default: true }, threshold: { type: Number } },
-        insulin: { required: { type: Boolean, default: true }, threshold: { type: Number } },
-        steps: { required: { type: Boolean, default: true }, threshold: { type: Number } },
+        glucose: { threshold: { low: { type: Number }, high: { type: Number } } },
+        weight: { threshold: { low: { type: Number }, high: { type: Number } }},
+        insulin: { threshold:  { low: { type: Number }, high: { type: Number } } },
+        steps: { threshold:  { low: { type: Number }, high: { type: Number } } },
     },
 },
     {

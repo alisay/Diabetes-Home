@@ -1,19 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const Glucose = Schema({
-    metadata: {patient: mongoose.ObjectId,comment: String},
-    glucose: Number,
-    timestamp: Date,
+const Notes = Schema({
+    patient: mongoose.ObjectId,
+    note: String,
 },
     {
         timeseries: {
             timeField: 'timestamp',
-            metaField: 'metadata',
+            metaField: 'patient',
             granularity: 'seconds'
         },
         autoCreate: false,
+        //Record kept for statutory minimum of 7 years before auto-delete
         expireAfterSeconds: 220752000
     });
 
-module.exports = mongoose.model('Glucose', Glucose);
+module.exports = mongoose.model('Notes', Notes);

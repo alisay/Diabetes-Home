@@ -1,4 +1,4 @@
-const Glucose = require('../models/glucose')
+const Glucose = require('../models/metrics')
 
 //GET all glucose measurements according to patient ID
 async function getGlucose(req, res, next) {
