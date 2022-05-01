@@ -42,7 +42,8 @@ function registerCreate(req, res, next) {
       } else {
         const token = jwt.sign({ sub: req.user._id }, process.env.JWT_SECRET);
         res.cookie("jwt", token, configToken)
-        res.render('login', user);
+        res.send(user);
+        // res.render('login', user);
       }
     }) 
   }
@@ -53,7 +54,7 @@ function registerCreate(req, res, next) {
     .catch(x =>
       res.send(x))
 
-}
+} 
 
 //LOGOUT USER
 function logOut(req, res) {
@@ -74,7 +75,7 @@ function loginCreate(req, res) {
   res.cookie("jwt", token, configToken)
 
   res.status(200);
-  res.json({ profile: req.user.profile, user: req.user.username, sessionID: req.sessionID });
+  res.json({ user: req.user.username, sessionID: req.sessionID });
   //console.log(res)
 }
 
@@ -149,9 +150,10 @@ function forgotPassword(req, res) {
 
       let url = process.env.NODE_ENV === 'production' ? "https://home-diabetes.herokuapp.com/" : "http://localhost:8080/"
 
+      console.log(user)
 
       const mailOptions = {
-        from: 'alisa.blakeney@gmail.com',
+        from: 'diabetes.at.home.app@gmail.com',
         to: `${user.email}`,
         subject: 'Link To Reset Password',
         text:

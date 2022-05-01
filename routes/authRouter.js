@@ -21,7 +21,6 @@ const {userValidationRules, validate, accountSettingValidationRules} = require("
 // router.get('/register',authRedirect, registerNew);
 router.get('/register', registerNew);
 
-
 //POST Route for registering and creating a user
 // router.post('/register', userValidationRules(), validate, registerCreate);
 router.post('/register', registerCreate);
@@ -36,7 +35,9 @@ router.post("/login", celebrate({
         password: Joi.string().required(),
     }}), 
     passport.authenticate('local', {
-        session: false
+        session: false,
+        successRedirect: '/',
+        failureRedirect: '/user/login'
 }),loginCreate);
 
 
