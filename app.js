@@ -1,36 +1,39 @@
-const express = require('express')
-const exphbs = require('express-handlebars')
-const path = require('path')
-const mongoose = require('mongoose');
-const session = require('express-session')
-const MongoStore = require('connect-mongo');
-const passport = require("passport");
+import express, { static as staticPage, json, urlencoded } from 'express';
+import { engine } from 'express-handlebars';
+import { join } from 'path';
+import mongoose from 'mongoose';
+import session from 'express-session';
+import connect_mongo from 'connect-mongo';
+import passport from "passport";
 // const fileUpload = require('express-fileupload');
 // const cors = require('cors')
 
-const authRouter = require('./routes/authRouter')
+import authRouter from './routes/authRouter.js';
+import pageRouter from './routes/pageRoutes.js';
+import glucoseRouter from './routes/measurementRoutes.js';
 
 // If we are not running in production, load our local .env
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
-}
+// if (process.env.NODE_ENV !== 'production') {
+    import "dotenv/config";
+// }
 
 const port = process.env.PORT || 8080;
 
 const app = express()
 
-app.use(express.static('public'))
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(staticPage('public'))
+app.use(staticPage('../public'));
 
 app.use(session({
     secret: process.env.SESSION_SECRET || 'keyboard cat',
     resave: false,
     saveUninitialized: true,
     cookie: { expires: 600000 },
-    store: MongoStore.create({ mongoUrl: process.env.MONGO_URL })
+    store: connect_mongo.create({ mongoUrl: process.env.MONGO_URL })
 }))
 
-app.engine('hbs', exphbs.engine({
+app.engine('hbs', engine({
     defaultlayout: 'main',
     extname: 'hbs',
     helpers: {
@@ -56,14 +59,14 @@ const mongClient = mongoose.connect(dbConn, {
         }
     });
 
-app.use(express.json());
-app.use(express.urlencoded({
+app.use(json());
+app.use(urlencoded({
     extended: true
 }));
 
 
 //passport
-require("./config/passport");
+// import passport from "./config/passport.js";
 app.use(passport.initialize());
 app.use(passport.session())
 

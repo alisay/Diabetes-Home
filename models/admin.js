@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import mongoose from 'mongoose';
+import bcrypt from 'mongoose-bcrypt';
+const { Schema, model } = mongoose;
 
 const Admin = new Schema({
   username: {
@@ -14,5 +15,5 @@ const Admin = new Schema({
 })
 
 
-Admin.plugin(require('mongoose-bcrypt'));
-module.exports = mongoose.model('Admin', Admin);
+Admin.plugin(bcrypt);
+export default model('Admin', Admin);
