@@ -1,19 +1,17 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import { Schema, ObjectId, model } from "mongoose"
 
-const Notes = Schema({
-    patient: mongoose.ObjectId,
+const NotesSchema = Schema({
+    clinician: ObjectId,
+    patient: ObjectId,
     note: String,
 },
     {
         timeseries: {
             timeField: 'timestamp',
             metaField: 'patient',
-            granularity: 'seconds'
+            granularity: 'minutes'
         },
-        autoCreate: false,
-        //Record kept for statutory minimum of 7 years before auto-delete
-        expireAfterSeconds: 220752000
+        autoCreate: false
     });
 
-module.exports = mongoose.model('Notes', Notes);
+export default model('Notes', NotesSchema);
