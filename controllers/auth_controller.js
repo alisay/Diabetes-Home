@@ -43,7 +43,7 @@ function registerCreate(req, res, next) {
         const token = jwt.sign({ sub: req.user._id }, process.env.JWT_SECRET);
         res.cookie("jwt", token, configToken)
         res.send(user);
-        // res.render('login', user);
+        // res.render('dashboard', {user: user});
       }
     }) 
   }
