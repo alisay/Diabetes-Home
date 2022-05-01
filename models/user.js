@@ -1,4 +1,4 @@
-import { Schema, ObjectID, model } from "mongoose"
+import { Schema, ObjectId, model } from "mongoose"
 
 const options = {
     timestamps: true, 
@@ -36,14 +36,14 @@ const PatientSchema = new Schema({
         insulin: { threshold:  { low: Number, high: Number }, lastRecord: Number },
         steps: { threshold:  { low: Number, high: Number }, lastRecord: Number },
     },
-    clinician: ObjectID,
+    clinician: ObjectId,
     clinicianMessage: String,
 }, options);
 
 const ClinicianSchema = new Schema({
     firstName: String, 
     lastName: String,
-    patients: [ObjectID]
+    patients: [ObjectId]
 })
 
 export const Patient = User.discriminator('Patient', PatientSchema);
