@@ -1,7 +1,11 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import { Schema, ObjectID, model } from "mongoose"
 
-const User = new Schema({
+const options = {
+    timestamps: true, 
+    discriminatorKey: 'kind'
+}
+
+const UserSchema = new Schema({
     email: {
         type: String,
         required: true,
@@ -15,28 +19,35 @@ const User = new Schema({
         type: String,
         required: true
     },
-    // user_type key: Clinician: 0, Patient: 1
-    user_type: { type: Number },
-    profile: {
-        firstname: { type: String },
-        lastname: { type: String },
-        message: { type: String },
-    },
-    related_users: [
-        //relationship key: Clinician: 0, Patient: 1
-        { id: { type: mongoose.ObjectID }, username: { type: String }, relationship: { type: Number } }
-    ],
+    isClinician: Boolean
+}, options);
+
+const User = model('User', UserSchema);
+
+const PatientSchema = new Schema({
+    firstName: String, 
+    lastName: String,
+    nickname: String,
+    gender: String,
+    dob: Date,
     metrics: {
-        glucose: { threshold: { low: { type: Number }, high: { type: Number } } },
-        weight: { threshold: { low: { type: Number }, high: { type: Number } }},
-        insulin: { threshold:  { low: { type: Number }, high: { type: Number } } },
-        steps: { threshold:  { low: { type: Number }, high: { type: Number } } },
+        glucose: { threshold: { low: Number, high: Number }, lastRecord: Number },
+        weight: { threshold: { low: Number, high: Number }, lastRecord: Number },
+        insulin: { threshold:  { low: Number, high: Number }, lastRecord: Number },
+        steps: { threshold:  { low: Number, high: Number }, lastRecord: Number },
     },
-},
-    {
-        timestamps: { createdAt: 'created_at' }
-    }
-)
+    clinician: ObjectID,
+    clinicianMessage: String,
+}, options);
+
+const ClinicianSchema = new Schema({
+    firstName: String, 
+    lastName: String,
+    patients: [ObjectID]
+})
+
+export const Patient = User.discriminator('Patient', PatientSchema);
+export const Clinician = User.discriminator('Clinician', ClinicianSchema);
 
 Admin.plugin(require('mongoose-bcrypt'));
-module.exports = mongoose.model('User', User);
+
