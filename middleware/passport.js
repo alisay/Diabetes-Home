@@ -1,6 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const ClinicianModel = require("./../models/clinician");
+const UserModel = require("./../models/user");
 const JwtStrategy = require('passport-jwt').Strategy
 require('dotenv').config();
 
@@ -12,7 +12,7 @@ passport.serializeUser((user, done) => {
 //start with ID end up with user
 passport.deserializeUser((userId, done) => {
     //console.log("hit deserializeUser")
-    ClinicianModel.findById(userId)
+    UserModel.findById(userId)
         .then((user) => done(null, user))
         .catch(done)
 })
@@ -30,7 +30,7 @@ const canLogin = (user, password) => {
 }
 
 const verifyCallback = (email, password, done) => {
-    ClinicianModel.findOne({ email })
+    UserModel.findOne({ email })
         .then((user) => {
 
             if (canLogin(user, password)) {
@@ -63,7 +63,7 @@ passport.use(new JwtStrategy(
         secretOrKey: process.env.JWT_SECRET
     },
     async (jwt_payload, done) => {
-        const user = await ClinicianModel.findById(jwt_payload.sub)
+        const user = await UserModel.findById(jwt_payload.sub)
             .catch(done);
 
         if (!user) {

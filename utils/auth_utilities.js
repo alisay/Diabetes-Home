@@ -1,14 +1,14 @@
-const Clinician = require('../models/clinician');
+const User = require('../models/user');
 
 // GET USER BY NAME PARAMS for ACCOUNT SETTINGS
 const getUserByParam = function (req) {
     // console.log(req.params.username)
-    return Clinician.findOne({ username: req.params.username });
+    return User.findOne({ username: req.params.username });
 };
 
 //For update settings
 const updateUser = function (req) {
-    return Clinician.findOneAndUpdate({ username: req.params.username }, req.body, {
+    return User.findOneAndUpdate({ username: req.params.username }, req.body, {
         new: true
     });
 };
@@ -16,13 +16,13 @@ const updateUser = function (req) {
 
 //For sending reset link
 const updateForForgotPassword = function (req) {
-    return Clinician.findOne({ email: req.body.email })
+    return User.findOne({ email: req.body.email })
 };
 
 
 //Inserting the token into user
 const insertPasswordToken = function (user, token) {
-    return Clinician.findOneAndUpdate({
+    return User.findOneAndUpdate({
         email: user.email
     },
         {
@@ -39,7 +39,7 @@ const insertPasswordToken = function (user, token) {
 
 //For checking password page get request
 const findForResetPassword = function (req) {
-    return Clinician.findOne({
+    return User.findOne({
         resetPasswordToken: req.query.resetPasswordToken,
         resetPasswordExpires: {
             $gt: Date.now(),
@@ -50,7 +50,7 @@ const findForResetPassword = function (req) {
 
 //For updating the new password
 const findForUpdatePassword = function (req) {
-    return Clinician.findOneAndUpdate({
+    return User.findOneAndUpdate({
         username: req.body.username,
         resetPasswordToken: req.body.resetPasswordToken,
         resetPasswordExpires: {
@@ -68,7 +68,7 @@ const findForUpdatePassword = function (req) {
 // delete User
 // returns a query
 const deleteUser = function (id) {
-    return Clinician.findByIdAndRemove(id);
+    return User.findByIdAndRemove(id);
 };
 
 module.exports = {

@@ -1,4 +1,4 @@
-const Clinician = require('../models/clinician')
+const User = require('../models/user')
 const jwt = require("jsonwebtoken");
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
@@ -49,7 +49,7 @@ function registerCreate(req, res, next) {
   }
   const { email, password, username } = req.body;
 
-  Clinician.create({ email, password, username })
+  User.create({ email, password, username })
     .then(newUserHandler)
     .catch(x =>
       res.send(x))

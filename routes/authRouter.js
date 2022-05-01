@@ -14,16 +14,14 @@ const {registerCreate,
   sendResetPassword} = require('../controllers/auth_controller')
 const {userValidationRules, validate, accountSettingValidationRules} = require("../middleware/validator")
 
-// const User = require('../models/clinician');
-
 
 // GET Route for Register Page
 // router.get('/register',authRedirect, registerNew);
 router.get('/register', registerNew);
 
 //POST Route for registering and creating a user
-// router.post('/register', userValidationRules(), validate, registerCreate);
-router.post('/register', registerCreate);
+router.post('/register', userValidationRules(), validate, registerCreate);
+// router.post('/register', registerCreate);
 
 //GET Route for Login page
 router.get("/login", loginNew)
