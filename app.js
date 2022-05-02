@@ -71,7 +71,8 @@ app.use(passport.initialize());
 app.use(passport.session())
 
 //auth router
-app.use('/auth', authRouter)
+app.use('/auth', authRouter);
+app.use('/', pageRouter);
 
 // index.html
 app.get('/', (req, res) => {
@@ -84,11 +85,6 @@ app.get('/aboutDiabetes', (req, res) => {
 
 app.get('/aboutWebsite', (req, res) => {
     res.render('aboutWebsite', { headTitle: "About This Site", css: "stylesheets/index.css" })
-})
-
-// patient dashboard
-app.get('/patientDashboard', (req, res) =>{
-    res.render('patientDashboard', { headTitle: "Home", css: "stylesheets/patientDashboard.css", script: "scripts/patientDashboard.js" })
 })
 
 

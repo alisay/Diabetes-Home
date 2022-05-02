@@ -35,6 +35,6 @@ router.post('/register', Auth.registerCreate);
 
 // GET on /auth/admin
 // retrieving session info
-router.get('/admin', sendAdmin)
+router.get('/admin', Auth.sendAdmin)
 
 export default router;
