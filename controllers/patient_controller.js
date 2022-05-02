@@ -33,25 +33,23 @@ const dummyTodayMeasurements = {
     ]
 }
 
-const dummyRankInfo = {
-    "users":  [
-        {
-            "engageRate": 30,
-            "nickname": "Tap",
-            "avatar": "https://reqres.in/img/faces/7-image.jpg"
-        },
-        {
-            "engageRate": 20,
-            "nickname": "Tony",
-            "avatar": "https://reqres.in/img/faces/7-image.jpg"
-        },
-        {
-            "engageRate": 10,
-            "nickname": "Young",
-            "avatar": "https://reqres.in/img/faces/7-image.jpg"
-        }
-    ]
-}
+const dummyRankInfo = [
+    {
+        "engageRate": 30,
+        "nickname": "Tap",
+        "avatar": "https://reqres.in/img/faces/7-image.jpg"
+    },
+    {
+        "engageRate": 20,
+        "nickname": "Tony",
+        "avatar": "https://reqres.in/img/faces/7-image.jpg"
+    },
+    {
+        "engageRate": 10,
+        "nickname": "Young",
+        "avatar": "https://reqres.in/img/faces/7-image.jpg"
+    }
+]
 
 
 function fetchPersonalMsg(){
