@@ -12,6 +12,7 @@ const authRouter = require('./routes/authRouter')
 const pageRouter = require('./routes/page_routes')
 const glucoseRouter = require('./routes/glucose_routes')
 const patientRouter = require('./routes/patient_routes')
+const clinicianRouter = require('./routes/clinician_routes')
 
 // If we are not running in production, load our local .env
 if (process.env.NODE_ENV !== 'production') {
@@ -54,8 +55,16 @@ app.engine('hbs', exphbs.engine({
             let result = operators[operator](operand_1,operand_2);
             if(result) return options.fn(this); 
             return options.inverse(this);       
-          }
+        },
 
+
+        thresAlert: function (value, lowerBound, upperBound){
+            if ((value <= lowerBound || value >= upperBound ) && value != null){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 }))
 
@@ -94,7 +103,7 @@ app.use('/auth', authRouter)
 app.use('/', pageRouter)
 app.use('/', glucoseRouter)
 app.use('/', patientRouter)
-
+app.use('/', clinicianRouter)
 
 // index.html
 app.get('/', (req, res) => {

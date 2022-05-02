@@ -3,6 +3,7 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
 .container{
     display: grid;
     grid-template-columns: 50% 50%;
+    margin-bottom: 5%;
 }
 
 *{
@@ -72,6 +73,15 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
         align-items: flex-start;
         align-content: flex-start;
     }
+
+    .measurement-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    
+
 }
 
 /* collapsible unread widget */
@@ -116,7 +126,7 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
         rgba(255, 255, 255, 0.3)
     );                  
     top: 0;
-    transition: all 5s linear;
+    transition: all 2s linear;
 }
 
 /* measurement widget */
@@ -128,7 +138,7 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
 }
 
 .measurement-widget-container{
-    width: 48%;
+    width: 100%;
     margin-bottom: 5%;
 }
 
@@ -204,7 +214,10 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
     padding: 0% 5% 0% 5%;
 }
 
-.column-1 input:checked ~ .collapsible-note-0 {
+.column-1 input:checked ~ .collapsible-note-0,
+.column-1 input:checked ~ .collapsible-note-1,
+.column-1 input:checked ~ .collapsible-note-2,
+.column-1 input:checked ~ .collapsible-note-3 {
     max-height: 4000px;
     background: linear-gradient(
         to right bottom,
@@ -212,14 +225,8 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
         rgba(255, 255, 255, 0.3)
     );                  
     top: 0;
-    transition: all 5s linear;
+    transition: all 2s linear;
 }
-
-
-
-
-
-
 
 
 

@@ -33,25 +33,23 @@ const dummyTodayMeasurements = {
     ]
 }
 
-const dummyRankInfo = {
-    "users":  [
-        {
-            "engageRate": 30,
-            "nickname": "Tap",
-            "avatar": "https://reqres.in/img/faces/7-image.jpg"
-        },
-        {
-            "engageRate": 20,
-            "nickname": "Tony",
-            "avatar": "https://reqres.in/img/faces/7-image.jpg"
-        },
-        {
-            "engageRate": 10,
-            "nickname": "Young",
-            "avatar": "https://reqres.in/img/faces/7-image.jpg"
-        }
-    ]
-}
+const dummyRankInfo = [
+    {
+        "engageRate": 30,
+        "nickname": "Tap",
+        "avatar": "https://reqres.in/img/faces/7-image.jpg"
+    },
+    {
+        "engageRate": 20,
+        "nickname": "Tony",
+        "avatar": "https://reqres.in/img/faces/7-image.jpg"
+    },
+    {
+        "engageRate": 10,
+        "nickname": "Young",
+        "avatar": "https://reqres.in/img/faces/7-image.jpg"
+    }
+]
 
 
 function fetchPersonalMsg(){
@@ -80,7 +78,7 @@ function getTodayMeasurements(){
         let div =   `                        
                     <div class = "measurement-widget-container">
                         <input type="checkbox" id ='collapsible-note-${i}'>
-                        <label for="collapsible-note">
+                        <label for='collapsible-note-${i}'>
                             <div class = 'measurement-widget'>
                                 <div class = "meansurement-icon"></div>
                         
@@ -115,7 +113,7 @@ function fetchLeaderboardData(){
 }
 
 
-const displayDashboard = (req, res) => {
+const patientDashboard = (req, res) => {
     res.render('patientDashboard', {headTitle: "Home", 
                                     css: "stylesheets/patientDashboard.css",
 
@@ -128,5 +126,5 @@ const displayDashboard = (req, res) => {
 }
 
 module.exports = {
-    displayDashboard,
+    patientDashboard,
 }
