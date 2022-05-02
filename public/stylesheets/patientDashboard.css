@@ -74,26 +74,21 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
     }
 }
 
-/* Collapsible Unread Widget */
+/* collapsible unread widget */
 .column-1 input{
     display: none;
 }
 
-.collapsible label {
-    display: block;
-    margin-bottom: 10px;
-}
-
 .unread-under{
     height: 20px;
-    width: 95%;
+    width: 93%;
     background: linear-gradient(
         to right bottom,
         rgba(255, 255, 255, 0.7),
         rgba(255, 255, 255, 0.3)
     );                
     /* top right bottom left */
-    margin: -0% 2.5% 0% 2.5%; 
+    margin-left: 3.5%; 
     border-bottom-right-radius: 15px; 
     border-bottom-left-radius: 15px; 
 }
@@ -102,14 +97,14 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
     max-height: 0px;
     overflow: hidden;
     top: 0%;
-    width: 95%;
+    width: 93%;
     background: linear-gradient(
         to right bottom,
         rgba(255, 255, 255, 0.7),
         rgba(255, 255, 255, 0.3)
     );  
     /* top right bottom left */
-    margin: 0% 2.5% 0% 2.5%; 
+    margin-left: 3.5%; 
     padding: 0% 5% 0% 5%;
 }
 
@@ -120,11 +115,115 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
         rgba(255, 255, 255, 0.7),
         rgba(255, 255, 255, 0.3)
     );                  
-    width: 95%;
     top: 0;
     transition: all 5s linear;
-
 }
+
+/* measurement widget */
+.measurement-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2%;
+}
+
+.measurement-widget-container{
+    width: 48%;
+    margin-bottom: 5%;
+}
+
+.measurement-widget{
+    display: flex;
+
+    background: linear-gradient(
+        to left top,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0.5)
+    );
+
+    /* background-color: #658ec6; */
+    border-radius: 1rem;
+    /* top right bottom left */
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+}
+
+.meansurement-icon{
+    background: white;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    /* top right bottom left */
+    margin: 5% 0% 5% 5%;
+}
+
+.measurement-data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 10%;
+}
+
+.measurement-data-container{
+}
+
+.measurement-unit-container{
+    margin-left: 10%;
+}
+
+/* collapsible measurement widget */
+.measurement-under{
+    height: 20px;
+    width: 90%;
+    background: linear-gradient(
+        to right bottom,
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.3)
+    );                
+    /* top right bottom left */
+    margin-left: 5%; 
+    border-bottom-right-radius: 15px; 
+    border-bottom-left-radius: 15px; 
+}
+
+.collapsible-note-0, 
+.collapsible-note-1, 
+.collapsible-note-2,
+.collapsible-note-3 {
+    max-height: 0px;
+    overflow: hidden;
+    top: 0%;
+    width: 90%;
+    background: linear-gradient(
+        to right bottom,
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.3)
+    );  
+    /* top right bottom left */
+    margin-left: 5%; 
+    padding: 0% 5% 0% 5%;
+}
+
+.column-1 input:checked ~ .collapsible-note-0 {
+    max-height: 4000px;
+    background: linear-gradient(
+        to right bottom,
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.3)
+    );                  
+    top: 0;
+    transition: all 5s linear;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 /* background */
@@ -264,6 +363,8 @@ display: none;
 nav ul li.btn.hide i:before{
 content: '\f00d';
 }
+
+/* CSS Mobile menu nav */
 @media all and (max-width: 900px){
     nav{
         padding: 5px 30px;

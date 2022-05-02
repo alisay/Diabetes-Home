@@ -11,7 +11,7 @@ const passport = require("passport");
 const authRouter = require('./routes/authRouter')
 const pageRouter = require('./routes/page_routes')
 const glucoseRouter = require('./routes/glucose_routes')
-
+const patientRouter = require('./routes/patient_routes')
 
 // If we are not running in production, load our local .env
 if (process.env.NODE_ENV !== 'production') {
@@ -93,6 +93,7 @@ app.use(passport.session())
 app.use('/auth', authRouter)
 app.use('/', pageRouter)
 app.use('/', glucoseRouter)
+app.use('/', patientRouter)
 
 
 // index.html
@@ -107,12 +108,6 @@ app.get('/aboutDiabetes', (req, res) => {
 app.get('/aboutWebsite', (req, res) => {
     res.render('aboutWebsite', { headTitle: "About This Site", css: "stylesheets/index.css" })
 })
-
-// patient dashboard
-app.get('/patientDashboard', (req, res) =>{
-    res.render('patientDashboard', { headTitle: "Home", css: "stylesheets/patientDashboard.css", script: "scripts/patientDashboard.js" })
-})
-
 
 // default route to handle errors
 app.get('*', (req, res) => {

@@ -1,3 +1,12 @@
+const dummyPersonalInfo = {
+    "user": {
+        "nickname": "Pat",
+        "avatar": "https://reqres.in/img/faces/2-image.jpg"
+    },
+}
+
+
+
 function fetchPersonalMsg(){
     fetch("https://reqres.in/api/users/2")
         .then(response =>{
@@ -14,6 +23,9 @@ function fetchPersonalMsg(){
         }).catch(error => {
             console.log(error);
         })
+
+    const message = `<p>Good (time of day), ${name}. You are on a streak of (days)!<\p>`;
+    reuturn welMessage
 }
 
 function fetchUnreadCliName(){
