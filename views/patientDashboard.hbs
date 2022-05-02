@@ -1,6 +1,11 @@
 <nav>
     <ul>
         <li class="logo">DIABETES@HOME</li>
+        <li class="items"><a href="#">Home</a></li>
+        <li class="items"><a href="#">About</a></li>
+        <li class="items"><a href="#">Blogs</a></li>
+        <li class="items"><a href="#">Contact</a></li>
+        <li class="items"><a href="#">Feedback</a></li>
         <li class="btn" onclick="show()"><a href="#"><i class="fas fa-bars"></i></a></li>
     </ul>
 </nav>
@@ -26,21 +31,32 @@
         <div class = "glass">
             <h2>Personal</h2>
             <div class = 'personal widget'>
-                <p>Good {{timeString}}, {{name}}. You are on a streak of {{streak}}!</p>
+                <p>{{welMessage}}</p>
             </div>
         </div>
 
         <div class = "glass">
             <div>
-                <input type="checkbox" id = "collapsible-unread">
-                <label for="collapsible-unread"><h2>Unread</h2></label>
-                <div class = 'unread widget'>
-                    <p> {{clinician}} sent you a message at {{messageTime}}: </p>
-                </div>
+                <input type="checkbox" id ='collapsible-unread'>
+                <label for="collapsible-unread">
+                    <h2>Unread</h2>
+                    <div class = 'unread widget'>
+                        <p>{{notification}}</p>
+                    </div>
+                </label>
+                
                 <div class="collapsible-message">
-                    <p> {{messageContent}} </p>
+                    <p>{{cliMessage}}</p>
                 </div>
+
                 <div class = 'unread-under'></div>
+            </div>
+        </div>
+
+        <div class = "glass">
+            <h2>Today Measurements</h2>
+            <div class = "measurement-wrapper">
+                {{{measurements}}}
             </div>
         </div>
     </div>
@@ -49,14 +65,14 @@
         <div class = "glass">
             <div class = 'leaderboard'>
                 <h2>Leaderboard</h2>
-                {{#each user}}
+                {{#each users}}
+                    <p>data {{this}}</p>
                     <div class="user rank-widget">
                         <div class= "user-info">
-                            <h3>{{this.[0]}}</h3>
-                            <p>New memeber</p>
+                            <h3>{{this.nickname}}</h3>
                             <div class="progress"></div>
                         </div>
-                        <h2 class="percentage">{{this.[1]}}%</h2>
+                        <h2 class="percentage">{{this.engageRate}}</h2>
                     </div>
                 {{/each}}
             </div>
