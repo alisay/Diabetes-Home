@@ -1,5 +1,13 @@
 import * as models from "./models/index.js";
 
+export function getClinician(username) {
+    return models.Clinician.findOne({ username }).lean();
+}
+
+export function getPatientId(_id) {
+    return models.Patient.findOne({ _id }).lean();
+}
+
 export function getPatient(username) {
     return models.Patient.findOne({ username }).lean();
 }

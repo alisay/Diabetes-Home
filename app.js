@@ -36,13 +36,9 @@ app.engine('hbs', engine({
     defaultlayout: 'main',
     extname: 'hbs',
     helpers: {
-        thresAlert: function (value, lowerBound, upperBound){
-            if ((value <= lowerBound || value >= upperBound ) && value != null){
-                return true;
-            } else {
-                return false;
-            }
-        }
+        inRange: (value, lowerBound, upperBound) => 
+            ( lowerBound === null && upperBound === null ) || 
+            ( value >= lowerBound && value <= upperBound && value !== null )
     }
 }))
 

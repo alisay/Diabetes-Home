@@ -28,7 +28,7 @@
 
 <section class="container">
     <div class = "glass row-1">
-        <h2>Welcome back, {{clinicianName}}</h2>
+        <h2>Welcome back, {{user.firstName}}</h2>
         <div class = 'personal widget'>
             <p>This widget is under maintenance</p>
         </div>
@@ -47,37 +47,37 @@
             </tr>
             </thead>
             <tbody>
-            {{#each patients}}
+            {{#each user.patients}}
                 <tr>
-                    <td><a href="#">{{this.username}}</a></td>
+                    <td><a href="#">{{nickname}}</a></td>
                     <td>
-                        {{#if (thresAlert this.glucose this.glucoseLowerBound this.glucoseUpperBound) }}
-                            <p class="status status-alert">{{this.glucose}}</p>
+                        {{#if (inRange metrics.glucose.lastRecord metrics.glucose.threshold.low metrics.glucose.threshold.high) }}
+                            {{metrics.glucose.lastRecord}}   
                         {{else}}
-                            {{this.glucose}}   
+                            <p class="status status-alert">{{metrics.glucose.lastRecord}}</p>
                         {{/if}}  
                     
                     </td>
                     <td>
-                        {{#if (thresAlert this.weight this.weightLowerBound this.weightUpperBound) }}
-                            <p class="status status-alert">{{this.weight}}</p>
+                        {{#if (inRange metrics.weight.lastRecord metrics.weight.threshold.low metrics.weight.threshold.high) }}
+                            {{metrics.weight.lastRecord}}
                         {{else}}
-                            {{this.weight}}
+                            <p class="status status-alert">{{metrics.weight.lastRecord}}</p>   
                         {{/if}}  
                     </td>
                     <td>
-                        {{#if (thresAlert this.insulin this.insulinLowerBound this.insulinUpperBound ) }}
-                            <p class="status status-alert">{{this.insulin}}</p>
+                        {{#if (inRange metrics.insulin.lastRecord metrics.insulin.threshold.low metrics.insulin.threshold.high) }}
+                            {{metrics.insulin.lastRecord}}
                         {{else}}
-                            {{this.insulin}}
-                        {{/if}}                
+                            <p class="status status-alert">{{metrics.insulin.lastRecord}}</p>
+                        {{/if}}  
                     </td>
                     <td>
-                        {{#if (thresAlert this.steps this.stepsLowerBound this.stepsUpperBound ) }}
-                            <p class="status status-alert">{{this.steps}}</p>
+                        {{#if (inRange metrics.steps.lastRecord metrics.steps.threshold.low metrics.steps.threshold.high) }}
+                            {{metrics.steps.lastRecord}}  
                         {{else}}
-                            {{this.steps}} 
-                        {{/if}}  
+                            <p class="status status-alert">{{metrics.steps.lastRecord}}</p>
+                        {{/if}} 
                     </td>
                 </tr>
             {{/each}}
