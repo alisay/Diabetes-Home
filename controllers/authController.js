@@ -1,12 +1,12 @@
-const AdminModel = require('../models/admin')
-const passport = require("passport");
+import admin from '../models/admin.js';
+import passport from "passport";
 
-const login = (req, res) => {
+export const login = (req, res) => {
   res.render('login')
 }
 
 // admin login authentication with passport js
-async function loginAdmin(req, res, next) {
+export async function loginAdmin(req, res, next) {
   console.log('logging in Admin');
   const passportLogin = passport.authenticate("local", {
     successRedirect: '/auth/logout', 
@@ -16,7 +16,7 @@ async function loginAdmin(req, res, next) {
 }
 
 // send admin session info to client
-function sendAdmin(req, res) {
+export function sendAdmin(req, res) {
   console.log('sending admin session info');
   // res.redirect()
   res.status(200)
@@ -28,7 +28,7 @@ function sendAdmin(req, res) {
 
 
 // Admin logout
-function logout(req, res) {
+export function logout(req, res) {
 
   // checks if admin is logged on first
   if (req.isAuthenticated()) {
@@ -40,21 +40,13 @@ function logout(req, res) {
 }
 
 // registerNew and registerCreate are only for creating the Admin account
-function registerNew(req, res) {
+export function registerNew(req, res) {
   res.render("register");
 }
 
-async function registerCreate(req, res, next) {
+export async function registerCreate(req, res, next) {
   const { username, password } = req.body;
-  await AdminModel.create({ username, password });
+  await admin.create({ username, password });
   res.redirect('/')
 }
 
-module.exports = {
-  login,
-  loginAdmin,
-  sendAdmin,
-  logout,
-  registerCreate,
-  registerNew
-}

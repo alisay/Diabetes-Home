@@ -1,5 +1,6 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
+<<<<<<< HEAD
 const {
   login,
   loginAdmin,
@@ -8,6 +9,9 @@ const {
   registerNew,
   registerCreate
 } = require('../controllers/auth_controller')
+=======
+import * as Auth from '../controllers/authController.js';
+>>>>>>> test
 // const { isAuthenticated } = require('../middleware/passport')
 
 const isAuthenticated = (req, res, next) => {
@@ -26,22 +30,34 @@ router.get("/", isAuthenticated, (req, res) => {
 )
 
 //GET on /auth/login
+<<<<<<< HEAD
 router.get("/login", login)
 
 // POST on /auth/login
 // Login for Admin
 router.post("/login", loginAdmin);
+=======
+router.get("/login", Auth.login)
+
+// POST on /auth/login
+// Login for Admin
+router.post("/login", Auth.loginAdmin);
+>>>>>>> test
 
 // GET on /auth/logout
 // Logout for Admin
-router.get('/logout', logout)
+router.get('/logout', Auth.logout)
 
 // just for creating the Admin user account with an encrypted password
-router.get('/register', registerNew);
-router.post('/register', registerCreate);
+router.get('/register', Auth.registerNew);
+router.post('/register', Auth.registerCreate);
 
 // GET on /auth/admin
 // retrieving session info
+<<<<<<< HEAD
 // router.get('/admin', sendAdmin)
+=======
+router.get('/admin', Auth.sendAdmin)
+>>>>>>> test
 
-module.exports = router;
+export default router;

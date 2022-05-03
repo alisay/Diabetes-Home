@@ -131,6 +131,7 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
         rgba(255, 255, 255, 0.3)
     );                  
     top: 0;
+    transition: all 2s linear;
 }
 
 /* measurement widget */

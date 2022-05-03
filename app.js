@@ -1,23 +1,20 @@
-const express = require('express')
-const exphbs = require('express-handlebars')
-const path = require('path')
-const mongoose = require('mongoose');
-const session = require('express-session')
-const MongoStore = require('connect-mongo');
-const passport = require("passport");
+import express, { static as staticPage, json, urlencoded } from 'express';
+import { engine } from 'express-handlebars';
+import mongoose from 'mongoose';
+import session from 'express-session';
+import MongoStore from 'connect-mongo';
+import passport from "passport";
 // const fileUpload = require('express-fileupload');
 // const cors = require('cors')
 
-const authRouter = require('./routes/authRouter')
-const pageRouter = require('./routes/page_routes')
-const glucoseRouter = require('./routes/glucose_routes')
-const patientRouter = require('./routes/patient_routes')
-const clinicianRouter = require('./routes/clinician_routes')
+import 'dotenv/config';
+
+import authRouter from './routes/authRouter.js';
+import pageRouter from './routes/pageRoutes.js';
+import glucoseRouter from './routes/measurementRoutes.js';
+import clinicianRouter from './routes/clinicianRoutes.js';
 
 // If we are not running in production, load our local .env
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
-}
 
 const port = process.env.PORT || 8080;
 
@@ -25,76 +22,23 @@ const app = express()
 
 
 app.use(express.static('public'))
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('./public'));
 
 app.use(session({
     secret: process.env.SESSION_SECRET || 'keyboard cat',
     resave: false,
     saveUninitialized: true,
     cookie: { expires: 600000 },
-    store: MongoStore.create({ mongoUrl: process.env.MONGO_URL })
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URI })
 }))
 
-app.engine('hbs', exphbs.engine({
+app.engine('hbs', engine({
     defaultlayout: 'main',
     extname: 'hbs',
     helpers: {
-
-        when:  function (operand_1, operator, operand_2, options) {
-            let operators = {                     //  {{#when <operand1> 'eq' <operand2>}}
-              'eq': (l,r) => l == r,              //  {{/when}}
-              'noteq': (l,r) => l != r,
-              'gt': (l,r) => (+l) > (+r),                        // {{#when var1 'eq' var2}}
-              'gteq': (l,r) => ((+l) > (+r)) || (l == r),        //               eq
-              'lt': (l,r) => (+l) < (+r),                        // {{else when var1 'gt' var2}}
-              'lteq': (l,r) => ((+l) < (+r)) || (l == r),        //               gt
-              'or': (l,r) => l || r,                             // {{else}}
-              'and': (l,r) => l && r,                            //               lt
-              '%': (l,r) => (l % r) === 0                        // {{/when}}
-            }
-            let result = operators[operator](operand_1,operand_2);
-            if(result) return options.fn(this); 
-            return options.inverse(this);       
-        },
-
-
-        thresAlert: function (value, lowerBound, upperBound){
-            if ((value <= lowerBound || value >= upperBound ) && value != null){
-                return true;
-            } else {
-                return false;
-            }
-        },
-
-        emptyData: function (value){
-            if (value == null){
-                return true;
-            } else {
-                return false;
-            }
-        },
-
-        measIsRequired: function (value){
-            if (value == null){
-                return false;
-            } else {
-                return true;
-            }
-        },
-
-        getUnit: function (value){
-            if (value == 'blood'){
-                return 'nmol/L';
-                console.log
-            } else if (value == 'insulin'){
-                return 'doses';
-            } else if (value == 'steps'){
-                return 'count';
-            } else if (value == 'weight'){
-                return 'kg';
-            }
-        }
-        
+        inRange: (value, lowerBound, upperBound) => 
+            ( lowerBound === null && upperBound === null ) || 
+            ( value >= lowerBound && value <= upperBound && value !== null )
     }
 }))
 
@@ -102,7 +46,7 @@ app.set('view engine', 'hbs')
 
 
 // Connecting to database
-let dbConn = process.env.MONGO_URL || 'mongodb://localhost/test-app'
+let dbConn = process.env.MONGO_URI || 'mongodb://localhost/test-app'
 
 const mongClient = mongoose.connect(dbConn, {
     useNewUrlParser: true,
@@ -117,14 +61,11 @@ const mongClient = mongoose.connect(dbConn, {
         }
     });
 
-app.use(express.json());
-app.use(express.urlencoded({
-    extended: true
-}));
+app.use(json());
+app.use(urlencoded({ extended: true }));
 
 
 //passport
-require("./config/passport");
 app.use(passport.initialize());
 app.use(passport.session())
 
@@ -132,7 +73,6 @@ app.use(passport.session())
 app.use('/auth', authRouter)
 app.use('/', pageRouter)
 app.use('/', glucoseRouter)
-app.use('/', patientRouter)
 app.use('/', clinicianRouter)
 
 // index.html

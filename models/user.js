@@ -1,7 +1,13 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import mongoose from "mongoose";
+import bcrypt from 'mongoose-bcrypt';
+const { Schema, ObjectId, model } = mongoose;
 
-const User = new Schema({
+const options = {
+    timestamps: true, 
+    discriminatorKey: 'kind'
+}
+
+const UserSchema = new Schema({
     email: {
         type: String,
         required: true,
@@ -15,33 +21,36 @@ const User = new Schema({
         type: String,
         required: true
     },
-    password: {
-        type: String,
-        required: true
-    },
-    user_type: {
-        patient: { type: Boolean, default: false },
-        clinician: { type: Boolean, default: true },
-    },
-    profile: {
-        firstname: { type: String },
-        lastname: { type: String },
-        message: { type: String },
-    },
-    related_users: [
-        { id: { type: mongoose.ObjectID }, username: { type: String }, relationship: { type: String }, notes: [{date: {type:Date}, text:{type:String}}] }
-    ],
-    metrics: {
-        glucose: { required: { type: Boolean, default: true }, threshold: { type: Number } },
-        weight: { required: { type: Boolean, default: true }, threshold: { type: Number } },
-        insulin: { required: { type: Boolean, default: true }, threshold: { type: Number } },
-        steps: { required: { type: Boolean, default: true }, threshold: { type: Number } },
-    },
-},
-    {
-        timestamps: { createdAt: 'created_at' }
-    }
-)
+    isClinician: Boolean
+}, options);
 
-Admin.plugin(require('mongoose-bcrypt'));
-module.exports = mongoose.model('User', User);
+export const User = model('user', UserSchema);
+
+const PatientSchema = new Schema({
+    firstName: String, 
+    lastName: String,
+    nickname: String,
+    gender: String,
+    dob: Date,
+    metrics: {
+        glucose: { threshold: { low: Number, high: Number }, lastRecord: Number },
+        weight: { threshold: { low: Number, high: Number }, lastRecord: Number },
+        insulin: { threshold:  { low: Number, high: Number }, lastRecord: Number },
+        steps: { threshold:  { low: Number, high: Number }, lastRecord: Number },
+    },
+    clinician: ObjectId,
+    clinicianMessage: String,
+    streak: Number,
+    engagementRate: Number
+}, options);
+
+const ClinicianSchema = new Schema({
+    firstName: String, 
+    lastName: String,
+    patients: [ObjectId]
+})
+
+export const Patient = User.discriminator('Patient', PatientSchema);
+export const Clinician = User.discriminator('Clinician', ClinicianSchema);
+
+// Admin.plugin(bcrypt);
