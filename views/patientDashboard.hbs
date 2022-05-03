@@ -31,7 +31,7 @@
         <div class = "glass">
             <h2>Personal</h2>
             <div class = 'personal widget'>
-                <p>{{welMessage}}</p>
+                <p>Good {{timeString}}, {{user.firstName}}. You are on a streak of {{user.streak}}!</p>
             </div>
         </div>
 
@@ -41,14 +41,12 @@
                 <label for="collapsible-unread">
                     <h2>Unread</h2>
                     <div class = 'unread widget'>
-                        <p>{{notification}}</p>
+                        <p>{{user.clinicianMessage}}</p>
                     </div>
                 </label>
-                
-                <div class="collapsible-message">
-                    <p>{{cliMessage}}</p>
-                </div>
-
+                {{!-- <div class="collapsible-message">
+                    <p>{{user.clinicianMessage}}</p>
+                </div> --}}
                 <div class = 'unread-under'></div>
             </div>
         </div>
@@ -65,7 +63,7 @@
         <div class = "glass">
             <div class = 'leaderboard'>
                 <h2>Leaderboard</h2>
-                {{#each users}}
+                {{#each leaderboard}}
                     <p>data {{this}}</p>
                     <div class="user rank-widget">
                         <div class= "user-info">

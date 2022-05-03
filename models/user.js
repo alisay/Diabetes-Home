@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from 'mongoose-bcrypt';
 const { Schema, ObjectId, model } = mongoose;
 
 const options = {
@@ -23,7 +24,7 @@ const UserSchema = new Schema({
     isClinician: Boolean
 }, options);
 
-const User = model('User', UserSchema);
+export const User = model('user', UserSchema);
 
 const PatientSchema = new Schema({
     firstName: String, 
@@ -39,6 +40,7 @@ const PatientSchema = new Schema({
     },
     clinician: ObjectId,
     clinicianMessage: String,
+    streak: Number
 }, options);
 
 const ClinicianSchema = new Schema({
@@ -50,5 +52,4 @@ const ClinicianSchema = new Schema({
 export const Patient = User.discriminator('Patient', PatientSchema);
 export const Clinician = User.discriminator('Clinician', ClinicianSchema);
 
-Admin.plugin(require('mongoose-bcrypt'));
-
+// Admin.plugin(bcrypt);
