@@ -1,4 +1,4 @@
-import { getUser, getLeaderboard } from "../dbutils.js";
+import { getPatient, getLeaderboard } from "../dbutils.js";
 import { UNITS } from "../models/index.js";
 
 // export const differentiateDashboard = (req, res) => {
@@ -17,7 +17,7 @@ function formatMeasurements(user) {
 }
 
 function formatLeaderboard(leaderboard) {
-    leaderboard.map(e => e.engagementRate = `${Math.round(e.engagementRate * 1000) / 10}`);
+    leaderboard.map(e => e.engagementRate = (e.engagementRate * 100).toFixed(1));
     return leaderboard;
 }
 
@@ -25,7 +25,7 @@ export async function displayDashboard(req, res) {
     const hours = new Date().getHours();
     const timeString = hours < 12 ? 'morning' : hours < 19 ? 'afternoon' : 'evening';
     
-    const user = await getUser("PatTap");
+    const user = await getPatient("PatTap");
     const measurements = formatMeasurements(user);
 
     const leaderboard = formatLeaderboard(await getLeaderboard());
