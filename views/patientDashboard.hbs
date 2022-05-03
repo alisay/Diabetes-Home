@@ -11,15 +11,15 @@
 
         <div class = "glass">
             <div>
-                <input type="checkbox" id ='collapsible-unread' checked="true" hidden>
+                <input type="checkbox" id ='collapsible-unread' name="collapsible">
                 <label for="collapsible-unread">
                     <h2>Unread</h2>
                     <div class = 'unread widget'>
-                        <p>{{user.clinicianMessage}}</p>
+                        <p>You have received a new message from your clinician.</p>
                     </div>
                 </label>
                 <div class="collapsible-message">
-                    <p>{{user.clinicianMessage}}</p>
+                    <p class="cli-message">{{user.clinicianMessage}}</p>
                 </div>
                 <div class = 'unread-under'></div>
             </div>
@@ -38,21 +38,20 @@
                                 <div class = "measurement-data">
                                     <div class = "measurement-data-container">
                                         {{#if (eq this.lastRecord undefined) }}
-                                            <div class="measurement-form">
-                                                <form action="postdaily" method = "POST">
-                                                    <input type="number" name={{@key}} id="measurement" step=".01"
-                                                    class="form__input" autocomplete="off" placeholder="Your {{@key}} is">
-                                                    <input type="text" name="comment" placeholder="Add a comment...">
+                                            <form action="postdaily" method = "POST">
+                                                <div class="measurement-form">
+                                                    <label><input type="number" name={{@key}} id="measurement" step=".01"
+                                                    class="form__input" autocomplete="off" placeholder="({{@key}})">  {{unit}}</label>
+
+                                                    <input type="text" name="comment" 
+                                                    class="comment-input" placeholder="Add a comment...">
                                                     <input type="submit" hidden/>
-                                                </form>
-                                            </div> 
+                                                </div> 
+                                            </form>
                                         {{else}}
-                                            <h2 class="measurement-number">{{lastRecord}}</h2>
+                                            <p><b style="font-size: 2.5em">{{lastRecord}}</b>  {{unit}}</p>
                                         {{/if}}   
 
-                                    </div>
-                                    <div class = "measurement-unit-container">
-                                        <p>{{unit}}</p>
                                     </div>
                                 </div>
                             </div>

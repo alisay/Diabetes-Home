@@ -175,20 +175,18 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
     display: flex;
     justify-content: center;
     align-items: center;
-
     margin-left: 10%;
 }
 
-.measurement-number{
-    font-size: 50px;
+.measurement-text{
+    align-self: c;
+    float: left;
+    width: 20%;
 }
 
 .measurement-data-container{
 }
 
-.measurement-unit-container{
-    margin-left: 10%;
-}
 
 /* collapsible measurement widget */
 .measurement-under{
@@ -408,16 +406,18 @@ content: '\f00d';
 /* measurement form */
 .measurement-form {
     position: relative;
+    display: grid;
     width: 9rem;
-    height: 3rem;
+    min-height: 3rem;
+    padding: 1rem 0% 1rem 0%;
 }
 
 .form__input {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
     border: 2px solid #658ec6;
     border-radius: 0.5rem;
     font-family: inherit;
@@ -428,6 +428,22 @@ content: '\f00d';
     background: none;
 }
 
+
+.comment-input {
+    position: relative;
+    top: 0;
+    left: 0;
+    max-width: 80%;
+    min-height: 20%;
+    border: 2px solid #658ec6;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: inherit;
+    color: #658ec6;
+    outline: none;
+    padding: 1.25rem;
+    background: none;
+}
 
 *:hover {
 border-color: #adffff;
