@@ -1,42 +1,9 @@
-<<<<<<< HEAD
 {{> menuNav}}
-=======
-<nav>
-    <ul>
-        <li class="logo">DIABETES@HOME</li>
-        <li class="items"><a href="#">Home</a></li>
-        <li class="items"><a href="#">About</a></li>
-        <li class="items"><a href="#">Contact</a></li>
-        <li class="items"><a href="#">Feedback</a></li>
-        <li class="btn" onclick="show()"><a href="#"><i class="fas fa-bars"></i></a></li>
-    </ul>
-</nav>
-
-<script>
-    function show(){
-        var x = document.getElementsByClassName("items")[0];
-        var nav = document.getElementsByClassName("items");
-        if (x.style.display === "none") {
-            for (let i = 0; i < nav.length; i++) {
-                nav[i].classList.toggle('hide');
-            }
-        } else {
-            for (let i = 0; i < nav.length; i++) {
-                nav[i].classList.toggle('show');
-            }
-        }
-    }
-</script>
->>>>>>> test
 
 
 <section class="container">
     <div class = "glass row-1">
-<<<<<<< HEAD
-        <h2>Welcome back, {{clinicianName}}</h2>
-=======
         <h2>Welcome back, {{user.firstName}}</h2>
->>>>>>> test
         <div class = 'personal widget'>
             <p>This widget is under maintenance</p>
         </div>
@@ -55,16 +22,6 @@
             </tr>
             </thead>
             <tbody>
-<<<<<<< HEAD
-            {{#each patients}}
-                <tr>
-                    <td><a href="#">{{this.username}}</a></td>
-                    <td>
-                        {{#if (thresAlert this.glucose this.glucoseLowerBound this.glucoseUpperBound) }}
-                            <p class="status status-alert">{{this.glucose}}</p>
-                        {{else}}
-                            {{this.glucose}}   
-=======
             {{#each user.patients}}
                 <tr>
                     <td><a href="#">{{nickname}}</a></td>
@@ -73,32 +30,10 @@
                             {{metrics.glucose.lastRecord}}   
                         {{else}}
                             <p class="status status-alert">{{metrics.glucose.lastRecord}}</p>
->>>>>>> test
                         {{/if}}  
                     
                     </td>
                     <td>
-<<<<<<< HEAD
-                        {{#if (thresAlert this.weight this.weightLowerBound this.weightUpperBound) }}
-                            <p class="status status-alert">{{this.weight}}</p>
-                        {{else}}
-                            {{this.weight}}
-                        {{/if}}  
-                    </td>
-                    <td>
-                        {{#if (thresAlert this.insulin this.insulinLowerBound this.insulinUpperBound ) }}
-                            <p class="status status-alert">{{this.insulin}}</p>
-                        {{else}}
-                            {{this.insulin}}
-                        {{/if}}                
-                    </td>
-                    <td>
-                        {{#if (thresAlert this.steps this.stepsLowerBound this.stepsUpperBound ) }}
-                            <p class="status status-alert">{{this.steps}}</p>
-                        {{else}}
-                            {{this.steps}} 
-                        {{/if}}  
-=======
                         {{#if (inRange metrics.weight.lastRecord metrics.weight.threshold.low metrics.weight.threshold.high) }}
                             {{metrics.weight.lastRecord}}
                         {{else}}
@@ -118,7 +53,6 @@
                         {{else}}
                             <p class="status status-alert">{{metrics.steps.lastRecord}}</p>
                         {{/if}} 
->>>>>>> test
                     </td>
                 </tr>
             {{/each}}
@@ -126,4 +60,3 @@
         </table>
     </div>
 </section>
-
