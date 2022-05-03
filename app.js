@@ -64,7 +64,37 @@ app.engine('hbs', exphbs.engine({
             } else {
                 return false;
             }
+        },
+
+        emptyData: function (value){
+            if (value == null){
+                return true;
+            } else {
+                return false;
+            }
+        },
+
+        measIsRequired: function (value){
+            if (value == null){
+                return false;
+            } else {
+                return true;
+            }
+        },
+
+        getUnit: function (value){
+            if (value == 'blood'){
+                return 'nmol/L';
+                console.log
+            } else if (value == 'insulin'){
+                return 'doses';
+            } else if (value == 'steps'){
+                return 'count';
+            } else if (value == 'weight'){
+                return 'kg';
+            }
         }
+        
     }
 }))
 

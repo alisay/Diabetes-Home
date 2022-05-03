@@ -1,0 +1,67 @@
+<head>
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Convergence&family=Lato:wght@300;400;700;900&family=Mukta:wght@300;400;600;700;800&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"> -->
+    
+
+
+    <style>
+    .measurement-form {
+        position: relative;
+        width: 20rem;
+        height: 3rem;
+    }
+
+    .form__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 6px solid #091225;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: inherit;
+    color: rgb(0, 0, 0);
+    outline: none;
+    padding: 1.25rem;
+    background: none;
+    }
+
+    *:hover {
+      border-color: #adffff;
+    } 
+
+
+    *:focus {
+      border-color: #18ffff;
+    }
+
+    .form__label {
+        position: absolute;
+        left: 1rem;
+        top: 0.8rem;
+        padding: 0 0.5rem;
+        color: white;
+        cursor: text;
+        transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+        background-color: #060b23;
+    }
+
+
+    .form__input:focus ~ .form__label,
+    .form__input:not(:placeholder-shown).form__input:not(:focus) ~ .form__label {
+        top: -0.5rem;
+        font-size: 0.8rem;
+        left: 0.8rem;
+    } 
+
+    </style>
+  
+  </head>
+  
+  <body>
+    <div class="measurement-form">
+      <input type="text" id="email" class="form__input" autocomplete="off" placeholder="  ">
+      <label for="email" class="form__label">Data!</label>
+    </div>
+  </body>

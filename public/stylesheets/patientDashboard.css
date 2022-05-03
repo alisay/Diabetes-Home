@@ -85,7 +85,7 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
 }
 
 /* collapsible unread widget */
-.column-1 input{
+.column-1 input[name = "collapsible"]{
     display: none;
 }
 
@@ -113,9 +113,12 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
         rgba(255, 255, 255, 0.7),
         rgba(255, 255, 255, 0.3)
     );  
-    /* top right bottom left */
     margin-left: 3.5%; 
-    padding: 0% 5% 0% 5%;
+}
+
+.cli-message{
+    /* top right bottom left */
+    margin: 5% 5% 5% 5%; 
 }
 
 .column-1 input:checked ~ .collapsible-message{
@@ -394,4 +397,57 @@ content: '\f00d';
     nav ul li.items:hover:after{
         opacity: 0;
     }
+}
+
+/* measurement form */
+.measurement-form {
+    position: relative;
+    width: 10rem;
+    height: 3rem;
+}
+
+.form__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #658ec6;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: inherit;
+    color: #658ec6;
+    outline: none;
+    padding: 1.25rem;
+    background: none;
+}
+
+
+*:hover {
+border-color: #adffff;
+} 
+
+
+*:focus {
+border-color: #658dc666;
+
+}
+
+.form__label {
+    position: absolute;
+    left: 1rem;
+    top: 0.9rem;
+    padding: 0 0.5rem;
+    color: #658ec6;
+    cursor: text;
+    transition: all 200ms ease-in;
+}
+
+.measure-note-form{
+    position: relative;
+    width: 100%;
+    height: 3rem;
+
+    /* top right bottom left */
+    margin: 5% 0% 5% 0%; 
 }

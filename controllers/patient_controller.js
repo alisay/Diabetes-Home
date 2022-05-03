@@ -16,21 +16,11 @@ const dummyCliInfo = {
     },
 }
 
-const dummyTodayMeasurements = {
-    "measurements":  [
-        {
-            "data": 200,
-            "unit": "nmol/L"
-        },
-        {
-            "data": 300,
-            "unit": "steps"
-        },
-        {
-            "data": null,
-            "unit": "doses"
-        }
-    ]
+const dummyTodayMeasurements =  {
+    "blood": {"lastRecord" : 70},
+    "insulin": {"lastRecord" : 3},
+    "steps": null,
+    "weight": {"lastRecord" : null}
 }
 
 const dummyRankInfo = [
@@ -54,13 +44,13 @@ const dummyRankInfo = [
 
 function fetchPersonalMsg(){
     const username = dummyPersonalInfo.user.username
-    const welMessage = `Good (time of day), ${username}. You are on a streak of (days)!`;
+    const welMessage = `Good day! ${username}. You are on a streak of 3 days!`;
     return welMessage;
 }
 
 function fetchUnreadCliName(){
     const cliName = dummyCliInfo.clinician.cliName
-    const notification = `(Title).${cliName} sent you a message at (time)`;
+    const notification = `Dr.${cliName} sent you a message`;
 
     // document.querySelector(".unread").insertAdjacentHTML("beforeend", notification);
     return notification;
@@ -72,39 +62,7 @@ function fetchUnreadMsg(){
 }
 
 function getTodayMeasurements(){
-    let rs = ''
-
-    for (let i = 0; i < dummyTodayMeasurements.measurements.length; i++) {
-        let div =   `                        
-                    <div class = "measurement-widget-container">
-                        <input type="checkbox" id ='collapsible-note-${i}'>
-                        <label for='collapsible-note-${i}'>
-                            <div class = 'measurement-widget'>
-                                <div class = "meansurement-icon"></div>
-                        
-                                <div class = "measurement-data">
-                                    <div class = "measurement-data-container">
-                                        <h2>${dummyTodayMeasurements.measurements[i].data}</h2>
-                                    </div>
-                                    <div class = "measurement-unit-container">
-                                        <p>${dummyTodayMeasurements.measurements[i].unit}<p>
-                                    </div>
-                                </div>
-                            </div>
-                        </label>
-
-                        <div class="collapsible-note-${i}">
-                            <p>dasdaskdjsakdasjdkajdakdjakdjaskdja</p>
-                        </div>
-
-                        <div class = "measurement-under"></div>
-                    </div>
-                    `
-                
-        rs = rs + div
-    }
-
-    return rs;
+    return dummyTodayMeasurements;
 }
 
 function fetchLeaderboardData(){
