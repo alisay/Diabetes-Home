@@ -1,42 +1,48 @@
 import express, { static as staticPage, json, urlencoded } from 'express';
 import { engine } from 'express-handlebars';
-import { join } from 'path';
 import mongoose from 'mongoose';
 import session from 'express-session';
-import connect_mongo from 'connect-mongo';
+import MongoStore from 'connect-mongo';
 import passport from "passport";
 // const fileUpload = require('express-fileupload');
 // const cors = require('cors')
 
+import 'dotenv/config';
+
 import authRouter from './routes/authRouter.js';
 import pageRouter from './routes/pageRoutes.js';
 import glucoseRouter from './routes/measurementRoutes.js';
+import clinicianRouter from './routes/clinicianRoutes.js';
 
 // If we are not running in production, load our local .env
-// if (process.env.NODE_ENV !== 'production') {
-    import "dotenv/config";
-// }
 
 const port = process.env.PORT || 8080;
 
 const app = express()
 
 
-app.use(staticPage('public'))
-app.use(staticPage('../public'));
+app.use(express.static('public'))
+app.use(express.static('./public'));
 
 app.use(session({
     secret: process.env.SESSION_SECRET || 'keyboard cat',
     resave: false,
     saveUninitialized: true,
     cookie: { expires: 600000 },
-    store: connect_mongo.create({ mongoUrl: process.env.MONGO_URI })
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URI })
 }))
 
 app.engine('hbs', engine({
     defaultlayout: 'main',
     extname: 'hbs',
     helpers: {
+        thresAlert: function (value, lowerBound, upperBound){
+            if ((value <= lowerBound || value >= upperBound ) && value != null){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 }))
 
@@ -60,19 +66,18 @@ const mongClient = mongoose.connect(dbConn, {
     });
 
 app.use(json());
-app.use(urlencoded({
-    extended: true
-}));
+app.use(urlencoded({ extended: true }));
 
 
 //passport
-// import passport from "./config/passport.js";
 app.use(passport.initialize());
 app.use(passport.session())
 
-//auth router
-app.use('/auth', authRouter);
-app.use('/', pageRouter);
+//ROUTES 
+app.use('/auth', authRouter)
+app.use('/', pageRouter)
+app.use('/', glucoseRouter)
+app.use('/', clinicianRouter)
 
 // index.html
 app.get('/', (req, res) => {
@@ -86,7 +91,6 @@ app.get('/aboutDiabetes', (req, res) => {
 app.get('/aboutWebsite', (req, res) => {
     res.render('aboutWebsite', { headTitle: "About This Site", css: "stylesheets/index.css" })
 })
-
 
 // default route to handle errors
 app.get('*', (req, res) => {
