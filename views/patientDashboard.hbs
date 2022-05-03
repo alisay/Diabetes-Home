@@ -71,12 +71,12 @@
                                                 <div class="measurement-form">
                                                     <form action={{@key}} method = "POST">
                                                         <input type="number" name={{@key}} id="measurement" 
-                                                        class="form__input" autocomplete="off" placeholder="Please fill in">
+                                                        class="form__input" autocomplete="off" placeholder="Your {{@key}} is">
                                                         <input type="submit" hidden/>
                                                     </form>
                                                 </div>                                     
                                             {{else}}
-                                                <h2>{{this.lastRecord}}</h2>
+                                                <h2 class="measurement-number">{{this.lastRecord}}</h2>
                                             {{/if}}   
 
                                         </div>

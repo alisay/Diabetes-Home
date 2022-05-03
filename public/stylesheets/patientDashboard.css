@@ -178,6 +178,10 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
     margin-left: 10%;
 }
 
+.measurement-number{
+    font-size: 50px;
+}
+
 .measurement-data-container{
 }
 
@@ -403,7 +407,7 @@ content: '\f00d';
 /* measurement form */
 .measurement-form {
     position: relative;
-    width: 10rem;
+    width: 9rem;
     height: 3rem;
 }
 
@@ -451,4 +455,17 @@ border-color: #658dc666;
 
     /* top right bottom left */
     margin: 3% 0% 0% 0%; 
+}
+
+/* hide arrows input */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
