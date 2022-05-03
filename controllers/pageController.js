@@ -1,4 +1,5 @@
-import { getUser } from "../dbutils.js";
+import { getUser, getLeaderboard } from "../dbutils.js";
+import { UNITS } from "../models/index.js";
 
 // export const differentiateDashboard = (req, res) => {
 //     //This is just for deliverable two where users maybe be hard-coded
@@ -8,14 +9,29 @@ import { getUser } from "../dbutils.js";
 //     res.render('patientDashboard', {headTitle: 'Dashboard', myProfile: user})
 // }
 
+function formatMeasurements(user) {
+    for (const measurement in user?.metrics) {
+        user.metrics[measurement].unit = UNITS[measurement];
+    }
+    return user.metrics;
+}
+
+function formatLeaderboard(leaderboard) {
+    leaderboard.map(e => e.engagementRate = `${Math.round(e.engagementRate * 1000) / 10}`);
+    return leaderboard;
+}
+
 export async function displayDashboard(req, res) {
     const hours = new Date().getHours();
     const timeString = hours < 12 ? 'morning' : hours < 19 ? 'afternoon' : 'evening';
     
     const user = await getUser("PatTap");
+    const measurements = formatMeasurements(user);
+
+    const leaderboard = formatLeaderboard(await getLeaderboard());
 
     res.render('patientDashboard', { 
-        timeString, user, leaderboard: [],
+        timeString, user, measurements, leaderboard,
         css: "stylesheets/patientDashboard.css" 
     });
 }  

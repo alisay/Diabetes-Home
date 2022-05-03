@@ -54,7 +54,29 @@
         <div class = "glass">
             <h2>Today Measurements</h2>
             <div class = "measurement-wrapper">
-                {{{measurements}}}
+                {{#each measurements}}
+                    <div class = "measurement-widget-container">
+                        <input type="checkbox" id ='collapsible-note-${i}'>
+                        <label for='collapsible-note-${i}'>
+                            <div class = 'measurement-widget'>
+                                <div class = "meansurement-icon"></div>
+                        
+                                <div class = "measurement-data">
+                                    <div class = "measurement-data-container">
+                                        <h2>{{lastRecord}}</h2>
+                                    </div>
+                                    <div class = "measurement-unit-container">
+                                        <p>{{unit}}<p>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                        <div class="collapsible-note-${i}">
+                            <p>dasdaskdjsakdasjdkajdakdjakdjaskdja</p>
+                        </div>
+                        <div class = "measurement-under"></div>
+                    </div>
+                {{/each}}
             </div>
         </div>
     </div>
@@ -64,13 +86,12 @@
             <div class = 'leaderboard'>
                 <h2>Leaderboard</h2>
                 {{#each leaderboard}}
-                    <p>data {{this}}</p>
                     <div class="user rank-widget">
                         <div class= "user-info">
                             <h3>{{this.nickname}}</h3>
                             <div class="progress"></div>
                         </div>
-                        <h2 class="percentage">{{this.engageRate}}</h2>
+                        <h2 class="percentage">{{this.engagementRate}}%</h2>
                     </div>
                 {{/each}}
             </div>

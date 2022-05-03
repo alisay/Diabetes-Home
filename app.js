@@ -30,7 +30,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: { expires: 600000 },
-    store: connect_mongo.create({ mongoUrl: process.env.MONGO_URL })
+    store: connect_mongo.create({ mongoUrl: process.env.MONGO_URI })
 }))
 
 app.engine('hbs', engine({
