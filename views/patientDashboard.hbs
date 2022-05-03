@@ -11,16 +11,16 @@
 
         <div class = "glass">
             <div>
-                <input type="checkbox" id ='collapsible-unread'>
+                <input type="checkbox" id ='collapsible-unread' checked="true" hidden>
                 <label for="collapsible-unread">
                     <h2>Unread</h2>
                     <div class = 'unread widget'>
                         <p>{{user.clinicianMessage}}</p>
                     </div>
                 </label>
-                {{!-- <div class="collapsible-message">
+                <div class="collapsible-message">
                     <p>{{user.clinicianMessage}}</p>
-                </div> --}}
+                </div>
                 <div class = 'unread-under'></div>
             </div>
         </div>
@@ -42,6 +42,7 @@
                                                 <form action="postdaily" method = "POST">
                                                     <input type="number" name={{@key}} id="measurement" step=".01"
                                                     class="form__input" autocomplete="off" placeholder="Your {{@key}} is">
+                                                    <input type="text" name="comment" placeholder="Add a comment...">
                                                     <input type="submit" hidden/>
                                                 </form>
                                             </div> 
