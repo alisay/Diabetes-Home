@@ -11,7 +11,8 @@ const passport = require("passport");
 const authRouter = require('./routes/authRouter')
 const pageRouter = require('./routes/page_routes')
 const glucoseRouter = require('./routes/glucose_routes')
-
+const patientRouter = require('./routes/patient_routes')
+const clinicianRouter = require('./routes/clinician_routes')
 
 // If we are not running in production, load our local .env
 if (process.env.NODE_ENV !== 'production') {
@@ -54,8 +55,46 @@ app.engine('hbs', exphbs.engine({
             let result = operators[operator](operand_1,operand_2);
             if(result) return options.fn(this); 
             return options.inverse(this);       
-          }
+        },
 
+
+        thresAlert: function (value, lowerBound, upperBound){
+            if ((value <= lowerBound || value >= upperBound ) && value != null){
+                return true;
+            } else {
+                return false;
+            }
+        },
+
+        emptyData: function (value){
+            if (value == null){
+                return true;
+            } else {
+                return false;
+            }
+        },
+
+        measIsRequired: function (value){
+            if (value == null){
+                return false;
+            } else {
+                return true;
+            }
+        },
+
+        getUnit: function (value){
+            if (value == 'blood'){
+                return 'nmol/L';
+                console.log
+            } else if (value == 'insulin'){
+                return 'doses';
+            } else if (value == 'steps'){
+                return 'count';
+            } else if (value == 'weight'){
+                return 'kg';
+            }
+        }
+        
     }
 }))
 
@@ -93,21 +132,21 @@ app.use(passport.session())
 app.use('/auth', authRouter)
 app.use('/', pageRouter)
 app.use('/', glucoseRouter)
-
+app.use('/', patientRouter)
+app.use('/', clinicianRouter)
 
 // index.html
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('index', {css: "stylesheets/index.css"})
 })
 
 app.get('/aboutDiabetes', (req, res) => {
-    res.render('aboutDiabetes', { headTitle: "About Diabetes" })
+    res.render('aboutDiabetes', { headTitle: "About Diabetes" , css: "stylesheets/index.css" })
 })
 
 app.get('/aboutWebsite', (req, res) => {
-    res.render('aboutWebsite', { headTitle: "About This Site" })
+    res.render('aboutWebsite', { headTitle: "About This Site", css: "stylesheets/index.css" })
 })
-
 
 // default route to handle errors
 app.get('*', (req, res) => {

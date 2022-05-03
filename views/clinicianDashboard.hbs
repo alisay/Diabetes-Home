@@ -1,0 +1,63 @@
+{{> menuNav}}
+
+
+<section class="container">
+    <div class = "glass row-1">
+        <h2>Welcome back, {{clinicianName}}</h2>
+        <div class = 'personal widget'>
+            <p>This widget is under maintenance</p>
+        </div>
+    </div>    
+
+    <div class = "glass row-1">
+        <h2>Today Patients</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Glucose (mmol/L)</th>
+                <th>Weight (kg)</th>
+                <th>Insulin (doses)</th>
+                <th>Steps (count)</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each patients}}
+                <tr>
+                    <td><a href="#">{{this.username}}</a></td>
+                    <td>
+                        {{#if (thresAlert this.glucose this.glucoseLowerBound this.glucoseUpperBound) }}
+                            <p class="status status-alert">{{this.glucose}}</p>
+                        {{else}}
+                            {{this.glucose}}   
+                        {{/if}}  
+                    
+                    </td>
+                    <td>
+                        {{#if (thresAlert this.weight this.weightLowerBound this.weightUpperBound) }}
+                            <p class="status status-alert">{{this.weight}}</p>
+                        {{else}}
+                            {{this.weight}}
+                        {{/if}}  
+                    </td>
+                    <td>
+                        {{#if (thresAlert this.insulin this.insulinLowerBound this.insulinUpperBound ) }}
+                            <p class="status status-alert">{{this.insulin}}</p>
+                        {{else}}
+                            {{this.insulin}}
+                        {{/if}}                
+                    </td>
+                    <td>
+                        {{#if (thresAlert this.steps this.stepsLowerBound this.stepsUpperBound ) }}
+                            <p class="status status-alert">{{this.steps}}</p>
+                        {{else}}
+                            {{this.steps}} 
+                        {{/if}}  
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>
+

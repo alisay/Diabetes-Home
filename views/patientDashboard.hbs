@@ -1,0 +1,101 @@
+{{> menuNav}}
+
+<section class= "container">    
+    <div class = "column-1">
+        <div class = "glass">
+            <h2>Personal</h2>
+            <div class = 'personal widget'>
+                <p>{{welMessage}}</p>
+            </div>
+        </div>
+
+        <div class = "glass">
+            <div>
+                <input type="checkbox" id ='collapsible-unread' name = 'collapsible'>
+                <label for="collapsible-unread">
+                    <h2>Unread</h2>
+                    <div class = 'unread widget'>
+                        <p>{{notification}}</p>
+                    </div>
+                </label>
+                
+                <div class="collapsible-message">
+                    <p class = "cli-message">{{cliMessage}}</p>
+                </div>
+
+                <div class = 'unread-under'></div>
+            </div>
+        </div>
+
+        <div class = "glass">
+            <h2>Today Measurements</h2>
+            <div class = "measurement-wrapper">
+
+                {{#each measurements }}
+                    {{#if (measIsRequired this)}}
+                        <div class = "measurement-widget-container">
+                            <input type="checkbox" id ='collapsible-note-{{@index}}' name = 'collapsible'>
+                            <label for='collapsible-note-{{@index}}'>
+                                <div class = 'measurement-widget'>
+                                    <div class = "meansurement-icon"></div>
+                            
+                                    <div class = "measurement-data">
+                                        <div class = "measurement-data-container">
+                                            {{#if (emptyData this.lastRecord) }}
+                                                <div class="measurement-form">
+                                                    <form action={{@key}} method = "POST">
+                                                        <input type="number" name={{@key}} id="measurement" 
+                                                        class="form__input" autocomplete="off" placeholder="Your {{@key}} is">
+                                                        <input type="submit" hidden/>
+                                                    </form>
+                                                </div>                                     
+                                            {{else}}
+                                                <h2 class="measurement-number">{{this.lastRecord}}</h2>
+                                            {{/if}}   
+
+                                        </div>
+                                        <div class = "measurement-unit-container">
+                                            <p>{{getUnit @key}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <div class="collapsible-note-{{@index}}">
+                                <div class="measure-note-form">
+                                    <input type="text" class="form__input" autocomplete="off" placeholder=" Note to your clinician ">
+                                    <input type="submit" hidden/>
+                                </div>          
+                            </div>
+
+                            <div class = "measurement-under"></div>
+                        </div>
+                    {{else}}
+                    {{/if}}  
+
+                {{/each}}
+
+            </div>
+        </div>
+    </div>
+
+    <div class = "column-2">
+        <div class = "glass">
+            <div class = 'leaderboard'>
+                <h2>Leaderboard</h2>
+                {{#each users}}
+                    <div class="user rank-widget">
+                        <div class= "user-info">
+                            <h3>{{this.nickname}}</h3>
+                            <div class="progress"></div>
+                        </div>
+                        <h2 class="percentage">{{this.engageRate}}</h2>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="circle1"></div>
+<div class="circle2"></div>
