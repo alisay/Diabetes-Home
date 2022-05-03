@@ -34,7 +34,7 @@
                 {{#each measurements }}
                     {{#if (measIsRequired this)}}
                         <div class = "measurement-widget-container">
-                            <input type="checkbox" id ='collapsible-note-{{@index}}' name = 'collapsible'>
+                            <input type="checkbox" id =`collapsible-note-{{@key}}` name = 'collapsible'>
                             <label for='collapsible-note-{{@index}}'>
                                 <div class = 'measurement-widget'>
                                     <div class = "meansurement-icon"></div>
