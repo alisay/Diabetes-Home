@@ -1,6 +1,6 @@
 import * as models from "./models/index.js";
 
-export function getUser(username) {
+export function getPatient(username) {
     return models.Patient.findOne({ username }).lean();
 }
 
