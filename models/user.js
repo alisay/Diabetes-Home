@@ -40,7 +40,8 @@ const PatientSchema = new Schema({
     },
     clinician: ObjectId,
     clinicianMessage: String,
-    streak: Number
+    streak: Number,
+    engagementRate: Number
 }, options);
 
 const ClinicianSchema = new Schema({
