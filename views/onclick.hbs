@@ -1,0 +1,9 @@
+<button id="patient"><a href="dashboard">Patient</a></button>
+<button onclick="handleClick('clinician');return false"><a href="dashboard">Clinician</a></button>
+
+<script>
+    const handleClick = (user)=>{
+        this.userType = user
+        console.log('clicked', this.userType)
+    }
+</script>
