@@ -1,14 +1,14 @@
-const passport = require("passport");
-const LocalStrategy = require("passport-local");
-const AdminModel = require('../models/admin')
+import { serializeUser, deserializeUser, use } from "passport";
+import LocalStrategy from "passport-local";
+import { findById, findOne } from '../models/admin';
 
-passport.serializeUser((user, done) => {
+serializeUser((user, done) => {
     done(null, user._id);
 });
 
-passport.deserializeUser(async (id, done) => {
+deserializeUser(async (id, done) => {
     try {
-        const user = await AdminModel.findById(id);
+        const user = await findById(id);
         done(null, user);
     } catch (error) {
         done(error);
@@ -16,18 +16,18 @@ passport.deserializeUser(async (id, done) => {
 });
 
 // Configure Passport authenticated session persistence.
-passport.serializeUser(function (user, cb) {
+serializeUser(function (user, cb) {
     cb(null, user);
 });
-passport.deserializeUser(function (obj, cb) {
+deserializeUser(function (obj, cb) {
     cb(null, obj);
 });
 
 // passport local strategy
-passport.use(new LocalStrategy(
+use(new LocalStrategy(
     async (username, password, done) => {
         // retrieving admin account details from database
-        const user = await AdminModel.findOne({ username })
+        const user = await findOne({ username })
             .catch(done);
 
         // verifying if password is correct
