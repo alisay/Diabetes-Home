@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import passport from "passport";
+import bodyParser from 'body-parser';
 // const fileUpload = require('express-fileupload');
 // const cors = require('cors')
 
@@ -13,6 +14,7 @@ import authRouter from './routes/authRouter.js';
 import pageRouter from './routes/pageRoutes.js';
 import glucoseRouter from './routes/measurementRoutes.js';
 import clinicianRouter from './routes/clinicianRoutes.js';
+import patientRouter from './routes/patientRoutes.js';
 
 // If we are not running in production, load our local .env
 
@@ -23,6 +25,7 @@ const app = express()
 
 app.use(express.static('public'))
 app.use(express.static('./public'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(session({
     secret: process.env.SESSION_SECRET || 'keyboard cat',
@@ -36,6 +39,7 @@ app.engine('hbs', engine({
     defaultlayout: 'main',
     extname: 'hbs',
     helpers: {
+        eq: (val1, val2) => val1 === val2,
         inRange: (value, lowerBound, upperBound) => 
             ( lowerBound === null && upperBound === null ) || 
             ( value >= lowerBound && value <= upperBound && value !== null )
@@ -73,6 +77,7 @@ app.use(passport.session())
 app.use('/auth', authRouter)
 app.use('/', pageRouter)
 app.use('/', glucoseRouter)
+app.use('/', patientRouter)
 app.use('/', clinicianRouter)
 
 // index.html

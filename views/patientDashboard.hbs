@@ -1,64 +1,16 @@
-<<<<<<< HEAD
 {{> menuNav}}
-=======
-<nav>
-    <ul>
-        <li class="logo">DIABETES@HOME</li>
-        <li class="items"><a href="#">Home</a></li>
-        <li class="items"><a href="#">About</a></li>
-        <li class="items"><a href="#">Blogs</a></li>
-        <li class="items"><a href="#">Contact</a></li>
-        <li class="items"><a href="#">Feedback</a></li>
-        <li class="btn" onclick="show()"><a href="#"><i class="fas fa-bars"></i></a></li>
-    </ul>
-</nav>
-
-<script>
-    function show(){
-        var x = document.getElementsByClassName("items")[0];
-        var nav = document.getElementsByClassName("items");
-        if (x.style.display === "none") {
-            for (let i = 0; i < nav.length; i++) {
-                nav[i].classList.toggle('hide');
-            }
-        } else {
-            for (let i = 0; i < nav.length; i++) {
-                nav[i].classList.toggle('show');
-            }
-        }
-    }
-</script>
->>>>>>> test
 
 <section class= "container">    
     <div class = "column-1">
         <div class = "glass">
             <h2>Personal</h2>
             <div class = 'personal widget'>
-<<<<<<< HEAD
-                <p>{{welMessage}}</p>
-=======
                 <p>Good {{timeString}}, {{user.firstName}}. You are on a streak of {{user.streak}}!</p>
->>>>>>> test
             </div>
         </div>
 
         <div class = "glass">
             <div>
-<<<<<<< HEAD
-                <input type="checkbox" id ='collapsible-unread' name = 'collapsible'>
-                <label for="collapsible-unread">
-                    <h2>Unread</h2>
-                    <div class = 'unread widget'>
-                        <p>{{notification}}</p>
-                    </div>
-                </label>
-                
-                <div class="collapsible-message">
-                    <p class = "cli-message">{{cliMessage}}</p>
-                </div>
-
-=======
                 <input type="checkbox" id ='collapsible-unread'>
                 <label for="collapsible-unread">
                     <h2>Unread</h2>
@@ -69,7 +21,6 @@
                 {{!-- <div class="collapsible-message">
                     <p>{{user.clinicianMessage}}</p>
                 </div> --}}
->>>>>>> test
                 <div class = 'unread-under'></div>
             </div>
         </div>
@@ -77,82 +28,46 @@
         <div class = "glass">
             <h2>Today Measurements</h2>
             <div class = "measurement-wrapper">
-<<<<<<< HEAD
-
-                {{#each measurements }}
-                    {{#if (measIsRequired this)}}
-                        <div class = "measurement-widget-container">
-                            <input type="checkbox" id ='collapsible-note-{{@index}}' name = 'collapsible'>
-                            <label for='collapsible-note-{{@index}}'>
-=======
                 {{#each measurements}}
-                    {{#if lastRecord}}
-                        <div class = "measurement-widget-container">
-                            <input type="checkbox" id ='collapsible-note-{{@key}}'>
-                            <label for='collapsible-note-${i}'>
->>>>>>> test
-                                <div class = 'measurement-widget'>
-                                    <div class = "meansurement-icon"></div>
-                            
-                                    <div class = "measurement-data">
-                                        <div class = "measurement-data-container">
-<<<<<<< HEAD
-                                            {{#if (emptyData this.lastRecord) }}
-                                                <div class="measurement-form">
-                                                    <form action={{@key}} method = "POST">
-                                                        <input type="number" name={{@key}} id="measurement" 
-                                                        class="form__input" autocomplete="off" placeholder="Your {{@key}} is">
-                                                        <input type="submit" hidden/>
-                                                    </form>
-                                                </div>                                     
-                                            {{else}}
-                                                <h2 class="measurement-number">{{this.lastRecord}}</h2>
-                                            {{/if}}   
+                    <div class = "measurement-widget-container">
+                        <input type="checkbox" id ='collapsible-note-{{@key}}'>
+                        <label for='collapsible-note-${i}'>
+                            <div class = 'measurement-widget'>
+                                <div class = "meansurement-icon"></div>
+                        
+                                <div class = "measurement-data">
+                                    <div class = "measurement-data-container">
+                                        {{#if (eq this.lastRecord undefined) }}
+                                            <div class="measurement-form">
+                                                <form action="postdaily" method = "POST">
+                                                    <input type="number" name={{@key}} id="measurement" step=".01"
+                                                    class="form__input" autocomplete="off" placeholder="Your {{@key}} is">
+                                                    <input type="submit" hidden/>
+                                                </form>
+                                            </div> 
+                                        {{else}}
+                                            <h2 class="measurement-number">{{lastRecord}}</h2>
+                                        {{/if}}   
 
-                                        </div>
-                                        <div class = "measurement-unit-container">
-                                            <p>{{getUnit @key}}</p>
-=======
-                                            <h2>{{lastRecord}}</h2>
-                                        </div>
-                                        <div class = "measurement-unit-container">
-                                            <p>{{unit}}<p>
->>>>>>> test
-                                        </div>
+                                    </div>
+                                    <div class = "measurement-unit-container">
+                                        <p>{{unit}}</p>
                                     </div>
                                 </div>
-                            </label>
-<<<<<<< HEAD
-
-                            <div class="collapsible-note-{{@index}}">
-                                <div class="measure-note-form">
-                                    <input type="text" class="form__input" autocomplete="off" placeholder=" Note to your clinician ">
-                                    <input type="submit" hidden/>
-                                </div>          
                             </div>
+                        </label>
 
-                            <div class = "measurement-under"></div>
+                        <div class="collapsible-note-{{@index}}">
+                            <div class="measure-note-form">
+                                <input type="text" class="form__input" autocomplete="off" placeholder=" Note to your clinician ">
+                                <input type="submit" hidden/>
+                            </div>          
                         </div>
-                    {{else}}
-                    {{/if}}  
 
+                        <div class = "measurement-under"></div>
+                    </div>
                 {{/each}}
 
-=======
-                            <div class="collapsible-note-${i}">
-                                <p>dasdaskdjsakdasjdkajdakdjakdjaskdja</p>
-                            </div>
-                            <div class = "measurement-under"></div>
-                        </div>
-                    {{else}}
-                        <form>
-                            
-
-                        </form>
-                    {{/if}}
-
-                {{/each}}
->>>>>>> test
             </div>
         </div>
     </div>
@@ -161,21 +76,13 @@
         <div class = "glass">
             <div class = 'leaderboard'>
                 <h2>Leaderboard</h2>
-<<<<<<< HEAD
-                {{#each users}}
-=======
                 {{#each leaderboard}}
->>>>>>> test
                     <div class="user rank-widget">
                         <div class= "user-info">
                             <h3>{{this.nickname}}</h3>
                             <div class="progress"></div>
                         </div>
-<<<<<<< HEAD
-                        <h2 class="percentage">{{this.engageRate}}</h2>
-=======
                         <h2 class="percentage">{{this.engagementRate}}%</h2>
->>>>>>> test
                     </div>
                 {{/each}}
             </div>

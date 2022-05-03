@@ -25,7 +25,7 @@
   "homepage": "https://github.com/alisay/Diabetes-Home#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.2",
+    "body-parser": "^1.20.0",
     "connect-mongo": "^4.6.0",
     "dotenv": "^16.0.0",
     "express": "^4.18.1",
@@ -35,6 +35,7 @@
     "mongoose": "^6.2.10",
     "mongoose-bcrypt": "^1.9.0",
     "node-fetch": "^3.2.4",
+    "object-inspect": "^1.12.0",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0"
   }
