@@ -10,14 +10,11 @@ export async function getGlucose(req, res, next) {
 
 //CREATE new glucose entry
 export async function createGlucose(req, res, next) {
-    const { comment, glucose } = req.body;
-    const metadata = {"patient":"6265edce2cc273a8c7c696dc", comment}
+    let { comment, glucose } = req.body;
+    glucose = {measurement: glucose, comment}
+    //hard-coded patient
+    metadata = "6265edce2cc273a8c7c696dc"
     const timestamp = new Date(Date.now())
-    // const entry = {
-    //     "patient": "6265edce2cc273a8c7c696dc",
-    //     "glucose": "53.5",
-    //     "timestamp": "2021-05-18T00:00:00.000Z"
-    // }
     await measurements.create({ metadata, glucose, timestamp });
-    res.redirect('/glucose')
+    res.redirect('/patientDashboard')
 }
