@@ -1,4 +1,260 @@
-body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
+:root {  
+/* Colour Palette */
+    --black: #2A2A2A;
+    --blue: #5782BB;
+    --dark-grey: #C7C7C7;
+    --light-grey: #F4F4F4;
+    --pink: #E7C3DD;
+    --red: #D95353;
+    --orange: #F0D6BD;
+    --green: #CAE7C3;
+    --white: #FFFFFF; 
+
+/* Fonts */
+--title: 6rem 'Roboto', sans-serif;
+--lead: 3rem 'Space Mono', monospace;
+--subtitle: 1.5rem 'Space Mono', monospace;
+--body: 1rem 'Roboto', sans-serif;
+--link: 1rem 'Space Mono', monospace;
+--button: 0.875rem 'Space Mono', monospace;
+
+/* Spacing */
+--standard: 1rem;
+
+}
+
+body { background: var(--white); }
+
+
+.container {
+    display: grid;
+    grid-template-rows: 20% 80;
+
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 0.9rem;
+
+    margin-bottom: 5%;
+}
+
+.glass {
+    background: white;
+    background: linear-gradient(
+        to right bottom,
+        --light-grey,
+        --dark-grey
+    );
+    border-radius: 2rem;
+    backdrop-filter: blur(1.5rem);
+    /* top right bottom left */
+    padding: 3% 5% 5% 5%;
+    margin: 5% 0% 0% 0%;
+
+    position: relative;
+    z-index: 1;
+}
+
+.widget{
+    background: linear-gradient(
+        to left top,
+        --light-grey,
+        --dark-grey
+    );
+
+    /* background-color: ; */
+    border-radius: 1rem;
+    padding: 2rem;
+    /* top right bottom left */
+    margin: 2% 0% 0% 0%;
+    box-shadow: 6px 6px 20px --dark-grey;
+}
+
+h2 {
+    color: var(--black);
+    margin-left: 2%;
+}
+
+th, td, p{
+    color: var(--black);
+    font-weight: 500;
+}
+
+table {
+    background: linear-gradient(
+        to left top,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0.5)
+    );
+
+    border-collapse: collapse;
+    box-shadow: 0 5px 10px --light-grey;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 15px;
+    margin: 2% 0% 0% 0%;
+
+}
+
+thead {
+    box-shadow: 0 5px 10px --light-grey;
+}
+
+th {
+    padding: 1rem 2.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+}
+
+td {
+    padding: 1rem 2rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--light-grey);
+}
+
+.status {
+    border-radius: 0.2rem;
+    background-color: var(--red);
+    padding: 0.2rem 1rem;
+    text-align: center;
+}
+
+.status-empty {
+    background-color: #fff0c2;
+    color: #a68b00;
+}
+
+.status-paid {
+    background-color: #c8e6c9;
+    color: #388e3c;
+}
+
+.status-alert {
+    background-color: #ffcdd2;
+    color: #D95353;
+}
+
+
+.amount {
+    text-align: right;
+}
+
+tr:nth-child(even) {
+    background: linear-gradient(
+        to left top,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0.398)
+    );
+}
+
+
+
+/* Nav menu */
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Poppins", sans-serif;
+}
+nav{
+    background: white;
+    background: linear-gradient(
+        to right bottom,
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.3)
+    );       
+    backdrop-filter: blur(1.5rem);
+
+    padding: 5px 40px;
+    position: relative;
+    z-index: 1;
+}
+nav ul{
+list-style: none;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: center;
+}
+nav ul li{
+padding: 15px 0;
+cursor: pointer;
+}
+nav ul li.items{
+position: relative;
+width: auto;
+margin: 0 16px;
+text-align: center;
+order: 3;
+}
+nav ul li.items:after{
+position: absolute;
+content: '';
+left: 0;
+bottom: 5px;
+height: 2px;
+width: 100%;
+background: #658ec6;
+opacity: 0;
+transition: all 0.2s linear;
+}
+nav ul li.items:hover:after{
+opacity: 1;
+bottom: 8px;
+}
+nav ul li.logo{
+flex: 1;
+color: #658ec6;
+font-size: 23px;
+font-weight: 600;
+cursor: default;
+user-select: none;
+}
+nav ul li a{
+color: #658ec6;
+font-size: 18px;
+text-decoration: none;
+transition: .4s;
+}
+
+nav ul li i{
+font-size: 23px;
+}
+nav ul li.btn{
+display: none;
+}
+nav ul li.btn.hide i:before{
+content: '\f00d';
+}
+
+/* CSS Mobile menu nav */
+@media all and (max-width: 900px){
+    nav{
+        padding: 5px 30px;
+    }
+    nav ul li.items{
+        width: 100%;
+        display: none;
+    }
+    nav ul li.items.show{
+        display: block;
+    }
+    nav ul li.btn{
+        display: block;
+    }
+    nav ul li.items:hover{
+        border-radius: 5px;
+        box-shadow: inset 0 0 5px #658ec6,
+                    inset 0 0 10px #658ec6;
+    }
+    nav ul li.items:hover:after{
+        opacity: 0;
+    }
+}body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
 
 
 .container {
