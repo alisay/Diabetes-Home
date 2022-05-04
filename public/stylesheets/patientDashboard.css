@@ -188,57 +188,6 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
 }
 
 
-/* collapsible measurement widget */
-.measurement-under{
-    height: 20px;
-    width: 90%;
-    background: linear-gradient(
-        to right bottom,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.3)
-    );                
-    /* top right bottom left */
-    margin-left: 5%; 
-    border-bottom-right-radius: 15px; 
-    border-bottom-left-radius: 15px; 
-}
-
-.collapsible-note-0, 
-.collapsible-note-1, 
-.collapsible-note-2,
-.collapsible-note-3 {
-    max-height: 0px;
-    overflow: hidden;
-    top: 0%;
-    width: 90%;
-    background: linear-gradient(
-        to right bottom,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.3)
-    );  
-    /* top right bottom left */
-    margin-left: 5%; 
-    padding: 0% 5% 0% 5%;
-}
-
-.column-1 input:checked ~ .collapsible-note-0,
-.column-1 input:checked ~ .collapsible-note-1,
-.column-1 input:checked ~ .collapsible-note-2,
-.column-1 input:checked ~ .collapsible-note-3 {
-    max-height: 4000px;
-    background: linear-gradient(
-        to right bottom,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.3)
-    );                  
-    top: 0;
-    transition: all 2s linear;
-}
-
-
-
-
-
 
 /* background */
 .container {
