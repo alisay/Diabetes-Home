@@ -1,14 +1,14 @@
 :root {  
 /* Colour Palette */
-    --black: #2A2A2A;
-    --blue: #5782BB;
-    --dark-grey: #C7C7C7;
-    --light-grey: #F4F4F4;
-    --pink: #E7C3DD;
-    --red: #D95353;
-    --orange: #F0D6BD;
-    --green: #CAE7C3;
-    --white: #FFFFFF; 
+    --black: #2A2A2A; /* Font */
+    --pink: #E7C3DD; /* Standard buttons */
+    --blue: #5782BB; /* Brand Logo colour */
+    --dark-grey: #C7C7C7; /* Shadow */
+    --light-grey: #F4F4F4; /* Background colour */
+    --red: #D95353; /* Data has been input and is out of range */
+    --orange: #F0D6BD; /* Data awaiting input */
+    --green: #CAE7C3; /* Data has been input and is in range */
+    --white: #FFFFFF; /* White box with content in it */
 
 /* Fonts */
 --title: 6rem 'Roboto', sans-serif;
@@ -23,7 +23,7 @@
 
 }
 
-body { background: var(--white); }
+body { background: var(--light-grey); }
 
 
 .container {
