@@ -11,7 +11,6 @@ import bodyParser from 'body-parser';
 import 'dotenv/config';
 
 import authRouter from './routes/authRouter.js';
-import pageRouter from './routes/pageRoutes.js';
 import glucoseRouter from './routes/measurementRoutes.js';
 import clinicianRouter from './routes/clinicianRoutes.js';
 import patientRouter from './routes/patientRoutes.js';
@@ -75,7 +74,6 @@ app.use(passport.session())
 
 //ROUTES 
 app.use('/auth', authRouter)
-app.use('/', pageRouter)
 app.use('/', glucoseRouter)
 app.use('/', patientRouter)
 app.use('/', clinicianRouter)
