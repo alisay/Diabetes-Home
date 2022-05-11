@@ -20,3 +20,10 @@ export function getLeaderboard() {
                          .select(["nickname", "streak", "engagementRate"])
                          .lean();
 }
+
+export function getMeasurements(userId, type, timeframe = 30) {
+    const minDate = new Date();
+    minDate.setDate(minDate.getDate() - timeframe);
+    return models.Measurements.find({ metadata: { user: userId, type },
+                                      timestamp: { $gte: minDate }});
+}

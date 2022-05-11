@@ -5,7 +5,6 @@ const MeasurementsSchema = Schema({
     metadata: { 
         user: ObjectId,
         type: { type: String },
-        index: true
     },
     
     measurement: Number, 
@@ -19,6 +18,9 @@ const MeasurementsSchema = Schema({
             granularity: 'minutes'
         },
         autoCreate: false
-    });
+    }
+);
+
+MeasurementsSchema.index({ "metadata.user": 1, "metadata.type": 1, "timestamp": 1 });
 
  export default model('Measurements', MeasurementsSchema);
