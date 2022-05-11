@@ -1,9 +1,5 @@
 <h2>Login:</h2>
 
-{{#each flash}}
-<p>{{this}}</p> 
-{{/each}}
-
 <form action="/user/login" method="POST">
     <label for="email">Email:</label>
     <input type="text" name="email" />
@@ -19,4 +15,6 @@
     <input type="submit" value="Reset" />
 </form>
 
-
+{{#each flash}}
+<p>{{this}}</p>
+{{/each}}
