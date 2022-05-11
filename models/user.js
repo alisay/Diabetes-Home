@@ -10,6 +10,7 @@ const options = {
 const UserSchema = new Schema({
     email: {
         type: String,
+        unique: true,
         required: true,
     },
     password: {
@@ -19,12 +20,13 @@ const UserSchema = new Schema({
     },
     username: {
         type: String,
-        required: true
+        unique: true,
+        required: true,
+        default: "",
     },
     isClinician: Boolean
 }, options);
 
-export const User = model('user', UserSchema);
 
 const PatientSchema = new Schema({
     firstName: String, 
@@ -50,7 +52,26 @@ const ClinicianSchema = new Schema({
     patients: [ObjectId]
 })
 
+// Admin.plugin(bcrypt);
+
+UserSchema.plugin(bcrypt);
+
+UserSchema.statics.findByName = function (user) {
+    return this.find({username: user});
+}
+
+UserSchema.statics.findByEmail = function (user) {
+    return this.find({email: user});
+}
+
+UserSchema.methods.isValidPassword = async function(password) {
+    const user = this;
+    const compare = await bcrypt.compare(password, user.password);
+  
+    return compare;
+}
+
+export const User = model('user', UserSchema);
 export const Patient = User.discriminator('Patient', PatientSchema);
 export const Clinician = User.discriminator('Clinician', ClinicianSchema);
 
-// Admin.plugin(bcrypt);
