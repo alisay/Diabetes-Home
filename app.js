@@ -132,6 +132,10 @@ app.get('/aboutWebsite', (req, res) => {
     res.render('aboutWebsite', { headTitle: "About This Site", css: "stylesheets/index.css" })
 })
 
+app.get('/chart', (req, res) => {
+    res.render('chart', { headTitle: "chatr", css: "stylesheets/index.css" })
+})
+
 // default route to handle errors
 app.get('*', (req, res) => {
     res.status(404).send('<p> invalid request </p>')
