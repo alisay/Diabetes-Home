@@ -38,11 +38,11 @@ body { background: var(--light-grey); }
 }
 
 .glass {
-    background: white;
+    background: var(--white);
     background: linear-gradient(
         to right bottom,
-        --light-grey,
-        --dark-grey
+        var(--light-grey),
+        var(--dark-grey)
     );
     border-radius: 2rem;
     backdrop-filter: blur(1.5rem);
@@ -57,8 +57,8 @@ body { background: var(--light-grey); }
 .widget{
     background: linear-gradient(
         to left top,
-        --light-grey,
-        --dark-grey
+        var(--light-grey),
+        var(--dark-grey)
     );
 
     /* background-color: ; */
@@ -66,7 +66,7 @@ body { background: var(--light-grey); }
     padding: 2rem;
     /* top right bottom left */
     margin: 2% 0% 0% 0%;
-    box-shadow: 6px 6px 20px --dark-grey;
+    box-shadow: 6px 6px 20px var(--dark-grey);
 }
 
 h2 {
@@ -82,8 +82,8 @@ th, td, p{
 table {
     background: linear-gradient(
         to left top,
-        rgba(255, 255, 255, 0.8),
-        rgba(255, 255, 255, 0.5)
+        var(--light-grey),
+        var(--dark-grey) 
     );
 
     border-collapse: collapse;
@@ -124,18 +124,18 @@ a {
 }
 
 .status-empty {
-    background-color: #fff0c2;
-    color: #a68b00;
+    background-color: var(--orange);
+    color: var(--black);
 }
 
 .status-paid {
-    background-color: #c8e6c9;
-    color: #388e3c;
+    background-color: var(--green);
+    color: var(--black);
 }
 
 .status-alert {
-    background-color: #ffcdd2;
-    color: #D95353;
+    background-color: var(--pink);
+    color: var(--black);
 }
 
 
@@ -146,8 +146,8 @@ a {
 tr:nth-child(even) {
     background: linear-gradient(
         to left top,
-        rgba(255, 255, 255, 0.8),
-        rgba(255, 255, 255, 0.398)
+        var(--light-grey),
+        var(--dark-grey)
     );
 }
 
@@ -161,11 +161,11 @@ box-sizing: border-box;
 font-family: "Poppins", sans-serif;
 }
 nav{
-    background: white;
+    background: var(--pink);
     background: linear-gradient(
         to right bottom,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.3)
+        var(--light-grey),
+        var(--dark-grey)
     );       
     backdrop-filter: blur(1.5rem);
 
@@ -198,7 +198,7 @@ left: 0;
 bottom: 5px;
 height: 2px;
 width: 100%;
-background: #658ec6;
+background: var(--white);
 opacity: 0;
 transition: all 0.2s linear;
 }
@@ -208,14 +208,14 @@ bottom: 8px;
 }
 nav ul li.logo{
 flex: 1;
-color: #658ec6;
+color: var(--blue);
 font-size: 23px;
 font-weight: 600;
 cursor: default;
 user-select: none;
 }
 nav ul li a{
-color: #658ec6;
+color: var(--blue);
 font-size: 18px;
 text-decoration: none;
 transition: .4s;
@@ -248,13 +248,13 @@ content: '\f00d';
     }
     nav ul li.items:hover{
         border-radius: 5px;
-        box-shadow: inset 0 0 5px #658ec6,
-                    inset 0 0 10px #658ec6;
+        box-shadow: inset 0 0 5px --dark-grey,
+                    inset 0 0 10p --dark-grey;
     }
     nav ul li.items:hover:after{
         opacity: 0;
     }
-}body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
+}body { background: linear-gradient(to right top, --light-grey, --dark); }
 
 
 .container {
@@ -270,7 +270,7 @@ content: '\f00d';
 }
 
 .glass {
-    background: white;
+    background: var(--white);
     background: linear-gradient(
         to right bottom,
         rgba(255, 255, 255, 0.7),
@@ -302,12 +302,12 @@ content: '\f00d';
 }
 
 h2 {
-    color: #658ec6;
+    color: var(--black);
     margin-left: 2%;
 }
 
 th, td, p{
-    color: #658ec6;
+    color: --black;
     font-weight: 500;
 }
 
@@ -345,7 +345,7 @@ td {
 
 a {
     text-decoration: none;
-    color: #2962ff;
+    color: var(--blue);
 }
 
 .status {
@@ -393,7 +393,7 @@ box-sizing: border-box;
 font-family: "Poppins", sans-serif;
 }
 nav{
-    background: white;
+    background: var(--white);
     background: linear-gradient(
         to right bottom,
         rgba(255, 255, 255, 0.7),
@@ -430,7 +430,7 @@ left: 0;
 bottom: 5px;
 height: 2px;
 width: 100%;
-background: #658ec6;
+background: var(--white);
 opacity: 0;
 transition: all 0.2s linear;
 }
@@ -440,14 +440,14 @@ bottom: 8px;
 }
 nav ul li.logo{
 flex: 1;
-color: #658ec6;
+color: var(--black);
 font-size: 23px;
 font-weight: 600;
 cursor: default;
 user-select: none;
 }
 nav ul li a{
-color: #658ec6;
+color: var(--black);
 font-size: 18px;
 text-decoration: none;
 transition: .4s;
@@ -480,8 +480,8 @@ content: '\f00d';
     }
     nav ul li.items:hover{
         border-radius: 5px;
-        box-shadow: inset 0 0 5px #658ec6,
-                    inset 0 0 10px #658ec6;
+        box-shadow: inset 0 0 5px --white,
+                    inset 0 0 10px --white;
     }
     nav ul li.items:hover:after{
         opacity: 0;
