@@ -65,7 +65,7 @@ passport.use(new JwtStrategy(
         secretOrKey: process.env.JWT_SECRET
     },
     async (jwt_payload, done) => {
-        const user = await UserModel.findById(jwt_payload.sub)
+        const user = await User.findById(jwt_payload.sub)
             .catch(done);
 
         if (!user) {

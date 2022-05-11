@@ -121,7 +121,7 @@ app.use('/', clinicianRouter)
 
 // index.html
 app.get('/', (req, res) => {
-    res.render('index', {css: "stylesheets/index.css"})
+    res.render('aboutWebsite', {css: "stylesheets/index.css"})
 })
 
 app.get('/aboutDiabetes', (req, res) => {

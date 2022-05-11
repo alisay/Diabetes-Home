@@ -65,7 +65,7 @@ export function logOut(req, res) {
 
 
 export function loginNew(req, res) {
-  res.render('login');
+  res.render('login', {css: "stylesheets/index.css" });
 }
 
 
@@ -228,15 +228,3 @@ export function sendResetPassword(req, res) {
 
 
 
-// export default {
-//   registerNew,
-//   registerCreate,
-//   logOut,
-//   loginNew,
-//   loginCreate,
-//   editUser,
-//   editUserReq,
-//   forgotPassword,
-//   resetPassword,
-//   sendResetPassword
-// }
