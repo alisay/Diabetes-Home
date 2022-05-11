@@ -33,7 +33,9 @@ router.post("/login", celebrate({
         password: Joi.string().required(),
     }}), 
     passport.authenticate('local', {
-      session: false
+      session: false,
+      failureRedirect: '/user/login',
+      failureFlash: true
 }),loginCreate);
 
 

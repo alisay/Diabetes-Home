@@ -60,12 +60,13 @@ export function registerCreate(req, res, next) {
 export function logOut(req, res) {
   req.logout();
   res.cookie("jwt", null, { maxAge: -1 });
-  res.sendStatus(200);
+  // res.sendStatus(200);
+  res.render('logout')
 }
 
 
 export function loginNew(req, res) {
-  res.render('login', {css: "stylesheets/index.css" });
+  res.render('login', { flash: req.flash('Unauthorised'), css: "stylesheets/index.css" });
 }
 
 
@@ -73,15 +74,16 @@ export function loginNew(req, res) {
 export function loginCreate(req, res) {
   const token = jwt.sign({ sub: req.user._id }, process.env.JWT_SECRET);
   res.cookie("jwt", token, configToken)
-
-  res.status(200);
-  res.json({ user: req.user.username, sessionID: req.sessionID });
+  // res.status(200);
+  // res.json({ user: req.user.username, sessionID: req.sessionID });
   //console.log(res)
+  res.render('aboutWebsite', { user: req.user.username, sessionID: req.sessionID, css: "stylesheets/index.css" })
 }
 
 
 //Account settings get ROUTE
 export function editUser(req, res) {
+  // console.log(req.user)
   getUserByParam(req).exec((err, user) => {
     if (err) {
       res.status(500);

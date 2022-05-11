@@ -8,7 +8,7 @@ import bodyParser from 'body-parser';
 // const fileUpload = require('express-fileupload');
 import cors from 'cors'
 import cookieParser from "cookie-parser";
-
+import flash from 'express-flash';
 
 import 'dotenv/config';
 
@@ -71,6 +71,9 @@ app.engine('hbs', engine({
 }))
 
 app.set('view engine', 'hbs')
+
+// Flash messages for failed logins, and (possibly) other success/error messages
+  app.use(flash())
 
 // CORS
 const whitelist = ["http://localhost:8080", "https://home-diabetes.herokuapp.com/"];
