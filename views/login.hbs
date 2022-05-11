@@ -1,4 +1,4 @@
-<h2>Login</h2>
+<h2>Login:</h2>
 
 {{#each flash}}
 <p>{{this}}</p> 
@@ -9,6 +9,14 @@
     <input type="text" name="email" />
     <label for="password">Password:</label>
     <input type="password" name="password" />
-    <input type="submit" value="Submit" />
+    <input type="submit" value="Login" />
 </form>
+
+<h2>Reset Password:</h2>
+<form action="/user/forgot-password" method="POST">
+    <label for="email">Email:</label>
+    <input type="text" name="email" />
+    <input type="submit" value="Reset" />
+</form>
+
 
