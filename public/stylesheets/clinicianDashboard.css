@@ -38,12 +38,8 @@ body { background: var(--light-grey); }
 }
 
 .glass {
-    background: var(--white);
-    background: linear-gradient(
-        to right bottom,
-        var(--light-grey),
-        var(--dark-grey)
-    );
+    background: var(--black);
+ 
     border-radius: 2rem;
     backdrop-filter: blur(1.5rem);
     /* top right bottom left */
@@ -55,11 +51,8 @@ body { background: var(--light-grey); }
 }
 
 .widget{
-    background: linear-gradient(
-        to left top,
-        var(--light-grey),
-        var(--dark-grey)
-    );
+    background: var(--white);
+    
 
     /* background-color: ; */
     border-radius: 1rem;
@@ -80,11 +73,8 @@ th, td, p{
 }
 
 table {
-    background: linear-gradient(
-        to left top,
-        var(--light-grey),
-        var(--dark-grey) 
-    );
+    background: var(--white);
+
 
     border-collapse: collapse;
     box-shadow: 0 5px 10px --light-grey;
@@ -144,11 +134,7 @@ a {
 }
 
 tr:nth-child(even) {
-    background: linear-gradient(
-        to left top,
-        var(--light-grey),
-        var(--dark-grey)
-    );
+    background: var(--white);
 }
 
 
@@ -161,12 +147,7 @@ box-sizing: border-box;
 font-family: "Poppins", sans-serif;
 }
 nav{
-    background: var(--pink);
-    background: linear-gradient(
-        to right bottom,
-        var(--light-grey),
-        var(--dark-grey)
-    );       
+    background: var(--white);
     backdrop-filter: blur(1.5rem);
 
     padding: 5px 40px;
@@ -254,7 +235,7 @@ content: '\f00d';
     nav ul li.items:hover:after{
         opacity: 0;
     }
-}body { background: linear-gradient(to right top, --light-grey, --dark); }
+}body { background: var(--light-grey); }
 
 
 .container {
@@ -270,12 +251,8 @@ content: '\f00d';
 }
 
 .glass {
-    background: var(--white);
-    background: linear-gradient(
-        to right bottom,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.3)
-    );
+    background: var(--pink);
+    ;
     border-radius: 2rem;
     backdrop-filter: blur(1.5rem);
     /* top right bottom left */
@@ -287,18 +264,13 @@ content: '\f00d';
 }
 
 .widget{
-    background: linear-gradient(
-        to left top,
-        rgba(255, 255, 255, 0.8),
-        rgba(255, 255, 255, 0.5)
-    );
-
+    background: var(--white);
     /* background-color: #658ec6; */
     border-radius: 1rem;
     padding: 2rem;
     /* top right bottom left */
     margin: 2% 0% 0% 0%;
-    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+    box-shadow: 6px 6px 20px var(--dark-grey);
 }
 
 h2 {
@@ -307,19 +279,15 @@ h2 {
 }
 
 th, td, p{
-    color: --black;
+    color: var(--black);
     font-weight: 500;
 }
 
 table {
-    background: linear-gradient(
-        to left top,
-        rgba(255, 255, 255, 0.8),
-        rgba(255, 255, 255, 0.5)
-    );
+    background: var(--white);
 
     border-collapse: collapse;
-    box-shadow: 0 5px 10px #e1e5ee;
+    box-shadow: 0 5px 10px var(--dark-grey);
     text-align: center;
     overflow: hidden;
     border-radius: 15px;
@@ -328,7 +296,7 @@ table {
 }
 
 thead {
-    box-shadow: 0 5px 10px #e1e5ee;
+    box-shadow: 0 5px 10px var(--dark-grey);
 }
 
 th {
@@ -376,11 +344,7 @@ a {
 }
 
 tr:nth-child(even) {
-    background: linear-gradient(
-        to left top,
-        rgba(255, 255, 255, 0.8),
-        rgba(255, 255, 255, 0.398)
-    );
+    background: var(--white);
 }
 
 
@@ -394,11 +358,7 @@ font-family: "Poppins", sans-serif;
 }
 nav{
     background: var(--white);
-    background: linear-gradient(
-        to right bottom,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.3)
-    );       
+       
     backdrop-filter: blur(1.5rem);
 
     padding: 5px 40px;
