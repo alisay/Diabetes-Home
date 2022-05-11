@@ -30,41 +30,29 @@
             <div class = "measurement-wrapper">
                 {{#each measurements}}
                     <div class = "measurement-widget-container">
-                        <input type="checkbox" id ='collapsible-note-{{@key}}'>
-                        <label for='collapsible-note-${i}'>
-                            <div class = 'measurement-widget'>
-                                <div class = "meansurement-icon"></div>
-                
-                                <div class = "measurement-data">
-                                    <div class = "measurement-data-container">
-                                        {{#if (eq this.lastRecord undefined) }}
-                                            <form action="postdaily" method = "POST">
-                                                <div class="measurement-form">
-                                                    <label><input type="number" name={{@key}} id="measurement" step=".01"
-                                                    class="form__input" autocomplete="off" placeholder="({{@key}})">  {{unit}}</label>
+                        <div class = 'measurement-widget'>
+                            <div class = "meansurement-icon"></div>
+            
+                            <div class = "measurement-data">
+                                <div class = "measurement-data-container">
+                                    {{#if (eq this.lastRecord undefined) }}
+                                        <form action="postdaily" method = "POST">
+                                            <div class="measurement-form">
+                                                <label><input type="number" name={{@key}} id="measurement" step=".01"
+                                                class="form__input" autocomplete="off" placeholder="({{@key}})">  {{unit}}</label>
 
-                                                    <input type="text" name="comment" 
-                                                    class="comment-input" placeholder="Add a comment...">
-                                                    <input type="submit" hidden/>
-                                                </div> 
-                                            </form>
-                                        {{else}}
-                                            <p><b style="font-size: 2.5em">{{lastRecord}}</b>  {{unit}}</p>
-                                        {{/if}}   
+                                                <input type="text" name="comment" 
+                                                class="comment-input" placeholder="Add a comment...">
+                                                <input type="submit" hidden/>
+                                            </div> 
+                                        </form>
+                                    {{else}}
+                                        <p><b style="font-size: 2.5em">{{lastRecord}}</b>  {{unit}}</p>
+                                    {{/if}}   
 
-                                    </div>
                                 </div>
                             </div>
-                        </label>
-
-                        <div class="collapsible-note-{{@index}}">
-                            <div class="measure-note-form">
-                                <input type="text" class="form__input" autocomplete="off" placeholder=" Note to your clinician ">
-                                <input type="submit" hidden/>
-                            </div>          
                         </div>
-
-                        <div class = "measurement-under"></div>
                     </div>
                 {{/each}}
 

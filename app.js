@@ -13,7 +13,6 @@ import cookieParser from "cookie-parser";
 import 'dotenv/config';
 
 import authRouter from './routes/authRouter.js';
-import pageRouter from './routes/pageRoutes.js';
 import glucoseRouter from './routes/measurementRoutes.js';
 import clinicianRouter from './routes/clinicianRoutes.js';
 import patientRouter from './routes/patientRoutes.js';
