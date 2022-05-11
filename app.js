@@ -115,7 +115,6 @@ app.use(passport.session())
 
 //ROUTES 
 app.use('/user', authRouter)
-app.use('/', pageRouter)
 app.use('/', glucoseRouter)
 app.use('/', patientRouter)
 app.use('/', clinicianRouter)
