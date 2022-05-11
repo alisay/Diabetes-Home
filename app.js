@@ -6,7 +6,9 @@ import MongoStore from 'connect-mongo';
 import passport from "passport";
 import bodyParser from 'body-parser';
 // const fileUpload = require('express-fileupload');
-// const cors = require('cors')
+import cors from 'cors'
+import cookieParser from "cookie-parser";
+
 
 import 'dotenv/config';
 
@@ -22,19 +24,42 @@ const port = process.env.PORT || 8080;
 
 const app = express()
 
-
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(express.json());
+app.use(
+    express.urlencoded({
+        extended: true,
+    })
+);
 app.use(express.static('public'))
 app.use(express.static('./public'));
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(session({
-    secret: process.env.SESSION_SECRET || 'keyboard cat',
+// SESSION
+const sessionConfig = {
+    secret: process.env.SESSION_SECRET || "Pixel Secret",
     resave: false,
-    saveUninitialized: true,
-    cookie: { expires: 600000 },
-    store: MongoStore.create({ mongoUrl: process.env.MONGO_URI })
-}))
+    saveUninitialized: false,
+    proxy: true,
+    cookie: {
+        expires: 3600000,
+        httpOnly: false,
+    },
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGO_URI || 'mongodb://localhost/test-app',
+    }),
+};
+// for production, cookie needs 2 more settings
+if (process.env.NODE_ENV === "production") {
+    sessionConfig.cookie.secure = true;
+    sessionConfig.cookie.sameSite = "none";
+}
+app.enable("trust proxy");
+app.use(session(sessionConfig));
 
+
+// HANDLEBARS
 app.engine('hbs', engine({
     defaultlayout: 'main',
     extname: 'hbs',
@@ -48,8 +73,23 @@ app.engine('hbs', engine({
 
 app.set('view engine', 'hbs')
 
+// CORS
+const whitelist = ["http://localhost:8080", "https://home-diabetes.herokuapp.com/"];
+app.use(
+    cors({
+        credentials: true,
+        //methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+        origin: function (origin, callback) {
+            // Check each url in whitelist and see if it includes the origin (instead of matching exact string)
+            const whitelistIndex = whitelist.findIndex((url) => url.includes(origin));
+            // console.log("found whitelistIndex", whitelistIndex);
+            callback(null, whitelistIndex > -1);
+        },
+    })
+);
 
-// Connecting to database
+
+// MONGODB
 let dbConn = process.env.MONGO_URI || 'mongodb://localhost/test-app'
 
 const mongClient = mongoose.connect(dbConn, {
@@ -69,12 +109,13 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 
 
-//passport
+//PASSPORT
+import "./middleware/passport.js";
 app.use(passport.initialize());
 app.use(passport.session())
 
 //ROUTES 
-app.use('/auth', authRouter)
+app.use('/user', authRouter)
 app.use('/', pageRouter)
 app.use('/', glucoseRouter)
 app.use('/', patientRouter)
