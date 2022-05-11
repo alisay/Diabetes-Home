@@ -1,5 +1,5 @@
 import { getPatient, getLeaderboard } from "../dbutils.js";
-import { UNITS, Patient, Measurements } from "../models/index.js";
+import { UNITS, Patient } from "../models/index.js";
 
 function formatMeasurements(user) {
     for (const measurement in user?.metrics) {
@@ -34,13 +34,7 @@ export async function postData(req, res) {
             await Patient.updateOne({ username: "PatTap" }, { $set: { 
                 [`metrics.${key}.lastRecord`]: value
             } });
-
-            await Measurements.create({
-                metadata: { type: key },
-                measurement: value
-            })
         }
     }
-
     res.redirect('/patientDashboard');
 }

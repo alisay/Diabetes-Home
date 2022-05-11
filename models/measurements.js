@@ -2,14 +2,11 @@ import mongoose from "mongoose";
 const { Schema, ObjectId, model } = mongoose;
 
 const MeasurementsSchema = Schema({
-    metadata: { 
-        user: ObjectId,
-        type: { type: String },
-        index: true
-    },
-    
-    measurement: Number, 
-    comment: String,
+    metadata: { type: ObjectId, index: true },
+    glucose: { measurement: Number, comment: String },
+    weight: { measurement: Number, comment: String },
+    insulin: { measurement: Number, comment: String },
+    steps: { measurement: Number, comment: String },
     timestamp: Date,
 },
     {
