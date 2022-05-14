@@ -1,0 +1,10 @@
+<h1>uh oh</h1>
+
+<h2>Error!</h2>
+{{#each errors}}
+{{#each this}}
+<li>{{@key}}: {{this}}</li>
+{{/each}}
+{{/each}}
+
+<a href='javascript:window.history.back();'>Go Back</a>

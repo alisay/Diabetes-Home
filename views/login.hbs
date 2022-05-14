@@ -1,21 +1,23 @@
-<h1>Login</h1>
+<h2>Login:</h2>
 
-<form action="login" method="POST">
-    <label for="username">Username:</label>
-    <input type="text" name="username" />
+<form action="/user/login" method="POST">
+    <label for="email">Email:</label>
+    <input type="text" name="email" />
     <label for="password">Password:</label>
     <input type="password" name="password" />
-    <input type="submit" value="Submit" />
+    <input type="submit" value="Login" />
 </form>
 
-{{!-- {{#each flash}}
-<p class="alert">{{this}}</p>
-{{/each}}
+<details>
+    <summary>I forgot my password</summary>
+    <h2>Email Reset Password Link:</h2>
+    <form action="/user/forgot-password" method="POST">
+        <label for="email">Email:</label>
+        <input type="text" name="email" />
+        <input type="submit" value="Reset" />
+    </form>
+</details>
 
-<form action="login" method="POST">
-    <label for="username">Username:</label>
-    <input type="text" name="username" />
-    <label for="password">Password:</label>
-    <input type="password" name="password" />
-    <input type="submit" value="Submit" />
-</form> --}}
+{{#each flash}}
+<p>{{this}}</p>
+{{/each}}
