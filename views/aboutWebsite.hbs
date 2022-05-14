@@ -54,9 +54,29 @@
             point and scoring system that keeps track of how many times you input your health data. The more consecutive
             days you upload your data, the better you’ll do! Have fun!
         </p>
-        <button class="item"><a href="mailto:mail@example.com">Sign up for free</a></button>
+        <button class="item">Sign up for free</a>
+            <details>
+                <summary>Click here to register as a clinician</summary>
+                <form method="post" action="/user/register">
+                    <div>
+                        <label>Name</label>
+                        <input type="text" name="username" />
+                    </div>
+                    <div>
+                        <label>Email address</label>
+                        <input type="text" name="email" />
+                    </div>
+                    <div>
+                        <label>Password</label>
+                        <input type="password" name="password" />
+                    </div>
+                    <div>
+                        <input type="submit" value="Register" />
+                    </div>
+                </form>
+            </details>
+        </button>
     </section>
-
 </main>
 
 <footer>

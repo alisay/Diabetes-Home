@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'production') {
 
 // REGISTER USER
 export function registerNew(req, res) {
-  res.render('register');
+  res.render('aboutWebsite', {css: "stylesheets/index.css"});
 }
 
 
