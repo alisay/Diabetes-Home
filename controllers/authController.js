@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-//REGISTER USER
+// REGISTER USER
 export function registerNew(req, res) {
   res.render('register');
 }
@@ -43,7 +43,7 @@ export function registerCreate(req, res, next) {
         const token = jwt.sign({ sub: req.user._id }, process.env.JWT_SECRET);
         res.cookie("jwt", token, configToken)
         res.send(user);
-        // res.render('dashboard', {user: user});
+        // res.render('accountSettings', {user: user});
       }
     }) 
   }

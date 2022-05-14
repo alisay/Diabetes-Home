@@ -8,12 +8,15 @@
     <input type="submit" value="Login" />
 </form>
 
-<h2>Reset Password:</h2>
-<form action="/user/forgot-password" method="POST">
-    <label for="email">Email:</label>
-    <input type="text" name="email" />
-    <input type="submit" value="Reset" />
-</form>
+<details>
+    <summary>I forgot my password</summary>
+    <h2>Email Reset Password Link:</h2>
+    <form action="/user/forgot-password" method="POST">
+        <label for="email">Email:</label>
+        <input type="text" name="email" />
+        <input type="submit" value="Reset" />
+    </form>
+</details>
 
 {{#each flash}}
 <p>{{this}}</p>

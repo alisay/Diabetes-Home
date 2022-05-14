@@ -16,7 +16,6 @@ import {userValidationRules, validate, accountSettingValidationRules} from "../m
 
 
 // GET Route for Register Page
-// router.get('/register',authRedirect, registerNew);
 router.get('/register', registerNew);
 
 //POST Route for registering and creating a user

@@ -62,14 +62,13 @@ export const validate = (req, res, next) => {
     }
     const extractedErrors = []
     errors.array().map(err => extractedErrors.push({ [err.param]: err.msg }))
-    return res.status(422).json({
+    // return res.status(422).json({
+    //   errors: extractedErrors,
+    // })
+    console.log(extractedErrors)
+    return res.status(422).render('clinicianDashboard', {
       errors: extractedErrors,
+      css: "stylesheets/clinicianDashboard.css"
     })
   }
   
-//   export default {
-//     userValidationRules,
-//     validate,
-//     accountSettingValidationRules,
-//     usernameParamValidationRules,
-//   }
