@@ -245,16 +245,16 @@ body { background: var(--white) }
 }
 
 h2 {
-    color: #658ec6;
+    color: var(--black);
     margin-left: 5%;
 }
 
 h3 {
-    color: #658ec6;
+    color: var(--black);
 }
 
 p{
-    color: #658ec6;
+    color: var(--black);
     font-weight: 500;
 }
 
@@ -286,11 +286,7 @@ font-family: "Poppins", sans-serif;
 }
 nav{
     background: var(--pink);
-    background: linear-gradient(
-        to right bottom,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.3)
-    );       
+
     backdrop-filter: blur(1.5rem);
 
     padding: 5px 40px;
@@ -322,7 +318,7 @@ left: 0;
 bottom: 5px;
 height: 2px;
 width: 100%;
-background: #658ec6;
+background: var(--white);
 opacity: 0;
 transition: all 0.2s linear;
 }
@@ -332,14 +328,14 @@ bottom: 8px;
 }
 nav ul li.logo{
 flex: 1;
-color: #658ec6;
+color: var(--black);
 font-size: 23px;
 font-weight: 600;
 cursor: default;
 user-select: none;
 }
 nav ul li a{
-color: #658ec6;
+color: var(--black);
 font-size: 18px;
 text-decoration: none;
 transition: .4s;
@@ -372,8 +368,8 @@ content: '\f00d';
     }
     nav ul li.items:hover{
         border-radius: 5px;
-        box-shadow: inset 0 0 5px #658ec6,
-                    inset 0 0 10px #658ec6;
+        box-shadow: inset 0 0 5px var(--light-grey),
+                    inset 0 0 10px var(--light-grey);
     }
     nav ul li.items:hover:after{
         opacity: 0;
@@ -423,12 +419,12 @@ content: '\f00d';
 }
 
 *:hover {
-border-color: #adffff;
+border-color: var(--light-grey);
 } 
 
 
 *:focus {
-border-color: #658dc666;
+border-color: var(--dark-grey);
 
 }
 
@@ -437,7 +433,7 @@ border-color: #658dc666;
     left: 1rem;
     top: 0.9rem;
     padding: 0 0.5rem;
-    color: #658ec6;
+    color: var(--black);
     cursor: text;
     transition: all 200ms ease-in;
 }
