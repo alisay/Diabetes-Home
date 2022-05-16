@@ -1,7 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <body>
-    <p>test</p>
+    <h2>{{patient.firstName}} {{patient.lastName}}</h2>
     <div>
         <canvas id="myChart"></canvas>
         <script>
@@ -9,22 +9,22 @@
             const myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: Array.from(Array(28).keys()).reverse().map(e => {
-                        d = new Date(); 
+                    labels:  Array.from(Array(28).keys()).reverse().map(e => {
+                        const d = new Date(); 
                         d.setDate(d.getDate() - e); 
                         return d.toLocaleDateString();}),
                     datasets: [{
-                        data: [{{data}}],
+                        data: [{{datapoints}}],
                         borderColor: "#b374df",
                         borderWidth: 1
                     }, {
-                        data: new Array(28).fill(5),
+                        data: new Array(28).fill({{low}}),
                         borderColor: "#ff1212",
                         borderWidth: 1,
                         borderDash: [10, 5],
                         hitRadius: 0
                     }, {
-                        data: new Array(28).fill(8),
+                        data: new Array(28).fill({{high}}),
                         borderColor: "#ff1212",
                         borderWidth: 1,
                         borderDash: [10, 5],
@@ -52,12 +52,27 @@
                             }
                         },
                         y: {
-                            min: 4, 
-                            max: 10
+                            min: {{ymin}}, 
+                            max: {{ymax}}
                         }
                     }
                 }
             });
         </script>
     </div>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>{{type}}</th>
+            <th>Comment</th>
+        </tr>
+        {{#each table}}
+            <tr>
+                <td>{{@key}}</td>
+                {{#each this}}
+                    <td>{{this}}</td>
+                {{/each}}
+            </tr>
+        {{/each}}
+    </table>
 </body>
