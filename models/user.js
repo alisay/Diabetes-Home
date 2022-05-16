@@ -78,4 +78,3 @@ UserSchema.methods.isValidPassword = async function(password) {
 export const User = model('user', UserSchema);
 export const Patient = User.discriminator('Patient', PatientSchema);
 export const Clinician = User.discriminator('Clinician', ClinicianSchema);
-

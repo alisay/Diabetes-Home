@@ -3,60 +3,6 @@
 <body>
     <div>
         <canvas id="myChart"></canvas>
-        <script>
-            const ctx = document.getElementById('myChart');
-            const myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: Array.from(Array(28).keys()).reverse().map(e => {
-                        d = new Date(); 
-                        d.setDate(d.getDate() - e); 
-                        return d.toLocaleDateString();}),
-                    datasets: [{
-                        data: Array.from({ length: 40 }, () => (70 + 25 * Math.random())),
-                        borderColor: "#b374df",
-                        borderWidth: 1
-                    }, {
-                        data: new Array(40).fill(90),
-                        borderColor: "#ff1212",
-                        borderWidth: 1,
-                        borderDash: [10, 5],
-                        hitRadius: 0
-                    }, {
-                        data: new Array(40).fill(75),
-                        borderColor: "#ff1212",
-                        borderWidth: 1,
-                        borderDash: [10, 5],
-                        hitRadius: 0
-                    }]
-                },
-                options: {
-                    plugins: {
-                        legend: { display: false },
-                        tooltips: { enabled: false },
-                    },
-                    elements: {
-                        point: {
-                            radius: 0,
-                            hitRadius: 25,
-                            hoverRadius: 5
-                        }
-                    },
-                    scales: {
-                        x: {
-                            grid: { display: false },
-                            ticks: {
-                                autoSkip: true,
-                                maxTicksLimit: 10
-                            }
-                        },
-                        y: {
-                            min: 70, 
-                            max: 95
-                        }
-                    }
-                }
-            });
-        </script>
+        <script src="{{chart}}"></script>
     </div>
 </body>

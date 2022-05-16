@@ -1,4 +1,6 @@
 import { getClinician, getPatient, getPatientId, getPatientData } from "../dbutils.js";
+import handlebars from "handlebars";
+import fs from "fs";
 
 export async function clinicianDashboard(req, res) {
     const user = await getClinician("chrissi");
@@ -14,9 +16,8 @@ export async function clinicianDashboard(req, res) {
 export async function patientData(req, res) {
     const patient = await getPatient("PatTap");
     const data = await getPatientData(patient._id, "glucose");
-    console.log(data);
 
     res.render('patientData', {
-        data: [1, 2, 3]
+        data: data.map(e => e.measurement)
     });
 }
