@@ -66,12 +66,16 @@ export async function displayDashboard(req, res) {
 export async function postData(req, res) {
     for (const [key, value] of Object.entries(req.body)) {
         if (UNITS.hasOwnProperty(key)) {
-            await Patient.updateOne({ username: "PatTap" }, {
-                $set: {
-                    [`metrics.${key}.lastRecord`]: value
-                }
-            });
+            await Patient.updateOne({ username: "PatTap" }, { $set: { 
+                [`metrics.${key}.lastRecord`]: value
+            } });
+
+            await Measurements.create({
+                metadata: { type: key },
+                measurement: value
+            })
         }
     }
+
     res.redirect('/patientDashboard');
 }
