@@ -16,7 +16,6 @@ import {userValidationRules, validate, accountSettingValidationRules} from "../m
 
 
 // GET Route for Register Page
-// router.get('/register',authRedirect, registerNew);
 router.get('/register', registerNew);
 
 //POST Route for registering and creating a user
@@ -33,9 +32,9 @@ router.post("/login", celebrate({
         password: Joi.string().required(),
     }}), 
     passport.authenticate('local', {
-        session: false,
-        successRedirect: '/',
-        failureRedirect: '/user/login'
+      session: false,
+      failureRedirect: '/user/login',
+      failureFlash: true
 }),loginCreate);
 
 

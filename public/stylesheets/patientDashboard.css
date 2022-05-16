@@ -1,4 +1,25 @@
-body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
+:root {  
+    /* Colour Palette */
+    --black: #2A2A2A; /* Font */
+    --pink: #E7C3DD; /* Standard buttons */
+    --blue: #5782BB; /* Brand Logo colour */
+    --dark-grey: #C7C7C7; /* Shadow */
+    --light-grey: #F4F4F4; /* Background colour */
+    --red: #D95353; /* Data has been input and is out of range */
+    --orange: #F0D6BD; /* Data awaiting input */
+    --green: #CAE7C3; /* Data has been input and is in range */
+    --white: #FFFFFF; /* White box with content in it */
+    
+    /* Fonts */
+    --title: 6rem 'Roboto', sans-serif;
+    --lead: 3rem 'Space Mono', monospace;
+    --subtitle: 1.5rem 'Space Mono', monospace;
+    --body: 1rem 'Roboto', sans-serif;
+    --link: 1rem 'Space Mono', monospace;
+    --button: 0.875rem 'Space Mono', monospace;
+}
+
+body { background: var(--white) }
             
 .container{
     display: grid;
@@ -28,36 +49,27 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
 
 
 .widget{
-    background: linear-gradient(
-        to left top,
-        rgba(255, 255, 255, 0.8),
-        rgba(255, 255, 255, 0.5)
-    );
+    background: var(--light-grey);
+    
 
     /* background-color: #658ec6; */
     border-radius: 1rem;
     padding: 2rem;
     /* top right bottom left */
     margin: 2% 0% 0% 0%;
-    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
 }
 
 .rank-widget{
     display: flex;
     justify-content: space-between;
 
-    background: linear-gradient(
-        to left top,
-        rgba(255, 255, 255, 0.8),
-        rgba(255, 255, 255, 0.5)
-    );
+    background: var(--light-grey);
 
     /* background-color: #658ec6; */
     border-radius: 5rem;
     padding: 2rem;
-    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
     /* top right bottom left */
-    margin: 3% 0% 3% 0%;
+    margin: 2% 0% 3% 0%;
 }
 
 .leaderboard{
@@ -92,11 +104,7 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
 .unread-under{
     height: 20px;
     width: 93%;
-    background: linear-gradient(
-        to right bottom,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.3)
-    );                
+    background: var(--dark-grey);
     /* top right bottom left */
     margin-left: 3.5%; 
     border-bottom-right-radius: 15px; 
@@ -108,13 +116,9 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
     overflow: hidden;
     top: 0%;
     width: 93%;
-    background: linear-gradient(
-        to right bottom,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.3)
-    );  
+    background: var(--dark-grey);
+      
     margin-left: 3.5%; 
-    transition: all 2s linear;
 
 }
 
@@ -125,11 +129,8 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
 
 .column-1 input:checked ~ .collapsible-message{
     height: 0px;
-    background: linear-gradient(
-        to right bottom,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.3)
-    );                  
+    background: var(--light-grey);
+                     
     top: 0;
     transition: all 2s linear;
 }
@@ -150,11 +151,8 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
 .measurement-widget{
     display: flex;
 
-    background: linear-gradient(
-        to left top,
-        rgba(255, 255, 255, 0.8),
-        rgba(255, 255, 255, 0.5)
-    );
+    background: var(--pink);
+
 
     /* background-color: #658ec6; */
     border-radius: 1rem;
@@ -196,21 +194,21 @@ body { background: linear-gradient(to right top, #65dfc9, #6cdbeb); }
 }
 
 h2 {
-    color: #658ec6;
+    color: var(--black);
     margin-left: 5%;
 }
 
 h3 {
-    color: #658ec6;
+    color: var(--black);
 }
 
 p{
-    color: #658ec6;
+    color: var(--black);
     font-weight: 500;
 }
 
 .glass {
-    background: white;
+    background: var(--white);
     background: linear-gradient(
         to right bottom,
         rgba(255, 255, 255, 0.7),
@@ -226,28 +224,7 @@ p{
     z-index: 1;
 }
 
-.circle1,
-.circle2{
-    background: white;
-    background: linear-gradient(
-        to right bottom,
-        rgba(255, 255, 255, 0.8),
-        rgba(255, 255, 255, 0.3)
-    );
-    height: 20rem;
-    width: 20rem;
-    position: absolute;
-    border-radius: 50%;
-}
 
-.circle1 {
-    top: 5%;
-    right: 15%;
-}
-.circle2 {
-    bottom: 5%;
-    left: 10%;
-}
 
 /* Nav menu */
 *{
@@ -257,12 +234,8 @@ box-sizing: border-box;
 font-family: "Poppins", sans-serif;
 }
 nav{
-    background: white;
-    background: linear-gradient(
-        to right bottom,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.3)
-    );       
+    background: var(--pink);
+
     backdrop-filter: blur(1.5rem);
 
     padding: 5px 40px;
@@ -294,7 +267,7 @@ left: 0;
 bottom: 5px;
 height: 2px;
 width: 100%;
-background: #658ec6;
+background: var(--white);
 opacity: 0;
 transition: all 0.2s linear;
 }
@@ -304,14 +277,14 @@ bottom: 8px;
 }
 nav ul li.logo{
 flex: 1;
-color: #658ec6;
+color: var(--black);
 font-size: 23px;
 font-weight: 600;
 cursor: default;
 user-select: none;
 }
 nav ul li a{
-color: #658ec6;
+color: var(--black);
 font-size: 18px;
 text-decoration: none;
 transition: .4s;
@@ -344,8 +317,8 @@ content: '\f00d';
     }
     nav ul li.items:hover{
         border-radius: 5px;
-        box-shadow: inset 0 0 5px #658ec6,
-                    inset 0 0 10px #658ec6;
+        box-shadow: inset 0 0 5px var(--light-grey),
+                    inset 0 0 10px var(--light-grey);
     }
     nav ul li.items:hover:after{
         opacity: 0;
@@ -367,11 +340,11 @@ content: '\f00d';
     left: 0;
     width: 50%;
     height: 50%;
-    border: 2px solid #658ec6;
+    border: 2px solid var(--black);
     border-radius: 0.5rem;
     font-family: inherit;
     font-size: inherit;
-    color: #658ec6;
+    color: var(--black);
     outline: none;
     padding: 1.25rem;
     background: none;
@@ -384,23 +357,23 @@ content: '\f00d';
     left: 0;
     max-width: 80%;
     min-height: 20%;
-    border: 2px solid #658ec6;
+    border: 2px solid var(--black);
     border-radius: 0.5rem;
     font-family: inherit;
     font-size: inherit;
-    color: #658ec6;
+    color: var(--black);
     outline: none;
     padding: 1.25rem;
     background: none;
 }
 
 *:hover {
-border-color: #adffff;
+border-color: var(--light-grey);
 } 
 
 
 *:focus {
-border-color: #658dc666;
+border-color: var(--dark-grey);
 
 }
 
@@ -409,7 +382,7 @@ border-color: #658dc666;
     left: 1rem;
     top: 0.9rem;
     padding: 0 0.5rem;
-    color: #658ec6;
+    color: var(--black);
     cursor: text;
     transition: all 200ms ease-in;
 }

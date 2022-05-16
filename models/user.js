@@ -24,7 +24,10 @@ const UserSchema = new Schema({
         required: true,
         default: "",
     },
-    isClinician: Boolean
+    isClinician: {
+        type: Boolean,
+        default: false,
+    }
 }, options);
 
 
@@ -40,7 +43,7 @@ const PatientSchema = new Schema({
         insulin: { threshold:  { low: Number, high: Number }, lastRecord: Number },
         steps: { threshold:  { low: Number, high: Number }, lastRecord: Number },
     },
-    clinician: ObjectId,
+    clinician: ObjectId, 
     clinicianMessage: String,
     streak: Number,
     engagementRate: Number
@@ -49,6 +52,7 @@ const PatientSchema = new Schema({
 const ClinicianSchema = new Schema({
     firstName: String, 
     lastName: String,
+    // This needs to be an array of object IDs!
     patients: [ObjectId]
 })
 
