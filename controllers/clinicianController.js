@@ -1,4 +1,4 @@
-import { getClinician, getPatientId } from "../dbutils.js";
+import { getClinician, getPatient, getPatientId, getPatientData } from "../dbutils.js";
 
 export async function clinicianDashboard(req, res) {
     const user = await getClinician("chrissi");
@@ -9,4 +9,14 @@ export async function clinicianDashboard(req, res) {
         user,
         css: "stylesheets/clinicianDashboard.css",                            
     })
+}
+
+export async function patientData(req, res) {
+    const patient = await getPatient("PatTap");
+    const data = await getPatientData(patient._id, "glucose");
+    console.log(data);
+
+    res.render('patientData', {
+        data: [1, 2, 3]
+    });
 }

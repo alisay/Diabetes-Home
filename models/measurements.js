@@ -4,8 +4,7 @@ const { Schema, ObjectId, model } = mongoose;
 const MeasurementsSchema = Schema({
     metadata: { 
         user: ObjectId,
-        type: { type: String },
-        index: true
+        type: { type: String }
     },
     
     measurement: Number, 
@@ -21,4 +20,6 @@ const MeasurementsSchema = Schema({
         autoCreate: false
     });
 
- export default model('Measurements', MeasurementsSchema);
+MeasurementsSchema.index({ "metadata.user": 1, "metadata.type": 1 });
+export default model('Measurements', MeasurementsSchema);
+
