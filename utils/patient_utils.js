@@ -1,8 +1,7 @@
-import { resetPassword } from "../controllers/authController.js";
 import { Patient, Clinician } from "../models/index.js";
 
-export const getAllPatients = function (req) {
-    return Clinician.findOne({ username: req.params.username })
+export const getAllPatients = async function (req) {
+    return await Clinician.findOne({ username: req.params.username })
 };
 
 // ADD Patient
@@ -20,10 +19,11 @@ export const addPatient = async function (req) {
         console.log('error')
     }
 
-    Clinician.findOneAndUpdate({
+    await Clinician.findOneAndUpdate({
             username: clinician.username,
             patients: clinician.patients
     })
+
     return newPatient
 };
 

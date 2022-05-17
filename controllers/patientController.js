@@ -8,7 +8,7 @@ import {
 // GET ALL PATIENTS
 export const displayPatients = async function (req, res) {
 	try {
-        let checkUser = await User.findOne({ username:  req.user.username }).exec()
+        let checkUser = await User.findOne({ username:  req.params.username }).exec()
         res.status(200)
         res.send(checkUser)
    } catch (err) {
@@ -19,7 +19,6 @@ export const displayPatients = async function (req, res) {
        }
    }   
 }
-
 
 // ADD NEW PATIENT
 export function createPatient(req, res, next) {
