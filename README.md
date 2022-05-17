@@ -17,3 +17,12 @@ A user-friendly web app for Diabetes patients to keep track of their vitals, and
 * Minh Hoang
 * Noah Stammbach
 
+### To Do 
+
+when you log in you are redirected to patient or clinician dashboard depending on whether you are a clinician or not. 
+home page has a link to your dashboard and a logout button if you are logged in 
+you can edit your profile
+a clinician can view all their patients
+a clinician can edit their patients metrics
+
+when you add a new clinician, it redirects to dashboard.

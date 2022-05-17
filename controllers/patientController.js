@@ -1,14 +1,36 @@
 import { getPatient, getLeaderboard } from "../dbutils.js";
-import { UNITS, Patient } from "../models/index.js";
+import { UNITS, User, Patient } from "../models/index.js";
 import {
     addPatient, 
     updatePatient
 } from '../utils/patient_utils.js'
 
 // GET ALL PATIENTS
-export const getPatients = function (req, res) {
-    // to be completed
+export const displayPatients = async function (req, res) {
+	try {
+        let checkUser = await User.findOne({ username:  req.user.username }).exec()
+        res.status(200)
+        res.render('clinicianDashboard', {patients: checkUser.patients})
+   } catch (err) {
+        if (err) {res.status(500)
+           res.json({
+        error: err.message
+        })
+       }
+   }   
 }
+
+export async function clinicianDashboard(req, res) {
+    const user = await getClinician("chrissi");
+    user.patients = await Promise.all(user.patients.map(
+                              async p => await getPatientId(p)));
+
+    res.render('clinicianDashboard', {
+        // user,
+        css: "stylesheets/clinicianDashboard.css",                            
+    })
+}
+
 
 // ADD NEW PATIENT
 export function createPatient(req, res, next) {
@@ -66,16 +88,12 @@ export async function displayDashboard(req, res) {
 export async function postData(req, res) {
     for (const [key, value] of Object.entries(req.body)) {
         if (UNITS.hasOwnProperty(key)) {
-            await Patient.updateOne({ username: "PatTap" }, { $set: { 
-                [`metrics.${key}.lastRecord`]: value
-            } });
-
-            await Measurements.create({
-                metadata: { type: key },
-                measurement: value
-            })
+            await Patient.updateOne({ username: "PatTap" }, {
+                $set: {
+                    [`metrics.${key}.lastRecord`]: value
+                }
+            });
         }
     }
-
     res.redirect('/patientDashboard');
 }

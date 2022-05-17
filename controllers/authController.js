@@ -1,4 +1,4 @@
-import { User } from '../models/user.js'
+import { User, Clinician } from '../models/user.js'
 import jwt from "jsonwebtoken";
 import crypto from'crypto';
 import nodemailer from'nodemailer';
@@ -49,7 +49,7 @@ export function registerCreate(req, res, next) {
   }
   const { email, password, username } = req.body;
 
-  User.create({ email, password, username })
+  Clinician.create({ email, password, username })
     .then(newUserHandler)
     .catch(x =>
       res.send(x))
@@ -95,7 +95,7 @@ export function editUser(req, res) {
     }
     if (user !== null) {
       res.status(200);
-      res.send(user);
+      res.render('accountSettings', { user });
     } else {
       res.status(404);
       return res.json({

@@ -3,7 +3,7 @@ import { User } from '../models/user.js';
 // GET USER BY NAME PARAMS for ACCOUNT SETTINGS
 export const getUserByParam = function (req) {
     // console.log(req.params.username)
-    return User.findOne({ username: req.params.username });
+    return User.findOne({ username: req.params.username }).lean();
 };
 
 //For update settings

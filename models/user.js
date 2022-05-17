@@ -23,10 +23,6 @@ const UserSchema = new Schema({
         unique: true,
         required: true,
         default: "",
-    },
-    isClinician: {
-        type: Boolean,
-        default: false,
     }
 }, options);
 
@@ -53,7 +49,7 @@ const ClinicianSchema = new Schema({
     firstName: String, 
     lastName: String,
     // This needs to be an array of object IDs!
-    patients: [ObjectId]
+    patients: {type: Array, required: true, default: [""]}
 })
 
 // Admin.plugin(bcrypt);

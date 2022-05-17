@@ -5,7 +5,7 @@ const MeasurementsSchema = Schema({
     metadata: { 
         user: ObjectId,
         type: { type: String },
-        index: true
+        // index: true
     },
     
     measurement: Number, 
