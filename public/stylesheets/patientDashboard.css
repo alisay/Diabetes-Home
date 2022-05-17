@@ -397,3 +397,14 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+input[type=submit] {
+    background-color: var(--white);
+    border: none;
+    color: var(--black);
+    padding: 16px 32px;
+    margin-top: 5%;
+    cursor: pointer;
+    border-radius: 1rem;
+    font: var(--button);
+}
