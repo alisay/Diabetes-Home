@@ -2,61 +2,89 @@
 
 
 <section class="container">
-    <div class = "glass row-1">
+    <div class="glass row-1">
         <h2>Welcome back, {{user.firstName}}</h2>
-        <div class = 'personal widget'>
+        <div class='personal widget'>
             <p>This widget is under maintenance</p>
         </div>
-    </div>    
+    </div>
 
-    <div class = "glass row-1">
+    <div class="glass row-1">
         <h2>Today Patients</h2>
         <table>
             <thead>
-            <tr>
-                <th>Name</th>
-                <th>Glucose (mmol/L)</th>
-                <th>Weight (kg)</th>
-                <th>Insulin (doses)</th>
-                <th>Steps (count)</th>
-            </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Glucose (mmol/L)</th>
+                    <th>Weight (kg)</th>
+                    <th>Insulin (doses)</th>
+                    <th>Steps (count)</th>
+                </tr>
             </thead>
             <tbody>
-            {{#each user.patients}}
+                {{#each user.patients}}
                 <tr>
                     <td><a href="#">{{nickname}}</a></td>
                     <td>
-                        {{#if (inRange metrics.glucose.lastRecord metrics.glucose.threshold.low metrics.glucose.threshold.high) }}
-                            {{metrics.glucose.lastRecord}}   
+                        {{#if (inRange metrics.glucose.lastRecord metrics.glucose.threshold.low
+                        metrics.glucose.threshold.high) }}
+                        {{metrics.glucose.lastRecord}}
                         {{else}}
-                            <p class="status status-alert">{{metrics.glucose.lastRecord}}</p>
-                        {{/if}}  
-                    
+                        <p class="status status-alert">{{metrics.glucose.lastRecord}}</p>
+                        {{/if}}
+
                     </td>
                     <td>
-                        {{#if (inRange metrics.weight.lastRecord metrics.weight.threshold.low metrics.weight.threshold.high) }}
-                            {{metrics.weight.lastRecord}}
+                        {{#if (inRange metrics.weight.lastRecord metrics.weight.threshold.low
+                        metrics.weight.threshold.high) }}
+                        {{metrics.weight.lastRecord}}
                         {{else}}
-                            <p class="status status-alert">{{metrics.weight.lastRecord}}</p>   
-                        {{/if}}  
+                        <p class="status status-alert">{{metrics.weight.lastRecord}}</p>
+                        {{/if}}
                     </td>
                     <td>
-                        {{#if (inRange metrics.insulin.lastRecord metrics.insulin.threshold.low metrics.insulin.threshold.high) }}
-                            {{metrics.insulin.lastRecord}}
+                        {{#if (inRange metrics.insulin.lastRecord metrics.insulin.threshold.low
+                        metrics.insulin.threshold.high) }}
+                        {{metrics.insulin.lastRecord}}
                         {{else}}
-                            <p class="status status-alert">{{metrics.insulin.lastRecord}}</p>
-                        {{/if}}  
+                        <p class="status status-alert">{{metrics.insulin.lastRecord}}</p>
+                        {{/if}}
                     </td>
                     <td>
-                        {{#if (inRange metrics.steps.lastRecord metrics.steps.threshold.low metrics.steps.threshold.high) }}
-                            {{metrics.steps.lastRecord}}  
+                        {{#if (inRange metrics.steps.lastRecord metrics.steps.threshold.low
+                        metrics.steps.threshold.high) }}
+                        {{metrics.steps.lastRecord}}
                         {{else}}
-                            <p class="status status-alert">{{metrics.steps.lastRecord}}</p>
-                        {{/if}} 
+                        <p class="status status-alert">{{metrics.steps.lastRecord}}</p>
+                        {{/if}}
                     </td>
                 </tr>
-            {{/each}}
+                {{/each}}
             </tbody>
         </table>
     </div>
+
+</section>
+<section>
+    <h1>Add new patient</h1>
+    <details>
+        <summary>Click here to register a new patient</summary>
+        <form method="post" action="/:username/register">
+            <div>
+                <label>Name</label>
+                <input type="text" name="username" />
+            </div>
+            <div>
+                <label>Email address</label>
+                <input type="text" name="email" />
+            </div>
+            <div>
+                <label>Password</label>
+                <input type="password" name="password" />
+            </div>
+            <div>
+                <input type="submit" value="Register" />
+            </div>
+        </form>
+    </details>
 </section>

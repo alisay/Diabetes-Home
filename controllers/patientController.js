@@ -1,5 +1,40 @@
 import { getPatient, getLeaderboard } from "../dbutils.js";
 import { UNITS, Patient } from "../models/index.js";
+import {
+    addPatient, 
+    updatePatient
+} from '../utils/patient_utils.js'
+
+// GET ALL PATIENTS
+export const getPatients = function (req, res) {
+    // to be completed
+}
+
+// ADD NEW PATIENT
+export function createPatient(req, res, next) {
+    addPatient(req)
+        .then((user) => {
+            res.status(201)
+            res.send(user)
+        })
+        .catch(err =>
+            res.status(500).json({ error: err.message })
+        )
+}
+// EDIT PATIENT DETAILS
+export function editPatient(req, res) {
+    updatePatient(req).exec((err, user) => {
+      if (err) {
+        res.status(500);
+        return res.json({
+          error: err.message
+        });
+      }
+      res.status(200);
+      res.send(user);
+    });
+  }
+  
 
 function formatMeasurements(user) {
     for (const measurement in user?.metrics) {
@@ -16,17 +51,17 @@ function formatLeaderboard(leaderboard) {
 export async function displayDashboard(req, res) {
     const hours = new Date().getHours();
     const timeString = hours < 12 ? 'morning' : hours < 19 ? 'afternoon' : 'evening';
-    
+
     const user = await getPatient("PatTap");
     const measurements = formatMeasurements(user);
 
     const leaderboard = formatLeaderboard(await getLeaderboard());
 
-    res.render('patientDashboard', { 
+    res.render('patientDashboard', {
         timeString, user, measurements, leaderboard,
-        css: "stylesheets/patientDashboard.css" 
+        css: "stylesheets/patientDashboard.css"
     });
-}  
+}
 
 export async function postData(req, res) {
     for (const [key, value] of Object.entries(req.body)) {
@@ -34,7 +69,13 @@ export async function postData(req, res) {
             await Patient.updateOne({ username: "PatTap" }, { $set: { 
                 [`metrics.${key}.lastRecord`]: value
             } });
+
+            await Measurements.create({
+                metadata: { type: key },
+                measurement: value
+            })
         }
     }
+
     res.redirect('/patientDashboard');
 }
