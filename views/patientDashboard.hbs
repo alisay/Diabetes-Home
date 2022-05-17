@@ -46,9 +46,15 @@
             <h2>Today Measurements</h2>
             <div class = "measurement-wrapper">
                 {{#each measurements}}
+                
                     <div class = "measurement-widget-container">
                         <div class = 'measurement-widget'>
-                            <div class = "meansurement-icon"></div>
+                            <div class = "meansurement-icon">
+                                {{#if (eq this.unit "mmol/L") }} <img src="/images/blood.png" alt="{{unit}} icon" width="80" height="80"> {{else}} {{/if}}   
+                                {{#if (eq this.unit "steps") }} <img src="/images/excercise.png" alt="{{unit}} icon" width="80" height="80"> {{else}} {{/if}}   
+                                {{#if (eq this.unit "doses") }} <img src="/images/insulin.png" alt="{{unit}} icon" width="80" height="80"> {{else}} {{/if}}   
+                                {{#if (eq this.unit "kg") }} <img src="/images/scale.png" alt="{{unit}} icon" width="80" height="80"> {{else}} {{/if}}   
+                            </div>
             
                             <div class = "measurement-data">
                                 <div class = "measurement-data-container">
@@ -79,6 +85,3 @@
         </div>
     </div>
 </section>
-
-<div class="circle1"></div>
-<div class="circle2"></div>
