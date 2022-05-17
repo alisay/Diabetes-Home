@@ -5,6 +5,7 @@ const NotesSchema = Schema({
     clinician: ObjectId,
     patient: ObjectId,
     note: String,
+    timestamp: Date
 },
     {
         timeseries: {
