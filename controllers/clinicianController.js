@@ -1,6 +1,5 @@
 import { getClinician, getPatient, getPatientId, getPatientData } from "../dbutils.js";
-import handlebars from "handlebars";
-import fs from "fs";
+import { format } from "date-fns";
 
 export async function clinicianDashboard(req, res) {
     const user = await getClinician("chrissi");
@@ -17,7 +16,9 @@ export async function patientData(req, res) {
     const patient = await getPatient("PatTap");
     const data = await getPatientData(patient._id, "glucose");
 
+    const today = format(new Date(), "dd/MM");
+
     res.render('patientData', {
-        data: data.map(e => e.measurement)
+        patient, data, today, notes: {}
     });
 }

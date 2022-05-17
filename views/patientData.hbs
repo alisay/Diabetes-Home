@@ -1,7 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <body>
-    <p>test</p>
+    <p>{{patient.firstName}} {{patient.lastName}}</p>
     <div>
         <canvas id="myChart"></canvas>
         <script>
@@ -60,4 +60,20 @@
             });
         </script>
     </div>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Clinician Note</th>
+        </tr>
+        <tr>
+            <td>({{today}})</td>
+            <td><form><input></form></td>
+        </tr>
+        {{#each notes}}
+            <tr>
+                <td>{{@key}}</td>
+                <td>{{this}}</td>
+            </tr>
+        {{/each}}
+    </table>
 </body>
