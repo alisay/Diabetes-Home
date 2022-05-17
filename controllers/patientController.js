@@ -20,6 +20,21 @@ export const displayPatients = async function (req, res) {
    }   
 }
 
+// GET ONE PATIENT
+export const displaySinglePatient = async function (req, res) {
+    try {
+        let checkUser = await User.findOne({ _id:  req.params.id }).exec()
+        res.status(200)
+        res.send(checkUser)
+   } catch (err) {
+        if (err) {res.status(500)
+           res.json({
+        error: err.message
+        })
+       }
+   }   
+}
+
 // ADD NEW PATIENT
 export function createPatient(req, res, next) {
     addPatient(req)
