@@ -13,8 +13,8 @@ export async function clinicianDashboard(req, res) {
     })
 }
 
-export async function patientData(req, res) {
-    const patient = await getPatient("PatTap");
+export async function viewPatient(req, res) {
+    const patient = await getPatient(req.params.username);
 
     // Check types
     const trackingTypes = TYPES.filter(t => patient.metrics[t] != null);
@@ -49,7 +49,7 @@ export async function patientData(req, res) {
 
     const today = format(new Date(), "dd/MM");
 
-    res.render('patientData', {
+    res.render('viewPatient', {
         patient, type: "Glucose", trackingTypes, datapoints,
         chart,
         allDays, today, notes: {}
