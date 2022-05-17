@@ -37,14 +37,14 @@ body { background: var(--white) }
     /* background: rgb(209, 166, 166); */
     width: 90%;
     /* top right bottom left */
-    margin: 0% 5% 0% 5%; 
+    margin: 0% 0% 0% 15%; 
 }
 
 .column-2{
     /* background: rgb(209, 166, 166); */
     width: 90%;
     /* top right bottom left */
-    margin: 0% 5% 0% 5%; 
+    margin: 0% 15% 0% 0%; 
 }
 
 
@@ -92,7 +92,9 @@ body { background: var(--white) }
         justify-content: center;
     }
 
-    
+    .column-1, .column-2{
+        margin: 0% 0% 0% 0%;
+    }    
 
 }
 
