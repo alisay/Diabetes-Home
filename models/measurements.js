@@ -22,4 +22,3 @@ const MeasurementsSchema = Schema({
 
 MeasurementsSchema.index({ "metadata.user": 1, "metadata.type": 1 });
 export default model('Measurements', MeasurementsSchema);
-

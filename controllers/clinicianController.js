@@ -1,4 +1,5 @@
 import { getClinician, getPatient, getPatientId, getPatientData } from "../dbutils.js";
+import { format } from "date-fns";
 
 export async function clinicianDashboard(req, res) {
     const user = await getClinician("chrissi");
@@ -39,9 +40,11 @@ export async function patientData(req, res) {
     // console.log(dataDays);
     const table = {...allDays, ...dataDays};
 
+    const today = format(new Date(), "dd/MM");
+
     res.render('patientData', {
         patient, type: "Glucose", datapoints,
         low, high, ymin, ymax,
-        table
+        table, today, notes: {}
     });
 }

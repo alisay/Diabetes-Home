@@ -75,4 +75,19 @@
             </tr>
         {{/each}}
     </table>
+    <table>
+        <tr>
+            <th>Clinician Note</th>
+        </tr>
+        <tr>
+            <td>({{today}})</td>
+            <td><form><input></form></td>
+        </tr>
+        {{#each notes}}
+            <tr>
+                <td>{{@key}}</td>
+                <td>{{this}}</td>
+            </tr>
+        {{/each}}
+    </table>
 </body>
