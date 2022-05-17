@@ -10,23 +10,20 @@ export const addPatient = async function (req) {
     const { email, password, username } = req.body;
     let clinician = await Clinician.findOne({ username: req.params.username }).exec();
 
-    let newPatient = Patient.create({ email, password, username, clinician })
+    let newPatient = await Patient.create({ email, password, username, clinician: clinician._id })
         .catch(err =>
             res.send(err))
-        
     
     if (newPatient) {
-        clinician.patients.push(newPatient)
-        console.log(newPatient)
+        clinician.patients.push(newPatient._id)
     } else {
         console.log('error')
     }
-    
-    clinician.findOneAndUpdate({
+
+    Clinician.findOneAndUpdate({
             username: clinician.username,
             patients: clinician.patients
     })
-
     return newPatient
 };
 

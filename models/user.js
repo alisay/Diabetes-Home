@@ -49,7 +49,7 @@ const ClinicianSchema = new Schema({
     firstName: String, 
     lastName: String,
     // This needs to be an array of object IDs!
-    patients: {type: Array, required: true, default: [""]}
+    patients: {type: Array}
 })
 
 // Admin.plugin(bcrypt);

@@ -10,7 +10,7 @@ export const displayPatients = async function (req, res) {
 	try {
         let checkUser = await User.findOne({ username:  req.user.username }).exec()
         res.status(200)
-        res.render('clinicianDashboard', {patients: checkUser.patients})
+        res.send(checkUser)
    } catch (err) {
         if (err) {res.status(500)
            res.json({
@@ -18,17 +18,6 @@ export const displayPatients = async function (req, res) {
         })
        }
    }   
-}
-
-export async function clinicianDashboard(req, res) {
-    const user = await getClinician("chrissi");
-    user.patients = await Promise.all(user.patients.map(
-                              async p => await getPatientId(p)));
-
-    res.render('clinicianDashboard', {
-        // user,
-        css: "stylesheets/clinicianDashboard.css",                            
-    })
 }
 
 
@@ -43,6 +32,7 @@ export function createPatient(req, res, next) {
             res.status(500).json({ error: err.message })
         )
 }
+
 // EDIT PATIENT DETAILS
 export function editPatient(req, res) {
     updatePatient(req).exec((err, user) => {

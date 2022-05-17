@@ -10,11 +10,11 @@ import {
 import { userValidationRules, validate } from "../middleware/validator.js"
   
 
-//GET Route for Clincian Dashboard
+//GET Route for Clinician Dashboard
 router.get('/:username/dashboard', passport.authenticate('jwt', {session: false}), displayPatients);
 
 //POST Route for registering and creating a patient
-router.post('/:username/register', userValidationRules(), validate, createPatient);
+router.post('/:username/add-patient', userValidationRules(), validate, createPatient);
 
 //PATCH Route for updating a patient's details as a clinician
 router.patch("/:username/account-settings", editPatient)

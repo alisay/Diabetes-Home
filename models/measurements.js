@@ -7,7 +7,6 @@ const MeasurementsSchema = Schema({
         type: { type: String },
         // index: true
     },
-    
     measurement: Number, 
     comment: String,
     timestamp: Date,
