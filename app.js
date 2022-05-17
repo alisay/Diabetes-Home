@@ -17,6 +17,7 @@ import glucoseRouter from './routes/measurementRoutes.js';
 import clinicianRouter from './routes/clinicianRoutes.js';
 import patientRouter from './routes/patientRoutes.js';
 
+import { Measurements } from './models/index.js';
 // If we are not running in production, load our local .env
 
 const port = process.env.PORT || 8080;

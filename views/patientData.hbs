@@ -1,7 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <body>
-    <h2>{{patient.firstName}} {{patient.lastName}}</h2>
+    <h1>{{patient.firstName}} {{patient.lastName}}</h1>
     <div>
         <canvas id="myChart"></canvas>
         <script>
@@ -18,13 +18,13 @@
                         borderColor: "#b374df",
                         borderWidth: 1
                     }, {
-                        data: new Array(28).fill({{low}}),
+                        data: new Array(28).fill({{chart.low}}),
                         borderColor: "#ff1212",
                         borderWidth: 1,
                         borderDash: [10, 5],
                         hitRadius: 0
                     }, {
-                        data: new Array(28).fill({{high}}),
+                        data: new Array(28).fill({{chart.high}}),
                         borderColor: "#ff1212",
                         borderWidth: 1,
                         borderDash: [10, 5],
@@ -52,8 +52,8 @@
                             }
                         },
                         y: {
-                            min: {{ymin}}, 
-                            max: {{ymax}}
+                            min: {{chart.ymin}}, 
+                            max: {{chart.ymax}}
                         }
                     }
                 }
@@ -63,14 +63,21 @@
     <table>
         <tr>
             <th>Date</th>
-            <th>{{type}}</th>
-            <th>Comment</th>
+            {{#each trackingTypes}}
+                <th>{{this}}</th>
+            {{/each}}
         </tr>
-        {{#each table}}
+        {{#each allDays}}
             <tr>
                 <td>{{@key}}</td>
                 {{#each this}}
-                    <td>{{this}}</td>
+                    {{#if this.comment}}
+                        <td class="tooltip">{{this.measurement}}
+                            <span class="tooltiptext">{{this.comment}}</span>
+                        </td>
+                    {{else}}
+                        <td>{{this.measurement}}</td>
+                    {{/if}}
                 {{/each}}
             </tr>
         {{/each}}
