@@ -32,12 +32,12 @@ export function registerNew(req, res) {
 }
 
 export function register(req, res, next) {
-    if (req.user == null) return registerClinician;
-    if (req.user.type === 'clinician') return registerPatient;
+    if (req.user == null) return registerClinician(req, res, next);
+    if (req.user.type === 'clinician') return registerPatient(req, res, next);
     return res.redirect('/');
 }
 
-export function registerClinician(req, res, next) {
+export async function registerClinician(req, res, next) {
     const newUserHandler = (user) => {
         req.login(user, (err) => {
             if (err) {
@@ -56,7 +56,7 @@ export function registerClinician(req, res, next) {
 
     Clinician.create({
         firstName, lastName, username, email, password,
-    }).exec()
+    })
         .then(newUserHandler)
         .catch((x) => res.send(x));
 }

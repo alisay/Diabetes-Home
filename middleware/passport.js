@@ -25,8 +25,9 @@ const canLogin = (user, password) => {
     return false;
 };
 
-const verifyCallback = (email, password, done) => {
-    User.findOne({ email })
+const verifyCallback = (ident, password, done) => {
+    const qparam = ident.includes("@") ? { email : ident } : { username : ident };
+    User.findOne(qparam)
         .then((user) => {
             if (canLogin(user, password)) {
                 return done(null, user);
