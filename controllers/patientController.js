@@ -68,6 +68,10 @@ export async function displayDashboard(req, res) {
 }
 
 export async function postData(req, res) {
+    if (req.user == null) {
+        res.redirect('/');
+    }
+
     for (const [key, value] of Object.entries(req.body)) {
         if (UNITS.hasOwnProperty(key)) {
             await Patient.updateOne({ username: "PatTap" }, { $set: { 
