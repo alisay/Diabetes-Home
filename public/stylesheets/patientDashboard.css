@@ -163,9 +163,13 @@ body { background: var(--white) }
 }
 
 .meansurement-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     background: white;
-    height: 80px;
-    width: 80px;
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
     /* top right bottom left */
     margin: 5% 0% 5% 5%;
