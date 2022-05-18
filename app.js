@@ -17,6 +17,7 @@ import glucoseRouter from './routes/measurementRoutes.js';
 import clinicianRouter from './routes/clinicianRoutes.js';
 import patientRouter from './routes/patientRoutes.js';
 
+import { Measurements } from './models/index.js';
 // If we are not running in production, load our local .env
 
 const port = process.env.PORT || 8080;
@@ -133,6 +134,10 @@ app.get('/aboutDiabetes', (req, res) => {
 
 app.get('/aboutWebsite', (req, res) => {
     res.render('aboutWebsite', { headTitle: "About This Site", css: "stylesheets/index.css" })
+})
+
+app.get('/chart', (req, res) => {
+    res.render('chart', { headTitle: "chatr", css: "stylesheets/index.css" })
 })
 
 // default route to handle errors
