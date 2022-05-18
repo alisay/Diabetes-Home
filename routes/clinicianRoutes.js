@@ -5,6 +5,6 @@ import * as Clinician from '../controllers/clinicianController.js';
 //GET Route for Patient Dashboard 
 router.get("/clinicianDashboard", Clinician.clinicianDashboard);
 
-router.get("/patientData/:username", Clinician.patientData);
+router.get("/viewPatient/:username", Clinician.viewPatient);
 
 export default router;
