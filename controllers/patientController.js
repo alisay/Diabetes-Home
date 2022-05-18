@@ -47,7 +47,7 @@ function formatLeaderboard(leaderboard) {
 
 export async function displayDashboard(req, res) {
     if (req.user == null) {
-        res.redirect('/');
+        return res.redirect('/');
     }
 
     const hours = new Date().getHours();
@@ -69,7 +69,7 @@ export async function displayDashboard(req, res) {
 
 export async function postData(req, res) {
     if (req.user == null) {
-        res.redirect('/');
+        return res.redirect('/');
     }
 
     for (const [key, value] of Object.entries(req.body)) {

@@ -6,7 +6,7 @@ import {
 
 export async function clinicianDashboard(req, res) {
     if (req.user == null) {
-        res.redirect('/');
+        return res.redirect('/');
     }
 
     const { user } = req;
@@ -22,7 +22,7 @@ export async function clinicianDashboard(req, res) {
 
 export async function viewPatient(req, res) {
     if (req.user == null) {
-        res.redirect('/');
+        return res.redirect('/');
     }
 
     const patient = await getPatient(req.params.username);
