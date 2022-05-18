@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 import passport from "passport";
 import {  Joi, celebrate,  } from 'celebrate';
-import {registerCreate, 
+import {
   registerNew , 
   logOut, 
   loginNew, 
@@ -11,7 +11,9 @@ import {registerCreate,
   editUserReq, 
   forgotPassword,
   resetPassword,
-  sendResetPassword} from '../controllers/authController.js'
+  sendResetPassword,
+  register
+} from '../controllers/authController.js'
 import {userValidationRules, validate, accountSettingValidationRules} from "../middleware/validator.js"
 
 
@@ -19,8 +21,7 @@ import {userValidationRules, validate, accountSettingValidationRules} from "../m
 router.get('/register', registerNew);
 
 //POST Route for registering and creating a user
-router.post('/register', userValidationRules(), validate, registerCreate);
-// router.post('/register', registerCreate);
+router.post('/register', userValidationRules(), validate, register);
 
 //GET Route for Login page
 router.get("/login", loginNew)

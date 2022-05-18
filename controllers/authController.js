@@ -1,4 +1,4 @@
-import { Clinician, User } from '../models/user.js'
+import { Clinician, Patient, User } from '../models/user.js'
 import jwt from "jsonwebtoken";
 import crypto from'crypto';
 import nodemailer from'nodemailer';
@@ -33,8 +33,13 @@ export function registerNew(req, res) {
   res.render('aboutWebsite', {css: "stylesheets/index.css"});
 }
 
+export function register(req, res, next) {
+  if (req.user == null) return registerClinician;
+  else if (req.user.type === "clinician") return registerPatient;
+  else return res.redirect('/');
+}
 
-export function registerCreate(req, res, next) {
+export function registerClinician(req, res, next) {
   const newUserHandler = (user) => {
     req.login(user, (err) => {
       if (err) {
@@ -53,8 +58,12 @@ export function registerCreate(req, res, next) {
     .then(newUserHandler)
     .catch(x =>
       res.send(x))
-
 } 
+
+export function registerPatient(req, res, next) {
+  const { firstName, lastName, username, email, password } = req.body;
+  await Patient.create()
+}
 
 //LOGOUT USER
 export function logOut(req, res) {
