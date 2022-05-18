@@ -37,6 +37,7 @@ export const userValidationRules = () => {
               resolve(true)
             });
         })})];
+      }
 
 // VALIDATION FOR ACCOUNTING SETTING UPDATE
 export const accountSettingValidationRules = () => [
