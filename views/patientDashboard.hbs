@@ -26,24 +26,49 @@
         </div>
 
         <div class = "glass">
+            <div class = 'leaderboard'>
+                <h2>Leaderboard</h2>
+                {{#each leaderboard}}
+                    <div class="user rank-widget">
+                        <div class= "user-info">
+                            <h3>{{this.nickname}}</h3>
+                            <div class="progress"></div>
+                        </div>
+                        <h2 class="percentage">{{this.engagementRate}}%</h2>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <div class = "column-2">
+        <div class = "glass">
             <h2>Today Measurements</h2>
             <div class = "measurement-wrapper">
                 {{#each measurements}}
+                
                     <div class = "measurement-widget-container">
                         <div class = 'measurement-widget'>
-                            <div class = "meansurement-icon"></div>
+                            <div class = "meansurement-icon">
+                                {{#if (eq this.unit "mmol/L") }} <img src="/images/blood.png" alt="{{unit}} icon" width="80" height="80"> {{else}} {{/if}}   
+                                {{#if (eq this.unit "steps") }} <img src="/images/walking.png" alt="{{unit}} icon" width="80" height="80"> {{else}} {{/if}}   
+                                {{#if (eq this.unit "doses") }} <img src="/images/needles.png" alt="{{unit}} icon" width="80" height="80"> {{else}} {{/if}}   
+                                {{#if (eq this.unit "kg") }} <img src="/images/scales.png" alt="{{unit}} icon" width="80" height="80"> {{else}} {{/if}}   
+                            </div>
             
                             <div class = "measurement-data">
                                 <div class = "measurement-data-container">
                                     {{#if (eq this.lastRecord undefined) }}
                                         <form action="postdaily" method = "POST">
                                             <div class="measurement-form">
-                                                <label><input type="number" name={{@key}} id="measurement" step=".01"
-                                                class="form__input" autocomplete="off" placeholder="({{@key}})">  {{unit}}</label>
+                                                <label>
+                                                    <input type="number" name={{@key}} id="measurement" step=".01"
+                                                    class="form__input" autocomplete="off" placeholder="({{@key}})">  {{unit}}
+                                                </label>
 
-                                                <input type="text" name="comment" 
-                                                class="comment-input" placeholder="Add a comment...">
-                                                <input type="submit" hidden/>
+                                                <input type="text" name="comment" class="comment-input" placeholder="Add a comment...">
+                                                
+                                                <input type="submit"/>
                                             </div> 
                                         </form>
                                     {{else}}
@@ -59,24 +84,4 @@
             </div>
         </div>
     </div>
-
-    <div class = "column-2">
-        <div class = "glass">
-            <div class = 'leaderboard'>
-                <h2>Leaderboard</h2>
-                {{#each leaderboard}}
-                    <div class="user rank-widget">
-                        <div class= "user-info">
-                            <h3>{{this.nickname}}</h3>
-                            <div class="progress"></div>
-                        </div>
-                        <h2 class="percentage">{{this.engagementRate}}%</h2>
-                    </div>
-                {{/each}}
-            </div>
-        </div>
-    </div>
 </section>
-
-<div class="circle1"></div>
-<div class="circle2"></div>

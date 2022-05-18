@@ -1,24 +1,27 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
+
 const { Schema, ObjectId, model } = mongoose;
 
-const MeasurementsSchema = Schema({
-    metadata: { 
-        user: ObjectId,
-        type: { type: String },
-        index: true
+const MeasurementsSchema = Schema(
+    {
+        metadata: {
+            user: ObjectId,
+            type: { type: String },
+        },
+
+        measurement: Number,
+        comment: String,
+        timestamp: Date,
     },
-    
-    measurement: Number, 
-    comment: String,
-    timestamp: Date,
-},
     {
         timeseries: {
             timeField: 'timestamp',
             metaField: 'metadata',
-            granularity: 'minutes'
+            granularity: 'minutes',
         },
-        autoCreate: false
-    });
+        autoCreate: false,
+    },
+);
 
- export default model('Measurements', MeasurementsSchema);
+MeasurementsSchema.index({ 'metadata.user': 1, 'metadata.type': 1 });
+export default model('Measurements', MeasurementsSchema);

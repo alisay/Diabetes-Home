@@ -6,49 +6,47 @@ export const getUserByParam = function (req) {
     return User.findOne({ username: req.params.username });
 };
 
-//For update settings
+// For update settings
 export const updateUser = function (req) {
     return User.findOneAndUpdate({ username: req.params.username }, req.body, {
-        new: true
+        new: true,
     });
 };
- 
 
-//For sending reset link
+// For sending reset link
 export const updateForForgotPassword = function (req) {
-    return User.findOne({ email: req.body.email })
+    return User.findOne({ email: req.body.email });
 };
 
-
-//Inserting the token into user
+// Inserting the token into user
 export const insertPasswordToken = function (user, token) {
-    return User.findOneAndUpdate({
-        email: user.email
-    },
+    return User.findOneAndUpdate(
+        {
+            email: user.email,
+        },
         {
             resetPasswordToken: token,
             resetPasswordExpires: Date.now() + 3600000,
         },
-        { //options
+        { // options
             returnNewDocument: true,
             new: true,
-            strict: false
-        });
+            strict: false,
+        },
+    );
 };
 
-
-//For checking password page get request
+// For checking password page get request
 export const findForResetPassword = function (req) {
     return User.findOne({
         resetPasswordToken: req.query.resetPasswordToken,
         resetPasswordExpires: {
             $gt: Date.now(),
         },
-    })
+    });
 };
 
-
-//For updating the new password
+// For updating the new password
 export const findForUpdatePassword = function (req) {
     return User.findOneAndUpdate({
         username: req.body.username,
@@ -57,11 +55,9 @@ export const findForUpdatePassword = function (req) {
             $gt: Date.now(),
         },
     }, { password: req.body.password }, {
-        new: true
+        new: true,
     });
 };
-
-
 
 // delete User
 // returns a query

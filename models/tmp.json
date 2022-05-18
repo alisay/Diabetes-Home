@@ -1,0 +1,2 @@
+[
+{"metadata": {"user": {"$oid": "626fee472bb3a9f8c16b8b63"}, "type": "steps"}, "measurement": 3500, "timestamp": { "$date": { "$iso": "2022-04-19T12:50:00.000+00:00"}}}]

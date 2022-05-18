@@ -1,9 +1,10 @@
-import express from "express";
-const router = express.Router();
+import express from 'express';
 import * as Measurements from '../controllers/measurementsController.js';
 
-router.get("/glucose", Measurements.getGlucose)
+const router = express.Router();
 
-router.post("/glucose", Measurements.createGlucose);
+router.get('/glucose', Measurements.getGlucose);
 
-export default router; 
+router.post('/glucose', Measurements.createGlucose);
+
+export default router;
