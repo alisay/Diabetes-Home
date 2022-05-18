@@ -47,11 +47,11 @@ export async function viewPatient(req, res) {
     };
 
     // Table Contents
-    const allDays = new Object();
+    const allDays = {};
     Array.from(Array(28).keys()).forEach((idx) => {
         const d = new Date();
         d.setDate(d.getDate() - idx);
-        allDays[format(d, 'dd/MM')] = Object.fromEntries(TYPES.map((e) => [e, new Object()]));
+        allDays[format(d, 'dd/MM')] = Object.fromEntries(TYPES.map((e) => [e, {}]));
     });
     data.forEach((entries, type) => entries.forEach((e) => {
         console.log(allDays[format(e.timestamp, 'dd/MM')]);

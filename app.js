@@ -1,4 +1,4 @@
-import express, { static as staticPage, json, urlencoded } from 'express';
+import express, { json, urlencoded } from 'express';
 import { engine } from 'express-handlebars';
 import mongoose from 'mongoose';
 import session from 'express-session';
@@ -16,8 +16,6 @@ import authRouter from './routes/authRouter.js';
 import glucoseRouter from './routes/measurementRoutes.js';
 import clinicianRouter from './routes/clinicianRoutes.js';
 import patientRouter from './routes/patientRoutes.js';
-
-import { Measurements } from './models/index.js';
 
 // PASSPORT
 import './middleware/passport.js';
@@ -95,7 +93,7 @@ app.use(
 // MONGODB
 const dbConn = process.env.MONGO_URI || 'mongodb://localhost/test-app';
 
-const mongClient = mongoose.connect(
+mongoose.connect(
     dbConn,
     {
         useNewUrlParser: true,

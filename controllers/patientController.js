@@ -34,7 +34,7 @@ export function editPatient(req, res) {
 }
 
 function formatMeasurements(user) {
-    for (const measurement in user?.metrics) {
+    for (const measurement of user?.metrics.keys()) {
         user.metrics[measurement].unit = UNITS[measurement];
     }
     return user.metrics;
@@ -51,7 +51,7 @@ export async function displayDashboard(req, res) {
     }
 
     const hours = new Date().getHours();
-    const timeString = hours < 12 ? 'morning' : hours < 19 ? 'afternoon' : 'evening';
+    const timeString = hours < 12 ? 'morning' : (hours < 19 ? 'afternoon' : 'evening');
 
     const user = await getPatient('PatTap');
     const measurements = formatMeasurements(user);

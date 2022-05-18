@@ -13,6 +13,7 @@ module.exports = {
     },
     rules: {
         indent: ['error', 4],
-        "import/extensions": ['error', 'ignorePackages']
+        "import/extensions": ['error', 'ignorePackages'],
+        "no-underscore-dangle": ['error', { allow: ['_id'] }], 
     },
 };
