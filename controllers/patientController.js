@@ -49,6 +49,10 @@ function formatLeaderboard(leaderboard) {
 }
 
 export async function displayDashboard(req, res) {
+    if (req.user == null) {
+        res.redirect('/');
+    }
+
     const hours = new Date().getHours();
     const timeString = hours < 12 ? 'morning' : hours < 19 ? 'afternoon' : 'evening';
 

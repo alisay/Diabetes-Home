@@ -3,7 +3,11 @@ import { getClinician, getPatient, getPatientId, getPatientData } from "../dbuti
 import { format } from "date-fns";
 
 export async function clinicianDashboard(req, res) {
-    const user = await getClinician("chrissi");
+    if (req.user == null) {
+        res.redirect('/');
+    }
+
+    const user = req.user;
     user.patients = await Promise.all(user.patients.map(
                               async p => await getPatientId(p)));
 
@@ -14,6 +18,10 @@ export async function clinicianDashboard(req, res) {
 }
 
 export async function viewPatient(req, res) {
+    if (req.user == null) {
+        res.redirect('/');
+    }
+
     const patient = await getPatient(req.params.username);
 
     // Check types
