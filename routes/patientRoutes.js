@@ -14,9 +14,6 @@ router.post('/:username/register', userValidationRules(), validate, createPatien
 // PATCH Route for updating a patient's details as a clinician
 router.patch('/:username/account-settings', editPatient);
 
-// GET Route for Dashboard
-router.get('/patientDashboard', Patient.displayDashboard);
-
 // POST form data
 router.post('/postdaily', Patient.postData);
 

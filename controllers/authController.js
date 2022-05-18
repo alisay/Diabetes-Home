@@ -83,10 +83,8 @@ export function loginNew(req, res) {
 export function loginCreate(req, res) {
     const token = jwt.sign({ sub: req.user._id }, process.env.JWT_SECRET);
     res.cookie('jwt', token, configToken);
-    // res.status(200);
-    // res.json({ user: req.user.username, sessionID: req.sessionID });
-    // console.log(res)
-    res.render('aboutWebsite', { user: req.user.username, sessionID: req.sessionID, css: 'stylesheets/index.css' });
+
+    res.redirect("/dashboard");
 }
 
 // Account settings get ROUTE

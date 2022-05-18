@@ -1,4 +1,3 @@
-import { getPatient, getLeaderboard } from '../dbutils.js';
 import { UNITS, Patient } from '../models/index.js';
 import {
     addPatient,
@@ -30,40 +29,6 @@ export function editPatient(req, res) {
         }
         res.status(200);
         res.send(user);
-    });
-}
-
-function formatMeasurements(user) {
-    for (const measurement of user?.metrics.keys()) {
-        user.metrics[measurement].unit = UNITS[measurement];
-    }
-    return user.metrics;
-}
-
-function formatLeaderboard(leaderboard) {
-    leaderboard.map((e) => e.engagementRate = (e.engagementRate * 100).toFixed(1));
-    return leaderboard;
-}
-
-export async function displayDashboard(req, res) {
-    if (req.user == null) {
-        return res.redirect('/');
-    }
-
-    const hours = new Date().getHours();
-    const timeString = hours < 12 ? 'morning' : (hours < 19 ? 'afternoon' : 'evening');
-
-    const user = await getPatient('PatTap');
-    const measurements = formatMeasurements(user);
-
-    const leaderboard = formatLeaderboard(await getLeaderboard());
-
-    res.render('patientDashboard', {
-        timeString,
-        user,
-        measurements,
-        leaderboard,
-        css: 'stylesheets/patientDashboard.css',
     });
 }
 

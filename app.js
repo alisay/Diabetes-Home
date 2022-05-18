@@ -16,6 +16,7 @@ import authRouter from './routes/authRouter.js';
 import glucoseRouter from './routes/measurementRoutes.js';
 import clinicianRouter from './routes/clinicianRoutes.js';
 import patientRouter from './routes/patientRoutes.js';
+import pageRouter from './routes/pageRoutes.js';
 
 // PASSPORT
 import './middleware/passport.js';
@@ -119,6 +120,7 @@ app.use('/user', authRouter);
 app.use('/', glucoseRouter);
 app.use('/', patientRouter);
 app.use('/', clinicianRouter);
+app.use('/', pageRouter);
 
 // index.html
 app.get('/', (req, res) => {

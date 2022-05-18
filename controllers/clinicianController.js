@@ -1,24 +1,8 @@
 import { format } from 'date-fns';
 import { TYPES } from '../models/index.js';
 import {
-    getClinician, getPatient, getPatientId, getPatientData,
+    getPatient, getPatientData,
 } from '../dbutils.js';
-
-export async function clinicianDashboard(req, res) {
-    if (req.user == null) {
-        return res.redirect('/');
-    }
-
-    const { user } = req;
-    user.patients = await Promise.all(user.patients.map(
-        async (p) => await getPatientId(p),
-    ));
-
-    res.render('clinicianDashboard', {
-        user,
-        css: 'stylesheets/clinicianDashboard.css',
-    });
-}
 
 export async function viewPatient(req, res) {
     if (req.user == null) {
