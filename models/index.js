@@ -1,9 +1,9 @@
-export const TYPES = ["glucose", "insulin", "steps", "weight"];
+export const TYPES = ['glucose', 'insulin', 'steps', 'weight'];
 export const UNITS = {
-    glucose: "mmol/L",
-    insulin: "doses",
-    steps: "steps",
-    weight: "kg"
+    glucose: 'mmol/L',
+    insulin: 'doses',
+    steps: 'steps',
+    weight: 'kg',
 };
 
 export { User, Patient, Clinician } from './user.js';
