@@ -22,29 +22,15 @@
 body { background: var(--white) }
             
 .container{
-    display: grid;
-    grid-template-columns: 50% 50%;
+    display: flex;
     margin-bottom: 5%;
+    justify-content: center;
 }
 
 *{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-}
-
-.column-1{
-    /* background: rgb(209, 166, 166); */
-    width: 90%;
-    /* top right bottom left */
-    margin: 0% 0% 0% 15%; 
-}
-
-.column-2{
-    /* background: rgb(209, 166, 166); */
-    width: 90%;
-    /* top right bottom left */
-    margin: 0% 15% 0% 0%; 
 }
 
 
@@ -59,82 +45,8 @@ body { background: var(--white) }
     margin: 2% 0% 0% 0%;
 }
 
-.rank-widget{
-    display: flex;
-    justify-content: space-between;
-
-    background: var(--light-grey);
-
-    /* background-color: #658ec6; */
-    border-radius: 5rem;
-    padding: 2rem;
-    /* top right bottom left */
-    margin: 2% 0% 3% 0%;
-}
-
-.leaderboard{
-}
-
-
 /* CSS Mobile */
 @media (max-width: 660px) {
-    .container{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: flex-start;
-        align-content: flex-start;
-    }
-
-    .measurement-wrapper{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .column-1, .column-2{
-        margin: 0% 0% 0% 0%;
-    }    
-
-}
-
-/* collapsible unread widget */
-.column-1 input[name = "collapsible"]{
-    display: none;
-}
-
-.unread-under{
-    height: 20px;
-    width: 93%;
-    background: var(--dark-grey);
-    /* top right bottom left */
-    margin-left: 3.5%; 
-    border-bottom-right-radius: 15px; 
-    border-bottom-left-radius: 15px; 
-}
-
-.collapsible-message {
-    max-height: 4000px;
-    overflow: hidden;
-    top: 0%;
-    width: 93%;
-    background: var(--dark-grey);
-      
-    margin-left: 3.5%; 
-
-}
-
-.cli-message{
-    /* top right bottom left */
-    margin: 3% 5% 0% 5%; 
-}
-
-.column-1 input:checked ~ .collapsible-message{
-    height: 0px;
-    background: var(--light-grey);
-                     
-    top: 0;
-    transition: all 2s linear;
 }
 
 /* measurement widget */
@@ -163,13 +75,9 @@ body { background: var(--white) }
 }
 
 .meansurement-icon{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
     background: white;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
     border-radius: 50%;
     /* top right bottom left */
     margin: 5% 0% 5% 5%;
@@ -201,7 +109,6 @@ body { background: var(--white) }
 
 h2 {
     color: var(--black);
-    margin-left: 5%;
 }
 
 h3 {
@@ -215,16 +122,8 @@ p{
 
 .glass {
     background: var(--white);
-    background: linear-gradient(
-        to right bottom,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.3)
-    );
     border-radius: 2rem;
     backdrop-filter: blur(1.5rem);
-    /* top right bottom left */
-    padding: 3% 5% 5% 5%;
-    margin: 5% 0% 0% 0%;
 
     position: relative;
     z-index: 1;
@@ -395,13 +294,13 @@ border-color: var(--dark-grey);
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+-webkit-appearance: none;
+margin: 0;
 }
 
 /* Firefox */
 input[type=number] {
-  -moz-appearance: textfield;
+-moz-appearance: textfield;
 }
 
 input[type=submit] {
@@ -413,4 +312,32 @@ input[type=submit] {
     cursor: pointer;
     border-radius: 1rem;
     font: var(--button);
+}
+
+
+.date-container{
+    display: flex;
+    height: 150px;
+    justify-content: space-around;
+    align-items: center;
+} 
+
+.pre-arrow{
+    background-color: var(--green);
+    transform: scaleX(-1);
+}
+
+.next-arrow{
+    background-color: var(--green);
+
+}
+
+.view-date{
+    background-color: var(--green);
+}
+
+.history-title{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
 }
