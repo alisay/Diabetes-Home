@@ -29,15 +29,12 @@ router.get('/login', loginNew);
 // POST Route for finding the user and logging them in
 router.post(
     '/login',
-    express.raw({ inflate: true, limit: '50mb', type: () => true }),
-    (req, res) => console.log(req.body.toString()),
     celebrate({
         body: {
-            email: Joi.string().required(),
+            cred: Joi.string().required(),
             password: Joi.string().required(),
         },
     }),
-    (err, req, res, next) => {console.log(err); console.log(req.body)}, 
     passport.authenticate('local', {
         session: false,
         failureRedirect: '/login',
