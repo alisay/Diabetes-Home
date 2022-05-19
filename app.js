@@ -4,7 +4,6 @@ import mongoose from 'mongoose';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import passport from 'passport';
-import bodyParser from 'body-parser';
 // const fileUpload = require('express-fileupload');
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
@@ -102,7 +101,7 @@ mongoose.connect(
     },
 );
 
-// app.use(urlencoded({ extended: true }));
+app.use(urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
