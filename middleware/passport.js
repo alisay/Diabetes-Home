@@ -38,7 +38,7 @@ const verifyCallback = (ident, password, done) => {
         .catch(done);
 };
 // this is setting passport username to email as passport local accepts username and password
-const fields = { usernameField: 'email' };
+const fields = { usernameField: 'cred' };
 
 passport.use(new LocalStrategy(fields, verifyCallback));
 

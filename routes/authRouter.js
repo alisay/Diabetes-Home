@@ -1,6 +1,6 @@
 import express from 'express';
 import passport from 'passport';
-import { Joi, celebrate } from 'celebrate';
+import { Joi, celebrate, errors } from 'celebrate';
 import {
     registerNew,
     logOut,
@@ -31,13 +31,13 @@ router.post(
     '/login',
     celebrate({
         body: {
-            email: Joi.string().required(),
+            cred: Joi.string().required(),
             password: Joi.string().required(),
         },
     }),
     passport.authenticate('local', {
         session: false,
-        failureRedirect: '/user/login',
+        failureRedirect: '/login',
         failureFlash: true,
     }),
     loginCreate,
