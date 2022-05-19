@@ -27,16 +27,8 @@ const port = process.env.PORT || 8080;
 const app = express();
 
 app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(express.json());
-app.use(
-    express.urlencoded({
-        extended: true,
-    }),
-);
 app.use(express.static('public'));
 app.use(express.static('./public'));
-// app.use(bodyParser.urlencoded({ extended: true }));
 
 // SESSION
 const sessionConfig = {
@@ -110,8 +102,7 @@ mongoose.connect(
     },
 );
 
-app.use(json());
-app.use(urlencoded({ extended: true }));
+// app.use(urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
