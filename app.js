@@ -116,7 +116,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // ROUTES
-app.use('/user', authRouter);
+app.use('/', authRouter);
 app.use('/', glucoseRouter);
 app.use('/', patientRouter);
 app.use('/', clinicianRouter);
