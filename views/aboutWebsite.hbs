@@ -1,19 +1,4 @@
-<nav class="column-container">
-    <h2 class="item">
-        About This Site
-    </h2>
-    {{#if user}}
-    <!-- SHOW LOGOUT -->
-    <a href="/user/logout">
-        <h2 class="item">Logout</h2>
-    </a>
-    {{else}}
-    <!-- SHOW LOGIN -->
-    <a href="/user/login">
-        <h2 class="item">Login</h2>
-    </a>
-    {{/if}}
-</nav>
+{{> menuNav}}
 
 <main class="container">
     <section class="container">
