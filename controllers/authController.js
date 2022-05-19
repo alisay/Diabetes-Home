@@ -76,7 +76,7 @@ export function logOut(req, res) {
 export function loginNew(req, res) {
     // req.flash('errorMessage', 'Unauthorised');
     // console.log(req.flash())
-    res.render('login', { flash: req.flash('error'), title: 'Login', css: 'stylesheets/index.css' });
+    res.render('login', { flash: req.flash('error'), title: 'Login', css: 'stylesheets/login.css' });
 }
 
 // LOGIN USER
