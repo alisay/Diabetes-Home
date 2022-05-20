@@ -3,91 +3,106 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <body>
-    {{#if isClinician}}
-        <div class = "viewPatientHeader">
-            <h1><b><u>{{patient.firstName}} {{patient.lastName}}</u></b></h1>
-            
-            <div class="editPatientIcon">
-                <a href="/editPatient?username={{patient.username}}"><img src="/images/pen.png" alt="edit patient" width="40" height="40"></a>
-            </div>
+    <div class = "header-graph">
+        {{#if isClinician}}
+            <div class = "viewPatientHeader">
+                <h1><b><u>{{patient.firstName}} {{patient.lastName}}</u></b></h1>
+                
+                <div class="editPatientIcon">
+                    <a href="/editPatient?username={{patient.username}}"><img src="/images/pen.png" alt="edit patient" width="40" height="40"></a>
+                </div>
 
-            <div class="sendMessageContainer" >
-                <input type="checkbox" id = "messageIcon"><br>
+                <div class="sendMessageContainer" >
+                    <input type="checkbox" id = "messageIcon"><br>
 
-                <label for="messageIcon">
-                    <img src="/images/message.png" alt="send message" width="80" height="80" >
-                </label>
+                    <label for="messageIcon">
+                        <img src="/images/message.png" alt="send message" width="80" height="80" >
+                    </label>
 
-                <div class="messagePlaceHolder">
-                    <form action="message" class="messageForm"> 
-                        <input type="text" class="form__input" autofocus name="message" placeholder="Write Your Message!"><br>
-                        <button class="form__button" type="submit" value="Register">Send</button>
-                    </form>
+                    <div class="messagePlaceHolder">
+                        <form action="message" class="messageForm"> 
+                            <input type="text" class="form__input" autofocus name="message" placeholder="Write Your Message!"><br>
+                            <button class="form__button" type="submit" value="Register">Send</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    {{else}}
-        <h1><b><u>Your Measurement History</u></b></h1>
-    {{/if}}
-    
-    <div class="graph">
-        <canvas id="myChart"></canvas>
-        <script>
-            const ctx = document.getElementById('myChart');
-            const myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels:  Array.from(Array(28).keys()).reverse().map(e => {
-                        const d = new Date(); 
-                        d.setDate(d.getDate() - e); 
-                        return d.toLocaleDateString();}),
-                    datasets: [{
-                        data: [{{datapoints}}],
-                        borderColor: "#b374df",
-                        borderWidth: 1
-                    }, {
-                        data: new Array(28).fill({{chart.low}}),
-                        borderColor: "#ff1212",
-                        borderWidth: 1,
-                        borderDash: [10, 5],
-                        hitRadius: 0
-                    }, {
-                        data: new Array(28).fill({{chart.high}}),
-                        borderColor: "#ff1212",
-                        borderWidth: 1,
-                        borderDash: [10, 5],
-                        hitRadius: 0
-                    }]
-                },
-                options: {
-                    plugins: {
-                        legend: { display: false },
-                        tooltips: { enabled: false },
-                    },
-                    elements: {
-                        point: {
-                            radius: 0,
-                            hitRadius: 25,
-                            hoverRadius: 5
-                        }
-                    },
-                    scales: {
-                        x: {
-                            grid: { display: false },
-                            ticks: {
-                                autoSkip: true,
-                                maxTicksLimit: 10
-                            }
+        {{else}}
+            <h1><b><u>Your Measurement History</u></b></h1>
+        {{/if}}
+        
+        <div class = "graph-container">
+            <div class = "graph-button-container">
+                {{#each trackingTypes}}
+                    <form action="" method="post">
+                        <button class= "graph-button" name="foo" value={{this}}>{{this}} graph</button>
+                    </form>
+                {{/each}}
+            </div>
+
+            <div class="graph">
+                <canvas id="myChart"></canvas>
+                <script>
+                    const ctx = document.getElementById('myChart');
+                    const myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels:  Array.from(Array(28).keys()).reverse().map(e => {
+                                const d = new Date(); 
+                                d.setDate(d.getDate() - e); 
+                                return d.toLocaleDateString();}),
+                            datasets: [{
+                                data: [{{datapoints}}],
+                                borderColor: "#b374df",
+                                borderWidth: 1
+                            }, {
+                                data: new Array(28).fill({{chart.low}}),
+                                borderColor: "#ff1212",
+                                borderWidth: 1,
+                                borderDash: [10, 5],
+                                hitRadius: 0
+                            }, {
+                                data: new Array(28).fill({{chart.high}}),
+                                borderColor: "#ff1212",
+                                borderWidth: 1,
+                                borderDash: [10, 5],
+                                hitRadius: 0
+                            }]
                         },
-                        y: {
-                            min: {{chart.ymin}}, 
-                            max: {{chart.ymax}}
+                        options: {
+                            plugins: {
+                                legend: { display: false },
+                                tooltips: { enabled: false },
+                            },
+                            elements: {
+                                point: {
+                                    radius: 0,
+                                    hitRadius: 25,
+                                    hoverRadius: 5
+                                }
+                            },
+                            scales: {
+                                x: {
+                                    grid: { display: false },
+                                    ticks: {
+                                        autoSkip: true,
+                                        maxTicksLimit: 10
+                                    }
+                                },
+                                y: {
+                                    min: {{chart.ymin}}, 
+                                    max: {{chart.ymax}}
+                                }
+                            }
                         }
-                    }
-                }
-            });
-        </script>
+                    });
+                </script>
+            </div>
+        </div>
     </div>
+
+
+
     <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
         <tr>
             <th>Date</th>
