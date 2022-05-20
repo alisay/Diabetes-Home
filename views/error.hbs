@@ -1,5 +1,16 @@
-<h1>uh oh</h1>
+<aside class="container">
+<h2>Error! {{statusCode}} {{message}}</h2>
 
-<h2>Error! {{statusCode}}: {{message}}</h2>
+{{!-- this returns errors from registering a clinician from homepage --}}
+<div class="item">
+{{#each errors}}
+{{#each this}}
+<li><span style="text-transform: capitalize;">{{@key}}:</span> {{this}}</li>
+{{/each}}
+{{/each}}
+</div>
 
+<div class="item">
 <a href='javascript:window.history.back();'>Go Back</a>
+</div>
+</aside>
