@@ -65,6 +65,10 @@ p {
   text-align: justify;
 }
 
+li {
+  font: var(--body);
+}
+
 a {
     font: var(--link);
     color: var(--black);
