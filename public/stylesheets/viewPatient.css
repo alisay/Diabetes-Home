@@ -13,7 +13,7 @@
   --white: #FFFFFF; /* White box with content in it */
   
   /* Fonts */
-  --title: 3rem 'Roboto', sans-serif;
+  --title: 2rem 'Roboto', sans-serif;
   --lead: 2rem 'Space Mono', monospace;
   --subtitle: 1.5rem 'Space Mono', monospace;
   --body: 1rem 'Roboto', sans-serif;
@@ -22,11 +22,7 @@
 }
 
 /* Typography */
-a {
-  font: var(--link);
-  color: var(--black);
-  text-decoration: none;
-}
+
 
 h2 {
   color: var(--black);
@@ -38,9 +34,32 @@ h1, h3{
   margin-left: 2%;
 }
 
-th, td, p{
-  color: var(--black);
-  font-weight: 500;
+th {
+  padding: 1rem 2.2rem;
+  text-transform: uppercase;
+  font: var(--subtitle);
+}
+
+td {
+  padding: 1rem 2rem;
+  font: var(--body);
+}
+
+a {
+  text-decoration: none;
+  font: var(--body);
+}
+
+/* To do - needs to be centered */
+table {
+  background: var(--pink);
+
+  border-collapse: collapse;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 15px;
+  margin: 2% 0% 0% 0%;
+
 }
 
 /* Tooltip container */
