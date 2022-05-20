@@ -1,4 +1,4 @@
-import express, { json, urlencoded } from 'express';
+import express, { urlencoded } from 'express';
 import { engine } from 'express-handlebars';
 import mongoose from 'mongoose';
 import session from 'express-session';
@@ -10,11 +10,7 @@ import flash from 'express-flash';
 
 import 'dotenv/config';
 
-import authRouter from './routes/authRouter.js';
-import glucoseRouter from './routes/measurementRoutes.js';
-import clinicianRouter from './routes/clinicianRoutes.js';
-import patientRouter from './routes/patientRoutes.js';
-import pageRouter from './routes/pageRoutes.js';
+import * as routers from './routes/index.js';
 
 // PASSPORT
 import './middleware/passport.js';
@@ -26,7 +22,6 @@ const app = express();
 
 app.use(cookieParser());
 app.use(express.static('public'));
-app.use(express.static('./public'));
 
 // SESSION
 const sessionConfig = {
@@ -105,11 +100,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // ROUTES
-app.use('/', authRouter);
-app.use('/', glucoseRouter);
-app.use('/', patientRouter);
-app.use('/', clinicianRouter);
-app.use('/', pageRouter);
+Object.values(routers).forEach(r => app.use('/', r));
 
 // index.html
 app.get('/', (req, res) => {
@@ -124,15 +115,11 @@ app.get('/aboutWebsite', (req, res) => {
     res.render('aboutWebsite', { headTitle: 'About This Site', css: 'stylesheets/index.css' });
 });
 
-app.get('/chart', (req, res) => {
-    res.render('chart', { headTitle: 'chatr', css: 'stylesheets/index.css' });
-});
-
 // default route to handle errors
 app.get('*', (req, res) => {
-    res.status(404).send('<p> invalid request </p>');
+    res.status(404).send('<p> Page Not Found </p>');
 });
 
 app.listen(port, () => {
-    console.log('website listening for request ...');
+    console.log('Website listening for request...');
 });
