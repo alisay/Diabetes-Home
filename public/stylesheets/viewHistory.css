@@ -1,255 +1,182 @@
 @import "menuNav.css";
 
 :root {  
-    /* Colour Palette */
-    --black: #2A2A2A; /* Font */
-    --pink: #E7C3DD; /* Standard buttons */
-    --blue: #5782BB; /* Brand Logo colour */
-    --dark-grey: #C7C7C7; /* Shadow */
-    --light-grey: #F4F4F4; /* Background colour */
-    --red: #D95353; /* Data has been input and is out of range */
-    --orange: #F0D6BD; /* Data awaiting input */
-    --green: #CAE7C3; /* Data has been input and is in range */
-    --white: #FFFFFF; /* White box with content in it */
-    
-    /* Fonts */
-    --title: 6rem 'Roboto', sans-serif;
-    --lead: 3rem 'Space Mono', monospace;
-    --subtitle: 1.5rem 'Space Mono', monospace;
-    --body: 1rem 'Roboto', sans-serif;
-    --link: 1rem 'Space Mono', monospace;
-    --button: 0.875rem 'Space Mono', monospace;
+  /* Colour Palette */
+  --black: #2A2A2A; /* Font */
+  --pink: #E7C3DD; /* Standard buttons */
+  --blue: #5782BB; /* Brand Logo colour */
+  --dark-grey: #C7C7C7; /* Shadow */
+  --light-grey: #F4F4F4; /* Background colour */
+  --red: #D95353; /* Data has been input and is out of range */
+  --orange: #F0D6BD; /* Data awaiting input */
+  --green: #CAE7C3; /* Data has been input and is in range */
+  --white: #FFFFFF; /* White box with content in it */
+  
+  /* Fonts */
+  --title: 2rem 'Roboto', sans-serif;
+  --lead: 2rem 'Space Mono', monospace;
+  --subtitle: 1.5rem 'Space Mono', monospace;
+  --body: 1rem 'Roboto', sans-serif;
+  --link: 1rem 'Space Mono', monospace;
+  --button: 0.875rem 'Space Mono', monospace;
 }
 
-body { background: var(--white) }
-            
-.container{
-    display: flex;
-    margin-bottom: 5%;
-    justify-content: center;
+.viewPatientHeader{
+  display: flex;
+  align-items: center;
 }
 
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+.editPatientIcon{
+  margin-left: 20px;
+  cursor: pointer;
 }
 
-
-.widget{
-    background: var(--light-grey);
-    
-
-    /* background-color: #658ec6; */
-    border-radius: 1rem;
-    padding: 2rem;
-    /* top right bottom left */
-    margin: 2% 0% 0% 0%;
+.sendMessageContainer{
+  margin-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-/* CSS Mobile */
-@media (max-width: 660px) {
+.messageIcon{
+  cursor: pointer;
 }
 
-/* measurement widget */
-.measurement-wrapper{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 2%;
+.sendMessageContainer input[id = "messageIcon"]{
+  display: none;
 }
 
-.measurement-widget-container{
-    width: 100%;
-    margin-bottom: 5%;
+.messagePlaceHolder{
+  display: flex;
+  align-items: center;
+  height: 0px;
+  overflow: hidden;
+  transition: all 0.1s linear;
 }
 
-.measurement-widget{
-    display: flex;
-
-    background: var(--pink);
-
-
-    /* background-color: #658ec6; */
-    border-radius: 1rem;
-    /* top right bottom left */
-    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+.sendMessageContainer input:checked ~ .messagePlaceHolder{
+  height: 70px;                   
 }
 
-.meansurement-icon{
-    background: white;
-    height: 80px;
-    width: 80px;
-    border-radius: 50%;
-    /* top right bottom left */
-    margin: 5% 0% 5% 5%;
+.messageForm{
+  display: flex;
 }
 
-.measurement-data{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10%;
-}
-
-.measurement-text{
-    align-self: c;
-    float: left;
-    width: 20%;
-}
-
-.measurement-data-container{
-}
-
-
-
-/* background */
-.container {
-    font-family: "Poppins", sans-serif;
-    min-height: 100vh;
-}
-
-h2 {
-    color: var(--black);
-}
-
-h3 {
-    color: var(--black);
-}
-
-p{
-    color: var(--black);
-    font-weight: 500;
-}
-
-.glass {
-    background: var(--white);
-    border-radius: 2rem;
-    backdrop-filter: blur(1.5rem);
-
-    position: relative;
-    z-index: 1;
-}
-
-/* measurement form */
-.measurement-form {
-    position: relative;
-    display: grid;
-    width: 9rem;
-    min-height: 3rem;
-    padding: 1rem 0% 1rem 0%;
+.form__button{
+  font: var(--button);
+  margin-left: 10px;
 }
 
 .form__input {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  box-sizing: border-box;
+  border: 1px solid #dddddd;
+  outline: none;
+  background: #eeeeee;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.form__input:focus {
+  border-color: var(--orange);
+  background: #ffffff;
+}
+
+div.graph {
+  margin: auto;
+  width: 80%;
+  max-width: 1000pt;
+}
+
+/* Typography */
+
+
+h2 {
+  color: var(--black);
+  margin-left: 2%;
+}
+
+h1, h3{
+  font: var(--title);
+  margin-left: 2%;
+}
+
+th {
+  padding: 1rem 2.2rem;
+  text-transform: uppercase;
+  font: var(--subtitle);
+  text-align: center;
+}
+
+td {
+  padding: 1rem 2rem;
+  font: var(--body);
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  font: var(--body);
+  color:#2A2A2A;
+}
+
+/* To do - needs to be centered */
+table {
+  background: var(--pink);
+
+  border-collapse: collapse;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 15px;
+  margin: 2% 2% 2% 2%;
+
+}
+
+/* Tooltip container */
+td.tooltip {
     position: relative;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 50%;
-    border: 2px solid var(--black);
-    border-radius: 0.5rem;
-    font-family: inherit;
-    font-size: inherit;
-    color: var(--black);
-    outline: none;
-    padding: 1.25rem;
-    background: none;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
 }
-
-
-.comment-input {
-    position: relative;
-    top: 0;
-    left: 0;
-    max-width: 80%;
-    min-height: 20%;
-    border: 2px solid var(--black);
-    border-radius: 0.5rem;
-    font-family: inherit;
-    font-size: inherit;
-    color: var(--black);
-    outline: none;
-    padding: 1.25rem;
-    background: none;
-}
-
-*:hover {
-border-color: var(--light-grey);
-} 
-
-
-*:focus {
-border-color: var(--dark-grey);
-
-}
-
-.form__label {
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+  
+    /* Position the tooltip text */
     position: absolute;
-    left: 1rem;
-    top: 0.9rem;
-    padding: 0 0.5rem;
-    color: var(--black);
-    cursor: text;
-    transition: all 200ms ease-in;
-}
-
-.measure-note-form{
-    position: relative;
-    width: 100%;
-    height: 3rem;
-
-    /* top right bottom left */
-    margin: 3% 0% 0% 0%; 
-}
-
-/* hide arrows input */
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
--webkit-appearance: none;
-margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
--moz-appearance: textfield;
-}
-
-input[type=submit] {
-    background-color: var(--white);
-    border: none;
-    color: var(--black);
-    padding: 16px 32px;
-    margin-top: 5%;
-    cursor: pointer;
-    border-radius: 1rem;
-    font: var(--button);
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+  
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  /* Tooltip arrow */
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }
 
 
-.date-container{
-    display: flex;
-    height: 150px;
-    justify-content: space-around;
-    align-items: center;
-} 
-
-.pre-arrow{
-    background-color: var(--green);
-    transform: scaleX(-1);
-}
-
-.next-arrow{
-    background-color: var(--green);
-
-}
-
-.view-date{
-    background-color: var(--green);
-}
-
-.history-title{
-    display: flex;
-    justify-content: center;
-    margin-top: 5%;
-}

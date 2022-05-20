@@ -79,10 +79,6 @@ body { background: var(--white) }
     margin: 2% 0% 3% 0%;
 }
 
-.leaderboard{
-}
-
-
 /* CSS Mobile */
 @media (max-width: 660px) {
     .container{
@@ -194,11 +190,6 @@ body { background: var(--white) }
     float: left;
     width: 20%;
 }
-
-.measurement-data-container{
-}
-
-
 
 /* background */
 .container {

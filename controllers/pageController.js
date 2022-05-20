@@ -50,21 +50,14 @@ export async function clinicianDashboard(req, res) {
 }
 
 export async function viewHistory(req, res) {
-    const user = await getPatient('PatTap');
-    const measurements = formatMeasurements(user);
-
-    res.render('viewHistory', { 
-        measurements, 
-        css: 'stylesheets/viewHistory.css' 
-    });
-}
-
-export async function viewPatient(req, res) {
     if (req.user == null) {
         return res.redirect('/');
+    } 
+    if (req.query.username == null) {
+        return res.redirect('/dashboard');
     }
 
-    const patient = await getPatient(req.params.username);
+    const patient = await getPatient(req.query.username);
 
     // Check types
     const trackingTypes = TYPES.filter((t) => patient.metrics[t] != null);
@@ -90,7 +83,7 @@ export async function viewPatient(req, res) {
     Array.from(Array(28).keys()).forEach((idx) => {
         const d = new Date();
         d.setDate(d.getDate() - idx);
-        allDays[format(d, 'dd/MM')] = Object.fromEntries(TYPES.map((e) => [e, {}]));
+        allDays[format(d, 'dd/MM')] = Object.fromEntries(trackingTypes.map((e) => [e, {}]));
     });
     data.forEach((entries, type) => entries.forEach((e) => {
         allDays[format(e.timestamp, 'dd/MM')][type].measurement = e.measurement;
@@ -99,7 +92,8 @@ export async function viewPatient(req, res) {
 
     const today = format(new Date(), 'dd/MM');
 
-    res.render('viewPatient', {
+    res.render('viewHistory', {
+        isClinician: req.user.kind === "Clinician",
         patient,
         type: 'Glucose',
         trackingTypes,
@@ -108,7 +102,7 @@ export async function viewPatient(req, res) {
         allDays,
         today,
         notes: {},
-        css: '../stylesheets/viewPatient.css'
+        css: 'stylesheets/viewHistory.css'
     });
 }
 
