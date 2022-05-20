@@ -1,6 +1,6 @@
-import { resetPassword } from '../controllers/authController.js';
 import { Patient, Clinician } from '../models/index.js';
 
+//GET PATIENTS
 export const getAllPatients = function (req) {
     return Clinician.findOne({ username: req.params.username });
 };
@@ -10,19 +10,19 @@ export const addPatient = async function (req) {
     const { email, password, username } = req.body;
     const clinician = await Clinician.findOne({ username: req.params.username }).exec();
 
-    const newPatient = Patient.create({
-        email, password, username, clinician,
+    const newPatient = await Patient.create({
+        email, password, username, clinician: clinician._id ,
     })
         .catch((err) => res.send(err));
 
     if (newPatient) {
-        clinician.patients.push(newPatient);
+        clinician.patients.push(newPatient._id);
         console.log(newPatient);
     } else {
         console.log('error');
     }
 
-    clinician.findOneAndUpdate({
+    await Clinician.findOneAndUpdate({
         username: clinician.username,
         patients: clinician.patients,
     });

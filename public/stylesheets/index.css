@@ -151,10 +151,6 @@ input[type="submit"]
   
 /* Tablet */
 @media screen and (max-width: 810px) {
-  body {
-    /* background-color: red; */
-  }
-
   #mobile-nav {
     visibility: visible;
   }
@@ -163,10 +159,6 @@ input[type="submit"]
   
 /* Mobile   */
 @media screen and (max-width: 600px) {
-  body {
-    /* background-color: var(--light-grey); */
-  }
-
   header {
     position: static;
     background: var(--white);
@@ -187,7 +179,29 @@ input[type="submit"]
 
 }
 
+/* images */
+.images {
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  height: 100pt;
+}
 
+.images > figure {
+  align-items: center;
+  width: 40%;
+  height: 100%;
+}
+
+.images > figure.small {
+  height: 50%;
+}
+
+.images img {
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
 
 /* register form */
 .register-container {
@@ -210,7 +224,7 @@ input[type="submit"]
 .register-container,
 .form__input,
 .form__button {
-  font: var(--button);
+  font: var(--button) !important;
 }
 
 
@@ -289,4 +303,10 @@ display: none;
 
 h1, h3{
   font: 'Roboto', sans-serif;
+}
+
+li {
+  list-style: none;
+  font: small-caps;
+
 }

@@ -38,8 +38,6 @@ export async function viewPatient(req, res) {
         allDays[format(d, 'dd/MM')] = Object.fromEntries(TYPES.map((e) => [e, {}]));
     });
     data.forEach((entries, type) => entries.forEach((e) => {
-        console.log(allDays[format(e.timestamp, 'dd/MM')]);
-        console.log(format(e.timestamp, 'dd/MM'));
         allDays[format(e.timestamp, 'dd/MM')][type].measurement = e.measurement;
         allDays[format(e.timestamp, 'dd/MM')][type].comment = e.comment;
     }));
