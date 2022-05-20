@@ -108,5 +108,6 @@ export async function viewPatient(req, res) {
         allDays,
         today,
         notes: {},
+        css: '../stylesheets/viewPatient.css'
     });
 }
