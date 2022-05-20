@@ -50,14 +50,21 @@ export async function clinicianDashboard(req, res) {
 }
 
 export async function viewHistory(req, res) {
-    if (req.user == null) {
-        return res.redirect('/');
-    } 
     if (req.query.username == null) {
         return res.redirect('/dashboard');
     }
 
     const patient = await getPatient(req.query.username);
+
+    // Auth Check
+    if (req.query.username == req.user.username) {
+        var isClinician = false;
+    } else if (patient.clinician._id == req.user._id) {
+        var isClinician = true;
+    } else {
+        res.status(401).redirect("/dashboard");
+        return;
+    }
 
     // Check types
     const trackingTypes = TYPES.filter((t) => patient.metrics[t] != null);
@@ -93,7 +100,7 @@ export async function viewHistory(req, res) {
     const today = format(new Date(), 'dd/MM');
 
     res.render('viewHistory', {
-        isClinician: req.user.kind === "Clinician",
+        isClinician,
         patient,
         type: 'Glucose',
         trackingTypes,
@@ -109,10 +116,12 @@ export async function viewHistory(req, res) {
 export async function editPatient(req, res) {
     const username = req.query.username;
     const user = await getPatient(username);
-    if (user == null) {
-        res.status(401).redirect("/login");
+
+    if (user.clinician._id != req.user._id) {
+        res.status(401).redirect('/dashboard');
         return;
     }
+    
     const dob = user.dob != null ? format(user.dob, "yyyy-MM-dd") : "";
 
     res.render('editPatient', { ...user, dob, css: 'stylesheets/editPatient.css' });

@@ -1,5 +1,5 @@
 import { UNITS, Patient } from '../models/index.js';
-import { createPatient as dbCreatePatient, updatePatient } from '../dbutils.js';
+import { createPatient as dbCreatePatient, updatePatient, getPatient } from '../dbutils.js';
 
 // ADD NEW PATIENT
 export function createPatient(req, res, next) {
@@ -13,9 +13,12 @@ export function createPatient(req, res, next) {
 
 // EDIT PATIENT DETAILS
 export async function editPatient(req, res) {
-    const user = req.query.username;
-    if (user == null) {
-        return;  // error?
+    const username = req.query.username;
+    const user = await getPatient(username);
+
+    if (user.clinician._id != req.user._id) {
+        res.status(401).redirect('/dashboard');
+        return;
     }
 
     const { firstName, lastName, gender, dob, 
@@ -29,16 +32,12 @@ export async function editPatient(req, res) {
                   }}])
     );
     
-    await updatePatient(user, { firstName, lastName, gender, dob, metrics });
+    await updatePatient(username, { firstName, lastName, gender, dob, metrics });
 
     res.redirect("/dashboard");
 }
 
 export async function postData(req, res) {
-    if (req.user == null) {
-        return res.redirect('/');
-    }
-
     for (const [key, value] of Object.entries(req.body)) {
         if (UNITS.hasOwnProperty(key)) {
             await Patient.updateOne({ username: 'PatTap' }, {
