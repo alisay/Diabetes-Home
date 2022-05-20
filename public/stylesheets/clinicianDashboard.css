@@ -138,6 +138,7 @@ a {
 .click{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     margin: 2% 0% 2% 2%;
 }
 
@@ -201,7 +202,7 @@ a {
     transform: scale(0.98);
 }
 
-.form__text {
+.form__text, .form__title {
     text-align: center;
 }
 
