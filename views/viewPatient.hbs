@@ -3,7 +3,31 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <body>
-    <h1>{{patient.firstName}} {{patient.lastName}}</h1>
+    <div class = "viewPatientHeader">
+        <h1>{{patient.firstName}} {{patient.lastName}}</h1>
+        
+        <div class="editPatientIcon">
+            <img src="/images/pen.png" alt="pen icon" width="40" height="40">
+        </div>
+
+        <div class="sendMessageContainer" >
+            <input type="checkbox" id = "messageIcon"><br>
+
+            <label for="messageIcon">
+                <img src="/images/message.png" alt="message icon" width="80" height="80" >
+            </label>
+
+            <div class="messagePlaceHolder">
+                <form action="message" class="messageForm"> 
+                    <input type="text" class="form__input" autofocus name="message" placeholder="Write Your Message!"><br>
+                    <button class="form__button" type="submit" value="Register">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
     <div>
         <canvas id="myChart"></canvas>
         <script>
