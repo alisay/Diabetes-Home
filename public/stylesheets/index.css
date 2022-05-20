@@ -34,19 +34,6 @@ body {
   background: var(--light-grey);
   margin:0;
   margin-bottom: 200px;
-  }
-
-header {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  padding: var(--standard)
-}
-
-nav {
-  background: var(--pink);
-  padding: var(--standard);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 main {
@@ -82,14 +69,6 @@ a {
     font: var(--link);
     color: var(--black);
     text-decoration: none;
-  }
-
-ul {
-  font: var(--body);
-}
-
-ol {
-  list-style: none;
 }
 
 button {
@@ -165,9 +144,6 @@ input[type="submit"]
     padding: var(--standard)
   }  
 
-  section {
-  }
-
   h2 {
     font: var(--subtitle);
   }  
@@ -175,8 +151,7 @@ input[type="submit"]
   #mobile-nav {
     visibility: visible;
   }
-
-}
+} 
 
 /* images */
 .images {
@@ -204,12 +179,22 @@ input[type="submit"]
 
 /* register form */
 .register-container {
-  width: 400px;
-  max-width: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.register-form{
+  width: 50%;
   margin: 1rem;
-  padding: 1rem;
+  padding: 2%;
   border-radius: 1rem;
   background: var(--pink);
+}
+
+.register-title{
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 .click{
@@ -217,6 +202,7 @@ input[type="submit"]
   flex-wrap: wrap;
   justify-content: center;
   margin: 2% 0% 2% 0%;
+  text-align: center;
 }
 
 
@@ -307,5 +293,48 @@ h1, h3{
 li {
   list-style: none;
   font: small-caps;
+
+}
+
+.abtWebsite-main{
+  display: flex;
+  justify-content: center;
+}
+
+.abtWebsite-container{
+  background: var(--white);
+  border-radius: 25px;
+  padding: 3%;
+  width: 50%;  
+}
+
+.slogan-images{
+  display: flex;
+  justify-content: center; 
+}
+
+.gap{
+  width: 5%;
+}
+
+.doctor-image{
+  width: 100px;
+  height: 150px;
+  /* margin: 5% 5% 0% 5%; */
+}
+
+.form__title{
+
+}
+
+/* Mobile   */
+@media screen and (max-width: 1024px) {
+  .abtWebsite-container{
+    width: 90%;
+  }
+
+  .register-form, section{
+    width: 80%;
+  }
 
 }

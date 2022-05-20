@@ -1,11 +1,9 @@
 {{> menuNav}}
 
-<main class="container">
-    <section class="container">
-        <h2>
-            We are Diabetes@Home
-        </h2>
-        <p>
+<main class = "abtWebsite-main">
+    <div class="abtWebsite-container">
+        <h2>We are Diabetes@Home</h2>
+         <p>
             Everyone knows that diabetes is hard to manage. One of the hardest part is keeping track of your blood
             glucose and insulin intake every day. This website is built for you to make this process easier, so you
             can spend more time doing what you love and less time managing your diabetes.
@@ -14,17 +12,23 @@
             The major advantage of using our website is that your doctor has a direct link to your daily
             information, so they can get in contact with you if something is wrong.
         </p>
-        <div class="images">
-            <figure>
-                <image src="images/drdr2.png" alt="doctor"/>
-            </figure>
-            <figure class="small">
-                <image src="images/dr.png" alt="doctor"/>
-            </figure>
+
+        <div class="abtWebsite-slogan">
+            <div class="slogan-images">
+                <div>
+                    <image src="images/drdr2.png" alt="doctor" class="doctor-image"/>
+                </div>
+                <div class = "gap"></div>
+                <div>
+                    <image src="images/dr.png" alt="doctor" class="doctor-image"/>
+                </div>
+            </div>
+
+            <h2>
+                Making Diabetes Management Fun!
+            </h2>
         </div>
-        <h2>
-            Making Diabetes Management Fun!
-        </h2>
+
         <p>
             Let’s be honest - diabetes isn’t fun to have. But we can make managing it fun! So we have put together a
             point and scoring system that keeps track of how many times you input your health data. The more consecutive
@@ -32,53 +36,52 @@
         </p>
 
         <div class="register-container">
-            <p class="form__text">
-                <h3 class="form__title">Talk to your Clinician about signing up</h1>
-                
-                <div>
-                <details>
-                    <summary class="form__link"> 
-                        <div class="click"> Click here to register a clinician </div>
-                    </summary>
+            <div class = "register-form">
+                <p class="form__text">
+                    <div class="register-title">
+                        <h3 class="form__title">Talk to your Clinician about signing up</h3>
+                    </div>
+                    
+                    <details>
+                        <summary class="form__link"> 
+                            <div class="click"> Click here to register a clinician </div>
+                        </summary>
 
-                    <form class="form" action="/register" method="POST">
-                        
-                        <div class="form__message form__message--error"></div>
+                        <form class="form" action="/register" method="POST">
+                            
+                            <div class="form__message form__message--error"></div>
 
-                        <div class="form__input-group">
-                            <input type="text" class="form__input" autofocus placeholder="First Name" name = "firstName">
-                            <div class="form__input-error-message"></div>
-                        </div>
+                            <div class="form__input-group">
+                                <input type="text" class="form__input" autofocus placeholder="First Name" name = "firstName">
+                                <div class="form__input-error-message"></div>
+                            </div>
 
-                        <div class="form__input-group">
-                            <input type="text" class="form__input" autofocus placeholder="Last Name" name = "lastName">
-                            <div class="form__input-error-message"></div>
-                        </div> 
+                            <div class="form__input-group">
+                                <input type="text" class="form__input" autofocus placeholder="Last Name" name = "lastName">
+                                <div class="form__input-error-message"></div>
+                            </div> 
 
-                        <div class="form__input-group">
-                            <input type="text" class="form__input" autofocus placeholder="Username" name = "username">
-                            <div class="form__input-error-message"></div>
-                        </div>
+                            <div class="form__input-group">
+                                <input type="text" class="form__input" autofocus placeholder="Username" name = "username">
+                                <div class="form__input-error-message"></div>
+                            </div>
 
-                        <div class="form__input-group">
-                            <input type="text" class="form__input" autofocus placeholder="Email Address" name = "email">
-                            <div class="form__input-error-message"></div>
-                        </div>
+                            <div class="form__input-group">
+                                <input type="text" class="form__input" autofocus placeholder="Email Address" name = "email">
+                                <div class="form__input-error-message"></div>
+                            </div>
 
-                        <div class="form__input-group">
-                            <input type="password" class="form__input" autofocus placeholder="Password" name = "password">
-                            <div class="form__input-error-message"></div>
-                        </div>
+                            <div class="form__input-group">
+                                <input type="password" class="form__input" autofocus placeholder="Password" name = "password">
+                                <div class="form__input-error-message"></div>
+                            </div>
 
-                        <button class="form__button" type="submit" value="Register">Continue</button>
-                    </form>
-                </details>
-            </p>  
+                            <button class="form__button" type="submit" value="Register">Continue</button>
+                        </form>
+                    </details>
+                </p>  
+            </div>
         </div>
 
-    </section>
+    </div>
 </main>
-
-<footer>
-    <!-- The footer of the webpage. -->
-</footer>
