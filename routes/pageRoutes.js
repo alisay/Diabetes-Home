@@ -15,4 +15,6 @@ router.get('/dashboard', passport.authenticate('jwt', { failureRedirect: "/" }),
 router.get('/viewHistory', Pages.viewHistory);
 router.get('/viewPatient/:username', Pages.viewPatient);
 
+router.get('/editPatient', Pages.editPatient);
+
 export default router;
