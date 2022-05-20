@@ -152,8 +152,3 @@ main{
 .measurement-required{
     display: flex;
 }
-
-[type="checkbox"]
-{
-    vertical-align:middle;
-}
