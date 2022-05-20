@@ -61,6 +61,11 @@ body { background: var(--white) }
     margin: 2% 0% 0% 0%;
 }
 
+.personal{
+    display: flex;
+    align-items: center;
+}
+
 .rank-widget{
     display: flex;
     justify-content: space-between;
@@ -212,7 +217,7 @@ h3 {
 
 p{
     color: var(--black);
-    font-weight: 500;
+    font: 1rem 'Space Mono', monospace;;
 }
 
 .glass {
