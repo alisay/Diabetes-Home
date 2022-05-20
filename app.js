@@ -110,8 +110,6 @@ app.get('/aboutDiabetes', (req, res) => {
     res.render('aboutDiabetes', { user: req.user, headTitle: 'About Diabetes', css: 'stylesheets/index.css' });
 });
 
-app.get('/favicon.ico', )
-
 // default route to handle errors
 app.get('*', (req, res) => {
     res.status(404).send('<p> Page Not Found </p>');
