@@ -6,8 +6,6 @@ import {
     logOut,
     loginNew,
     loginCreate,
-    editUser,
-    editUserReq,
     forgotPassword,
     resetPassword,
     sendResetPassword,
@@ -45,13 +43,6 @@ router.post(
 
 // GET Route for Logout function
 router.get('/logout', logOut);
-
-// GET Route for Account Settings Page
-router.get('/:username/account-settings', passport.authenticate('jwt', { session: false }), editUser);
-// PATCH Route for Updating the user via account settings
-router.patch('/:username/account-settings', accountSettingValidationRules(), validate, editUserReq);
-
-// router.delete("/:name/delete", removeUser)
 
 // POST route for sending password reset link
 router.post('/forgot-password', forgotPassword);

@@ -1,12 +1,9 @@
 import { UNITS, Patient } from '../models/index.js';
-import {
-    addPatient
-} from '../utils/patient_utils.js';
-import { updatePatient } from '../dbutils.js';
+import { createPatient as dbCreatePatient, updatePatient } from '../dbutils.js';
 
 // ADD NEW PATIENT
 export function createPatient(req, res, next) {
-    addPatient(req)
+    dbCreatePatient(req)
         .then((user) => {
             res.status(201);
             res.send(user);
