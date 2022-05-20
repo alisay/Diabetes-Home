@@ -24,11 +24,6 @@ if (process.env.NODE_ENV === 'production') {
     configToken.sameSite = 'none';
 }
 
-// REGISTER USER
-export function registerNew(req, res) {
-    res.render('aboutWebsite', { css: 'stylesheets/index.css' });
-}
-
 export function register(req, res, next) {
     if (req.user == null) return registerClinician(req, res, next);
     if (req.user.type === 'clinician') return registerPatient(req, res, next);
@@ -89,7 +84,7 @@ export function forgotPassword(req, res) {
     if (req.body.email === '') {
         res.status(400).send('email required');
     }
-    // console.error(req.body.email)
+
     updateForForgotPassword(req).then((user) => {
         if (user === null) {
             res.status(403).send("Sorry, we can't send you a link to reset your password.");

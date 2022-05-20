@@ -15,9 +15,6 @@ import { userValidationRules, validate, accountSettingValidationRules } from '..
 
 const router = express.Router();
 
-// GET Route for Register Page
-router.get('/register', registerNew);
-
 // POST Route for registering and creating a user
 router.post('/register', userValidationRules(), validate, register);
 
