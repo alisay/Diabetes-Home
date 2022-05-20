@@ -33,9 +33,13 @@ export async function patientDashboard(req, res) {
 export async function clinicianDashboard(req, res) {
     const { user } = req;
     console.log(user);
-    user.patients = await Promise.all(user.patients.map(
-        async (p) => await getPatientId(p),
-    ));
+    if(user.patients){
+        user.patients = await Promise.all(user.patients.map(
+            async (p) => await getPatientId(p),
+        ));    
+    } else {
+        user.patients = []
+    }
 
     res.render('clinicianDashboard', {
         user, patients: user.patients,
