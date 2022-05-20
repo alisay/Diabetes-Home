@@ -73,7 +73,8 @@ body {
 }
 
 .form__button {
-    width: 100%;
+    width: 50%;
+    margin-left: 25%;
     padding: 1rem 2rem;
     font: var(--button);
     color: var(--black);
@@ -81,7 +82,7 @@ body {
     border-radius: 1rem;
     outline: none;
     cursor: pointer;
-    background: var(--white);
+    background: var(--pink);
 }
 
 .form__button:active {

@@ -8,11 +8,11 @@
                 <div>
                     <p>Good {{timeString}}, {{user.firstName}}. You are on a streak of {{user.streak}} days!</p>
 
-                    {{#if (inRange user.engagementRate 0 80)}}
+                    {{#if (inRange user.engagementRate 0 0.8)}}
                     {{else}} <p>Congratulations! Here is your badge for having {{user.engagementRate}}% engagement rate</p> {{/if}}
                 </div> 
 
-                {{#if (inRange user.engagementRate 0 80)}}
+                {{#if (inRange user.engagementRate 0 0.8)}}
                 {{else}} <img src="/images/star.png" alt="{{unit}} icon" width="80" height="80"> {{/if}}                              
             </div>
         </div>
