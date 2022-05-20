@@ -39,15 +39,6 @@ export const userValidationRules = () => {
         })})];
       }
 
-// VALIDATION FOR ACCOUNTING SETTING UPDATE
-export const accountSettingValidationRules = () => [
-    body('email').isEmail().normalizeEmail().withMessage('Must be a valid email format'),
-    body('password').isStrongPassword({
-        minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1,
-    }).withMessage('Password should not be empty, minimum eight characters, at least one letter, one number and one special character'),
-    // body('username').matches(/^[A-Za-z\s]+$/).withMessage('Must be text only'),
-];
-
 // VALIDATION FOR PARAMS
 export const usernameParamValidationRules = () => [
     param('username').exists().withMessage('Invalid request'),

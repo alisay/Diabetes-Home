@@ -39,7 +39,6 @@ export async function registerClinician(req, res, next) {
                 const token = jwt.sign({ sub: req.user._id }, process.env.JWT_SECRET);
                 res.cookie('jwt', token, configToken);
                 res.send(user);
-                // res.render('accountSettings', {user: user});
             }
         });
     };
@@ -55,7 +54,12 @@ export async function registerClinician(req, res, next) {
 }
 
 export async function registerPatient(req, res, next) {
-    const user = await Patient.create(req.body); // dangerous?
+    const user = await Patient.create(req.body); 
+    if (user != null) {
+        res.redirect("/editPatient?username=" + user.username);
+    } else {
+        res.send("An unexpected error occurred.");
+    }
 }
 
 // LOGOUT USER
