@@ -8,6 +8,8 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import flash from 'express-flash';
 
+import path from 'path';
+
 import 'dotenv/config';
 
 import * as routers from './routes/index.js';
@@ -103,16 +105,14 @@ Object.values(routers).forEach(r => app.use('/', r));
 
 // index.html
 app.get('/', (req, res) => {
-    res.render('aboutWebsite', { css: 'stylesheets/index.css' });
+    res.render('aboutWebsite', { user: req.user, headTitle: 'Diabetes @ Home', css: 'stylesheets/index.css' });
 });
 
 app.get('/aboutDiabetes', (req, res) => {
-    res.render('aboutDiabetes', { headTitle: 'About Diabetes', css: 'stylesheets/index.css' });
+    res.render('aboutDiabetes', { user: req.user, headTitle: 'About Diabetes', css: 'stylesheets/index.css' });
 });
 
-app.get('/aboutWebsite', (req, res) => {
-    res.render('aboutWebsite', { headTitle: 'About This Site', css: 'stylesheets/index.css' });
-});
+app.get('/favicon.ico', )
 
 // default route to handle errors
 app.get('*', (req, res) => {
