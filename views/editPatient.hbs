@@ -6,53 +6,61 @@
             <h1>Patient Details</h1>
             <form action="editPatient"> 
                 <label for="firstName">First Name</label>
-                <input type="text" class="form__input" autofocus name="firstName" id="firstName"><br>
+                <input type="text" class="form__input" name="firstName" id="firstName" placeholder="{{firstName}}" value="{{firstName}}"><br>
                 <label for="lastName">Last Name</label>
-                <input type="text" class="form__input" autofocus name="lastName" id="lastName"><br>
+                <input type="text" class="form__input" name="lastName" id="lastName" placeholder="{{lastName}}" value="{{lastName}}"><br>
                 <label for="gender">Gender</label>
-                <select type="text" class="form__input" autofocus name="gender" id="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
+                <select type="text" class="form__input" name="gender" id="gender">
+                    {{#if (nnull gender)}}<option value="" selected disabled hidden>---</option>{{/if}}
+                    <option value="male" {{#if (eq gender "male")}}selected{{/if}}>Male</option>
+                    <option value="female" {{#if (eq gender "female")}}selected{{/if}}>Female</option>
+                    <option value="other" {{#if (eq gender "other")}}>Other{{/if}}</option>
                 </select><br>
                 <label for="dob">Date of Birth</label>
-                <input type="date" class="form__input" autofocus name="dob" id="dob"><br>
-
+                <input type="date" class="form__input" name="dob" id="dob" value="{{dob}}"><br>
                 
                 <label for="glucose">Glucose</label>
-                <input type="checkbox" class="form__input" autofocus name="glucose" id="glucose"><br>
+                <input type="checkbox" class="form__input" name="glucose" id="glucose" {{#if (nnull metrics.glucose)}}checked{{/if}}><br>
                 <div class="threshold-container-0">
                     <label for="glucose__low">Low</label>
-                    <input type="text" class="form__input" autofocus name="glucose__low" id="glucose__low" placeholder="MMOL/L"><br>
+                    <input type="text" class="form__input" name="glucose__low" id="glucose__low" 
+                           placeholder="{{metrics.glucose.threshold.low}} mmol/L" value="{{metrics.glucose.threshold.low}}"><br>
                     <label for="glucose__high">High</label>
-                    <input type="text" class="form__input" autofocus name="glucose__high" id="glucose__high" placeholder="MMOL/L"><br>
+                    <input type="text" class="form__input" name="glucose__high" id="glucose__high" 
+                           placeholder="{{metrics.glucose.threshold.high}} mmol/L" value="{{metrics.glucose.threshold.high}}"><br>
                 </div>
                 
                 <label for="insulin">Insulin</label>
-                <input type="checkbox" class="form__input" autofocus name="insulin" id="insulin"><br>
+                <input type="checkbox" class="form__input" name="insulin" id="insulin" {{#if (nnull metrics.insulin)}}checked{{/if}}><br>
                 <div class="threshold-container-1">
                     <label for="insulin__low">Low</label>
-                    <input type="text" class="form__input" autofocus name="insulin__low" id="insulin__low" placeholder="DOSES"><br>
+                    <input type="text" class="form__input" name="insulin__low" id="insulin__low" 
+                           placeholder="{{metrics.insulin.threshold.low}} doses" value="{{metrics.insulin.threshold.low}}"><br>
                     <label for="insulin__high">High</label>
-                    <input type="text" class="form__input" autofocus name="insulin__high" id="insulin__high" placeholder="DOSES"><br>
+                    <input type="text" class="form__input" name="insulin__high" id="insulin__high" 
+                           placeholder="{{metrics.insulin.threshold.high}} doses" value="{{metrics.insulin.threshold.high}}"><br>
                 </div>
                 
                 <label for="steps">Steps</label>
-                <input type="checkbox" class="form__input" autofocus name="steps" id="steps" ><br>
+                <input type="checkbox" class="form__input" name="steps" id="steps" {{#if (nnull metrics.steps)}}checked{{/if}}><br>
                 <div class="threshold-container-2">
                     <label for="steps__low">Low</label>
-                    <input type="text" class="form__input" autofocus name="steps__low" id="steps__low"><br>
+                    <input type="text" class="form__input" name="steps__low" id="steps__low"
+                           placeholder="{{metrics.steps.threshold.low}} steps" value="{{metrics.steps.threshold.low}}"><br>
                     <label for="steps__high">High</label>
-                    <input type="text" class="form__input" autofocus name="steps__high" id="steps__high"><br>
+                    <input type="text" class="form__input" name="steps__high" id="steps__high"
+                           placeholder="{{metrics.steps.threshold.high}} steps" value="{{metrics.steps.threshold.high}}"><br>
                 </div>
 
                 <label for="weight">Weight</label>
-                <input type="checkbox" class="form__input" autofocus name="weight" id="weight"><br>
+                <input type="checkbox" class="form__input" name="weight" id="weight" {{#if (nnull metrics.weight)}}checked{{/if}}><br>
                 <div class="threshold-container-3">
                     <label for="weight__low">Low</label>
-                    <input type="text" class="form__input" autofocus name="weight__low" id="weight__low" placeholder="KG"><br>
+                    <input type="text" class="form__input" name="weight__low" id="weight__low" 
+                           placeholder="{{metrics.weight.threshold.low}} kg" value="{{metrics.weight.threshold.low}}"><br>
                     <label for="weight__high">High</label>
-                    <input type="text" class="form__input" autofocus name="weight__high" id="weight__high" placeholder="KG"><br>
+                    <input type="text" class="form__input" name="weight__high" id="weight__high"
+                           placeholder="{{metrics.weight.threshold.high}} kg" value="{{metrics.weight.threshold.high}}"><br>
                 </div>
 
                 <button class="form__button" type="submit" value="Register">Register</button>

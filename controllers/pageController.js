@@ -113,5 +113,12 @@ export async function viewPatient(req, res) {
 }
 
 export async function editPatient(req, res) {
-    res.render('editPatient', { css: 'stylesheets/editPatient.css' });
+    const username = req.query.username;
+    const user = await getPatient(username);
+    if (user == null) {
+        return; // error
+    }
+    const dob = user.dob != null ? format(user.dob, "yyyy-MM-dd") : "";
+
+    res.render('editPatient', { ...user, dob, css: 'stylesheets/editPatient.css' });
 }
