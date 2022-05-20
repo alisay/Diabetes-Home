@@ -12,6 +12,10 @@ export function getPatient(username) {
     return models.Patient.findOne({ username }).lean();
 }
 
+export function updatePatient(username, details) {
+    return models.Patient.updateOne({ username }, details);
+}
+
 export function getPatientData(_id, type, timeframe = 28) {
     const date = new Date();
     date.setHours(0, 0, 0, 0);
