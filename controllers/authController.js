@@ -11,6 +11,7 @@ import {
     findForUpdatePassword,
     insertPasswordToken,
 } from '../utils/auth_utilities.js';
+import { userInfo } from 'os';
 
 /// JWT TOKEN CONFIG
 const configToken = {
@@ -151,10 +152,10 @@ export function forgotPassword(req, res) {
             });
 
             if (process.env.NODE_ENV === 'production') {
-                'https://home-diabetes.herokuapp.com/';
+                'https://diabetes-home.herokuapp.com/';
             }
 
-            const url = process.env.NODE_ENV === 'production' ? 'https://home-diabetes.herokuapp.com/' : 'http://localhost:8080/';
+            const url = process.env.NODE_ENV === 'production' ? 'https://diabetes-home.herokuapp.com/' : 'http://localhost:8080/';
 
             console.log(user);
 
@@ -165,7 +166,7 @@ export function forgotPassword(req, res) {
                 text:
           'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n'
           + 'Please click on the following link, or paste this into your browser to complete the process within one hour of receiving it:\n\n'
-          + `${url}user/reset-password/?resetPasswordToken=${token}\n\n`
+          + `${url}reset-password/?resetPasswordToken=${token}\n\n`
           + 'If you did not request this, please ignore this email and your password will remain unchanged.\n',
             };
 
@@ -191,7 +192,8 @@ export function resetPassword(req, res) {
         if (user == null) {
             res.status(403).send('password reset link is invalid or has expired');
         } else {
-            res.status(200).send({
+            res.status(200).render('resetPassword', {
+                css: 'stylesheets/index.css',
                 username: user.username,
                 message: 'password reset link a-ok',
             });
@@ -202,6 +204,7 @@ export function resetPassword(req, res) {
 // Update password PATCH ROUTE
 export function sendResetPassword(req, res) {
     findForUpdatePassword(req).exec((err, user) => {
+        console.log(user)
         if (err) {
             res.status(500);
             return res.json({
