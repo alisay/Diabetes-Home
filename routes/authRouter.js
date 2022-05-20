@@ -8,7 +8,7 @@ import {
     forgotPassword,
     resetPassword,
     sendResetPassword,
-    register,
+    registerClinician,
 } from '../controllers/authController.js';
 import { userValidationRules, validate } from '../middleware/validator.js';
 import { isLoggedOut } from '../middleware/auth.js';
@@ -16,7 +16,7 @@ import { isLoggedOut } from '../middleware/auth.js';
 const router = express.Router();
 
 // POST Route for registering and creating a user
-router.post('/register', userValidationRules(), validate, register);
+router.post('/register', userValidationRules(), validate, registerClinician);
 
 // GET Route for Login page
 router.get('/login', isLoggedOut, loginNew);

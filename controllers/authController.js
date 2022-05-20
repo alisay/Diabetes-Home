@@ -24,12 +24,6 @@ if (process.env.NODE_ENV === 'production') {
     configToken.sameSite = 'none';
 }
 
-export function register(req, res, next) {
-    if (req.user == null) return registerClinician(req, res, next);
-    if (req.user.type === 'clinician') return registerPatient(req, res, next);
-    return res.redirect('/');
-}
-
 export async function registerClinician(req, res, next) {
     const newUserHandler = (user) => {
         req.login(user, (err) => {
@@ -51,15 +45,6 @@ export async function registerClinician(req, res, next) {
     })
         .then(newUserHandler)
         .catch((x) => res.send(x));
-}
-
-export async function registerPatient(req, res, next) {
-    const user = await Patient.create(req.body); 
-    if (user != null) {
-        res.redirect("/editPatient?username=" + user.username);
-    } else {
-        res.send("An unexpected error occurred.");
-    }
 }
 
 // LOGOUT USER
