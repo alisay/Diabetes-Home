@@ -16,7 +16,6 @@ const UserSchema = new Schema({
     },
     password: {
         type: String,
-        // bcrypt: true,
         required: true,
     },
     username: {
@@ -48,11 +47,8 @@ const PatientSchema = new Schema({
 const ClinicianSchema = new Schema({
     firstName: String,
     lastName: String,
-    // This needs to be an array of object IDs!
     patients: [ObjectId],
 });
-
-// Admin.plugin(bcrypt);
 
 UserSchema.plugin(bcrypt);
 
