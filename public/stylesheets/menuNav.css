@@ -1,10 +1,8 @@
 /* Nav menu */
-*{
+
+body{
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
+} 
 
 .menu-bar{
     background: var(--pink);
@@ -14,6 +12,8 @@
     padding: 5px 40px;
     position: relative;
     z-index: 1;
+
+    font-family: 'Space Mono', monospace;
 }
 
 .menu-bar .menu-ul{
@@ -24,8 +24,7 @@
     justify-content: center;
 }
 
-.menu-bar .menu-ul li{
-    padding: 15px 0;
+.menu-bar .menu-ul .menu-li{
     cursor: pointer;
 }
 
@@ -58,14 +57,14 @@
     user-select: none;
 }
 
-.menu-bar .menu-ul li a{
+.menu-bar .menu-ul .menu-li a{
     color: var(--black);
     font-size: 18px;
     text-decoration: none;
     transition: .4s;
 }
 
-.menu-bar .menu-ul li i{
+.menu-bar .menu-ul .menu-li i{
     font-size: 23px;
 }
 
@@ -80,9 +79,10 @@
 /* CSS Mobile menu nav */
 @media all and (max-width: 900px){
     .menu-bar{
-        padding: 5px 30px;
+        padding: 10px 30px;
     }
     .menu-bar .menu-ul li.items{
+        margin: 15px 0px 15px 10px;
         width: 100%;
         display: none;
     }

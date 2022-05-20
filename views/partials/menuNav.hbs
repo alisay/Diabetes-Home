@@ -1,21 +1,21 @@
 <nav class = "menu-bar">
     <ul class = "menu-ul">
-        <li class="logo"><a href="/">DIABETES@HOME</a></li>
+        <li class="logo menu-li"><a href="/">DIABETES@HOME</a></li>
 
         {{#if user}}
         <!-- SHOW LOGOUT -->
-            <li class="items"><a href="/aboutWebsite">Home page</a></li>
-            <li class="items"><a href="/aboutDiabetes">About Diabetes</a></li>
-            <li class="items"><a href="/user/logout">Logout</a></li>
+            <li class="items menu-li"><a href="/aboutWebsite">Home page</a></li>
+            <li class="items menu-li"><a href="/aboutDiabetes">About Diabetes</a></li>
+            <li class="items menu-li"><a href="/user/logout">Logout</a></li>
             
             <li class="btn" onclick="show()"><a href="#"><i class="fas fa-bars"></i></a></li>
         {{else}}
         <!-- SHOW LOGIN -->
-            <li class="items"><a href="/aboutWebsite">Home page</a></li>
-            <li class="items"><a href="/aboutDiabetes">About Diabetes</a></li>
-            <li class="items"><a href="/user/login">Login</a></li>
+            <li class="items menu-li"><a href="/aboutWebsite">Home page</a></li>
+            <li class="items menu-li"><a href="/aboutDiabetes">About Diabetes</a></li>
+            <li class="items menu-li"><a href="/user/login">Login</a></li>
 
-            <li class="btn" onclick="show()"><a href="#"><i class="fas fa-bars"></i></a></li>
+            <li class="btn menu-li" onclick="show()"><a href="#"><i class="fas fa-bars"></i></a></li>
         {{/if}}
     </ul>
 </nav>
