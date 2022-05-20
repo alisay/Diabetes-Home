@@ -8,8 +8,6 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import flash from 'express-flash';
 
-import path from 'path';
-
 import 'dotenv/config';
 
 import * as routers from './routes/index.js';
