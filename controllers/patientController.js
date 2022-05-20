@@ -25,14 +25,16 @@ export async function editPatient(req, res) {
         glucose, insulin, steps, weight } = req.body;
     const metrics = Object.fromEntries(
         Object.entries({ glucose, insulin, steps, weight })
-              .filter(([k, v]) => v === true)
-              .forEach(([k, v]) => [k, { threshold: { 
+              .filter(([k, v]) => v != null)
+              .map(([k, v]) => [k, { threshold: { 
                           low: req.body[k + '__low'],
                           high: req.body[k + '__high']
-                    }}])
+                  }}])
     );
     
     await updatePatient(user, { firstName, lastName, gender, dob, metrics });
+
+    res.redirect("/dashboard");
 }
 
 export async function postData(req, res) {

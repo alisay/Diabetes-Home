@@ -100,16 +100,19 @@ th {
   padding: 1rem 2.2rem;
   text-transform: uppercase;
   font: var(--subtitle);
+  text-align: center;
 }
 
 td {
   padding: 1rem 2rem;
   font: var(--body);
+  text-align: center;
 }
 
 a {
   text-decoration: none;
   font: var(--body);
+  color:#2A2A2A;
 }
 
 /* To do - needs to be centered */
@@ -120,7 +123,7 @@ table {
   text-align: center;
   overflow: hidden;
   border-radius: 15px;
-  margin: 2% 0% 0% 0%;
+  margin: 2% 2% 2% 2%;
 
 }
 

@@ -51,6 +51,7 @@ app.engine('hbs', engine({
     extname: 'hbs',
     helpers: {
         eq: (val1, val2) => val1 === val2,
+        nnull: (x) => x != null,
         inRange: (value, lowerBound, upperBound) => (lowerBound === null && upperBound === null)
             || (value >= lowerBound && value <= upperBound && value !== null),
     },

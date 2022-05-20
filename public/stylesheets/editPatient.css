@@ -29,18 +29,16 @@ body {
     background: var(--light-grey);
 }
 
-.register-container,
 .form__input,
 .form__button {
     font: var(--button);
 }
 
-
-.form > *:first-child {
+form > *:first-child {
     margin-top: 0;
 }
 
-.form > *:last-child {
+form > *:last-child {
     margin-bottom: 0;
 }
 
@@ -123,6 +121,7 @@ main{
     display: flex;
     justify-content: center;
     width: 70%;
+    width: 700pt;
     background-color: var(--white);
     margin: 3%;
     border-radius: 1rem;
@@ -148,6 +147,7 @@ main{
 
 .content{
     width: 80%;
+    margin-bottom: 20pt;
 }
 
 .measurement-required{
