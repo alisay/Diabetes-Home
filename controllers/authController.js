@@ -1,17 +1,14 @@
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
-import { Clinician, Patient, User } from '../models/user.js';
+import { Clinician, Patient } from '../models/user.js';
 
 import {
-    updateUser,
-    getUserByParam,
     updateForForgotPassword,
     findForResetPassword,
     findForUpdatePassword,
     insertPasswordToken,
-} from '../utils/auth_utilities.js';
-import { userInfo } from 'os';
+} from '../dbutils.js';
 
 /// JWT TOKEN CONFIG
 const configToken = {
@@ -85,42 +82,6 @@ export function loginCreate(req, res) {
     res.cookie('jwt', token, configToken);
 
     res.redirect("/dashboard");
-}
-
-// Account settings get ROUTE
-export function editUser(req, res) {
-    // console.log(req.user)
-    getUserByParam(req).exec((err, user) => {
-        if (err) {
-            res.status(500);
-            return res.json({
-                error: err.message,
-            });
-        }
-        if (user !== null) {
-            res.status(200);
-            res.send(user);
-        } else {
-            res.status(404);
-            return res.json({
-                error: 'there is no user found',
-            });
-        }
-    });
-}
-
-// Account settings PATCH ROUTE
-export function editUserReq(req, res) {
-    updateUser(req).exec((err, user) => {
-        if (err) {
-            res.status(500);
-            return res.json({
-                error: err.message,
-            });
-        }
-        res.status(200);
-        res.send(user);
-    });
 }
 
 // Forgot password POST ROUTE
@@ -217,18 +178,3 @@ export function sendResetPassword(req, res) {
         });
     });
 }
-
-// //DELETE USER
-// const removeUser = function (req, res) {
-//     // execute the query from deletePost
-//     deleteUser(req.session.passport.user).exec((err) => {
-//         if (err) {
-//             res.status(500);
-//             return res.json({
-//                 error: err.message
-//             });
-//         }
-//         res.sendStatus(204);
-//         //res.redirect("/home")
-//     });
-// };
