@@ -24,11 +24,7 @@ const UserSchema = new Schema({
         unique: true,
         required: true,
         default: '',
-    },
-    isClinician: {
-        type: Boolean,
-        default: false,
-    },
+    }
 }, options);
 
 const PatientSchema = new Schema({

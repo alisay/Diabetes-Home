@@ -4,7 +4,6 @@ import mongoose from 'mongoose';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import passport from 'passport';
-// const fileUpload = require('express-fileupload');
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import flash from 'express-flash';
