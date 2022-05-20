@@ -1,7 +1,6 @@
 import { UNITS, Patient } from '../models/index.js';
 import {
-    addPatient,
-    updatePatient,
+    addPatient
 } from '../utils/patient_utils.js';
 import { updatePatient } from '../dbutils.js';
 
