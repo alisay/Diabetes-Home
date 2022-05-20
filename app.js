@@ -102,7 +102,6 @@ app.use(passport.session());
 // ROUTES
 Object.values(routers).forEach(r => app.use('/', r));
 
-// index.html
 app.get('/', (req, res) => {
     res.render('aboutWebsite', { user: req.user, headTitle: 'Diabetes @ Home', css: 'stylesheets/index.css' });
 });
