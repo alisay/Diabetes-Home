@@ -1,3 +1,48 @@
+@import "menuNav.css";
+
+:root {  
+  /* Colour Palette */
+  --black: #2A2A2A; /* Font */
+  --pink: #E7C3DD; /* Standard buttons */
+  --blue: #5782BB; /* Brand Logo colour */
+  --dark-grey: #C7C7C7; /* Shadow */
+  --light-grey: #F4F4F4; /* Background colour */
+  --red: #D95353; /* Data has been input and is out of range */
+  --orange: #F0D6BD; /* Data awaiting input */
+  --green: #CAE7C3; /* Data has been input and is in range */
+  --white: #FFFFFF; /* White box with content in it */
+  
+  /* Fonts */
+  --title: 3rem 'Roboto', sans-serif;
+  --lead: 2rem 'Space Mono', monospace;
+  --subtitle: 1.5rem 'Space Mono', monospace;
+  --body: 1rem 'Roboto', sans-serif;
+  --link: 1rem 'Space Mono', monospace;
+  --button: 0.875rem 'Space Mono', monospace;
+}
+
+/* Typography */
+a {
+  font: var(--link);
+  color: var(--black);
+  text-decoration: none;
+}
+
+h2 {
+  color: var(--black);
+  margin-left: 2%;
+}
+
+h1, h3{
+  font: var(--title);
+  margin-left: 2%;
+}
+
+th, td, p{
+  color: var(--black);
+  font-weight: 500;
+}
+
 /* Tooltip container */
 td.tooltip {
     position: relative;

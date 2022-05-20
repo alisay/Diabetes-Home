@@ -13,8 +13,8 @@
     --white: #FFFFFF; /* White box with content in it */
 
 /* Fonts */
---title: 6rem 'Roboto', sans-serif;
---lead: 3rem 'Space Mono', monospace;
+--title: 3rem 'Roboto', sans-serif;
+--lead: 2rem 'Space Mono', monospace;
 --subtitle: 1.5rem 'Space Mono', monospace;
 --body: 1rem 'Roboto', sans-serif;
 --link: 1rem 'Space Mono', monospace;
