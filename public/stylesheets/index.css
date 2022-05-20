@@ -1,3 +1,5 @@
+@import "menuNav.css";
+
 :root {  
 /* Colour Palette */
     --black: #2A2A2A
@@ -203,7 +205,6 @@ input[type="submit"]
 
 /* register form */
 .register-container {
-  
   width: 400px;
   max-width: 400px;
   margin: 1rem;
@@ -216,13 +217,14 @@ input[type="submit"]
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 2% 0% 2% 0%;
 }
 
 
 .register-container,
 .form__input,
 .form__button {
-  font: var(--button);
+  font: var(--button) !important;
 }
 
 
@@ -301,4 +303,10 @@ display: none;
 
 h1, h3{
   font: 'Roboto', sans-serif;
+}
+
+li {
+  list-style: none;
+  font: small-caps;
+
 }

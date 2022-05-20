@@ -1,10 +1,22 @@
-<nav>
-    <ul>
+<nav class = "menu-bar">
+    <ul class = "menu-ul">
         <li class="logo"><a href="/">DIABETES@HOME</a></li>
-        <li class="items"><a href="/aboutWebsite">Home page</a></li>
-        <li class="items"><a href="/aboutDiabetes">About Diabetes</a></li>
-        <li class="items"><a href="/user/logout">Logout</a></li>
-        <li class="btn" onclick="show()"><a href="#"><i class="fas fa-bars"></i></a></li>
+
+        {{#if user}}
+        <!-- SHOW LOGOUT -->
+            <li class="items"><a href="/aboutWebsite">Home page</a></li>
+            <li class="items"><a href="/aboutDiabetes">About Diabetes</a></li>
+            <li class="items"><a href="/logout">Logout</a></li>
+            
+            <li class="btn" onclick="show()"><a href="#"><i class="fas fa-bars"></i></a></li>
+        {{else}}
+        <!-- SHOW LOGIN -->
+            <li class="items"><a href="/aboutWebsite">Home page</a></li>
+            <li class="items"><a href="/aboutDiabetes">About Diabetes</a></li>
+            <li class="items"><a href="/login">Login</a></li>
+
+            <li class="btn" onclick="show()"><a href="#"><i class="fas fa-bars"></i></a></li>
+        {{/if}}
     </ul>
 </nav>
 

@@ -1,3 +1,5 @@
+@import "menuNav.css";
+
 :root {  
 /* Colour Palette */
     --black: #2A2A2A; /* Font */
@@ -118,91 +120,108 @@ a {
 }
 
 
-/* Nav menu */
-*{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: "Poppins", sans-serif;
+/* patient register form */
+.container-2{
+    display: flex;
+    justify-content: center;
 }
-nav{
-    /* THIS IS THE ACTUAL NAV BAR BACKGROUND COLOUR!! */
+
+.register-container {
+    width: 400px;
+    max-width: 400px;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
     background: var(--pink);
-       
-    backdrop-filter: blur(1.5rem);
-
-    padding: 5px 40px;
-    position: relative;
-    z-index: 1;
-}
-nav ul{
-list-style: none;
-display: flex;
-flex-wrap: wrap;
-align-items: center;
-justify-content: center;
-}
-nav ul li{
-padding: 15px 0;
-cursor: pointer;
-}
-nav ul li.items{
-position: relative;
-width: auto;
-margin: 0 16px;
-text-align: center;
-order: 3;
-}
-nav ul li.items:after{
-position: absolute;
-content: '';
-left: 0;
-bottom: 5px;
-height: 2px;
-width: 100%;
-background: var(--white);
-opacity: 0;
-transition: all 0.2s linear;
 }
 
-nav ul li.logo{
-flex: 1;
-color: var(--black);
-font-size: 23px;
-font-weight: 600;
-cursor: default;
-user-select: none;
-}
-nav ul li a{
-color: var(--black);
-font-size: 18px;
-text-decoration: none;
-transition: .4s;
+.click{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2% 0% 2% 2%;
 }
 
-nav ul li i{
-font-size: 23px;
-}
-nav ul li.btn{
-display: none;
-}
-nav ul li.btn.hide i:before{
-content: '\f00d';
+
+.register-container,
+.form__input,
+.form__button {
+    font: var(--button);
 }
 
-/* CSS Mobile menu nav */
-@media all and (max-width: 900px){
-    nav{
-        padding: 5px 30px;
-    }
-    nav ul li.items{
-        width: 100%;
-        display: none;
-    }
-    nav ul li.items.show{
-        display: block;
-    }
-    nav ul li.btn{
-        display: block;
-    }
+
+.form > *:first-child {
+    margin-top: 0;
+}
+
+.form > *:last-child {
+    margin-bottom: 0;
+}
+
+
+.form__input {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    border: 1px solid #dddddd;
+    outline: none;
+    background: #eeeeee;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.form__input:focus {
+    border-color: var(--orange);
+    background: #ffffff;
+}
+
+.form__input--error {
+    color: var(--red);
+    border-color: var(--red);
+}
+
+.form__input-error-message {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--red);
+}
+
+.form__button {
+    width: 100%;
+    padding: 1rem 2rem;
+    font: var(--button);
+    color: var(--black);
+    border: none;
+    border-radius: 1rem;
+    outline: none;
+    cursor: pointer;
+    background: var(--white);
+}
+
+.form__button:active {
+    transform: scale(0.98);
+}
+
+.form__text {
+    text-align: center;
+}
+
+.form__link {
+    color: var(--black);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form__link:hover {
+    text-decoration: underline;
+}
+
+details > summary {
+    list-style: none;
+}
+details > summary::-webkit-details-marker {
+    display: none;
+}
+
+h1, h3{
+    font: 'Roboto', sans-serif;
 }

@@ -1,0 +1,95 @@
+/* Nav menu */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.menu-bar{
+    background: var(--pink);
+
+    backdrop-filter: blur(1.5rem);
+
+    padding: 5px 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.menu-bar .menu-ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-bar .menu-ul li{
+    padding: 15px 0;
+    cursor: pointer;
+}
+
+.menu-bar .menu-ul li.items{
+    position: relative;
+    width: auto;
+    margin: 0 16px;
+    text-align: center;
+    order: 3;
+}
+
+.menu-bar .menu-ul li.items:after{
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 5px;
+    height: 2px;
+    width: 100%;
+    background: var(--white);
+    opacity: 0;
+    transition: all 0.2s linear;
+}
+
+.menu-bar .menu-ul li.logo{
+    flex: 1;
+    color: var(--black);
+    font-size: 23px;
+    font-weight: 600;
+    cursor: default;
+    user-select: none;
+}
+
+.menu-bar .menu-ul li a{
+    color: var(--black);
+    font-size: 18px;
+    text-decoration: none;
+    transition: .4s;
+}
+
+.menu-bar .menu-ul li i{
+    font-size: 23px;
+}
+
+.menu-bar .menu-ul li.btn{
+    display: none;
+}
+
+.menu-bar .menu-ul li.btn.hide i:before{
+    content: '\f00d';
+}
+    
+/* CSS Mobile menu nav */
+@media all and (max-width: 900px){
+    .menu-bar{
+        padding: 5px 30px;
+    }
+    .menu-bar .menu-ul li.items{
+        width: 100%;
+        display: none;
+    }
+    .menu-bar .menu-ul li.items.show{
+        display: block;
+    }
+    .menu-bar .menu-ul li.btn{
+        display: block;
+    }
+}
