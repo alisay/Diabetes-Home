@@ -226,3 +226,9 @@ details > summary::-webkit-details-marker {
 h1, h3{
     font: 'Roboto', sans-serif;
 }
+
+a {
+    font: var(--link);
+    color: var(--black);
+    text-decoration: none;
+  }
