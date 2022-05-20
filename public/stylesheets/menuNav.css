@@ -76,11 +76,15 @@ body{
 }
 
 .logo{
-    width: 200pt;
+    max-width: 200pt;
+    max-height: 40pt;
 }
 
 .logo img{
-    width: 100%;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .menu-bar .menu-ul .menu-li a{
