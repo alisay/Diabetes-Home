@@ -113,5 +113,5 @@ export async function viewPatient(req, res) {
 }
 
 export async function editPatient(req, res) {
-    res.render('editPatient');
+    res.render('editPatient', { css: 'stylesheets/editPatient.css' });
 }
