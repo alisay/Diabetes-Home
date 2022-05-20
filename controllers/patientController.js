@@ -1,38 +1,9 @@
-import { UNITS, User, Patient } from '../models/index.js';
+import { UNITS, Patient } from '../models/index.js';
 import {
     addPatient,
     updatePatient,
 } from '../utils/patient_utils.js';
-
-// GET ALL PATIENTS
-export const displayPatients = async function (req, res) {
-	try {
-        let checkUser = await User.findOne({ username:  req.params.username }).exec()
-        res.status(200)
-        res.send(checkUser)
-   } catch (err) {
-        if (err) {res.status(500)
-           res.json({
-        error: err.message
-        })
-       }
-   }   
-}
-
-// GET ONE PATIENT
-export const displaySinglePatient = async function (req, res) {
-    try {
-        let checkUser = await User.findOne({ _id:  req.params.id }).exec()
-        res.status(200)
-        res.send(checkUser)
-   } catch (err) {
-        if (err) {res.status(500)
-           res.json({
-        error: err.message
-        })
-       }
-   }   
-}
+import { updatePatient } from '../dbutils.js';
 
 // ADD NEW PATIENT
 export function createPatient(req, res, next) {
@@ -43,18 +14,26 @@ export function createPatient(req, res, next) {
         })
         .catch((err) => res.status(500).json({ error: err.message }));
 }
+
 // EDIT PATIENT DETAILS
-export function editPatient(req, res) {
-    updatePatient(req).exec((err, user) => {
-        if (err) {
-            res.status(500);
-            return res.json({
-                error: err.message,
-            });
-        }
-        res.status(200);
-        res.send(user);
-    });
+export async function editPatient(req, res) {
+    const user = req.query.username;
+    if (user == null) {
+        return;  // error?
+    }
+
+    const { firstName, lastName, gender, dob, 
+        glucose, insulin, steps, weight } = req.body;
+    const metrics = Object.fromEntries(
+        Object.entries({ glucose, insulin, steps, weight })
+              .filter(([k, v]) => v === true)
+              .forEach(([k, v]) => [k, { threshold: { 
+                          low: req.body[k + '__low'],
+                          high: req.body[k + '__high']
+                    }}])
+    );
+    
+    await updatePatient(user, { firstName, lastName, gender, dob, metrics });
 }
 
 export async function postData(req, res) {
