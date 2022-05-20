@@ -70,8 +70,7 @@ export async function registerPatient(req, res, next) {
 export function logOut(req, res) {
     req.logout();
     res.cookie('jwt', null, { maxAge: -1 });
-    // res.sendStatus(200);
-    res.render('logout');
+    res.redirect('/');
 }
 
 export function loginNew(req, res) {
