@@ -179,4 +179,31 @@ td.tooltip {
     opacity: 1;
 }
 
+.header-graph{
+  width: 95%;
+  margin: auto;
+}
 
+.graph-container{
+  display: flex;
+}
+
+.graph-button-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 15%;
+}
+
+.graph-button{
+  width: 100%;
+  height: fit-content;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 3rem;
+  background-color: var(--pink);
+
+  margin-bottom: 8px;
+  padding: 16px;
+}
