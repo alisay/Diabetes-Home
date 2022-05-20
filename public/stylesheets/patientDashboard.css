@@ -1,5 +1,3 @@
-@import "menuNav.css";
-
 :root {  
     /* Colour Palette */
     --black: #2A2A2A; /* Font */
@@ -59,11 +57,6 @@ body { background: var(--white) }
     padding: 2rem;
     /* top right bottom left */
     margin: 2% 0% 0% 0%;
-}
-
-.personal{
-    display: flex;
-    align-items: center;
 }
 
 .rank-widget{
@@ -217,7 +210,7 @@ h3 {
 
 p{
     color: var(--black);
-    font: 1rem 'Space Mono', monospace;;
+    font-weight: 500;
 }
 
 .glass {
@@ -238,19 +231,104 @@ p{
 }
 
 
+
+/* Nav menu */
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Poppins", sans-serif;
+}
+nav{
+    background: var(--pink);
+
+    backdrop-filter: blur(1.5rem);
+
+    padding: 5px 40px;
+    position: relative;
+    z-index: 1;
+}
+nav ul{
+list-style: none;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: center;
+}
+nav ul li{
+padding: 15px 0;
+cursor: pointer;
+}
+nav ul li.items{
+position: relative;
+width: auto;
+margin: 0 16px;
+text-align: center;
+order: 3;
+}
+nav ul li.items:after{
+position: absolute;
+content: '';
+left: 0;
+bottom: 5px;
+height: 2px;
+width: 100%;
+background: var(--white);
+opacity: 0;
+transition: all 0.2s linear;
+}
+
+nav ul li.logo{
+flex: 1;
+color: var(--black);
+font-size: 23px;
+font-weight: 600;
+cursor: default;
+user-select: none;
+}
+nav ul li a{
+color: var(--black);
+font-size: 18px;
+text-decoration: none;
+transition: .4s;
+}
+
+nav ul li i{
+font-size: 23px;
+}
+nav ul li.btn{
+display: none;
+}
+nav ul li.btn.hide i:before{
+content: '\f00d';
+}
+
+/* CSS Mobile menu nav */
+@media all and (max-width: 900px){
+    nav{
+        padding: 5px 30px;
+    }
+    nav ul li.items{
+        width: 100%;
+        display: none;
+    }
+    nav ul li.items.show{
+        display: block;
+    }
+    nav ul li.btn{
+        display: block;
+    }
+}
+
 /* measurement form */
 .measurement-form {
-    position: relative;
     display: grid;
-    width: 9rem;
+    width: 90%;
     min-height: 3rem;
     padding: 1rem 0% 1rem 0%;
 }
 
 .form__input {
-    position: relative;
-    top: 0;
-    left: 0;
     width: 50%;
     height: 50%;
     border: 2px solid var(--black);
@@ -265,11 +343,7 @@ p{
 
 
 .comment-input {
-    position: relative;
-    top: 0;
-    left: 0;
-    max-width: 80%;
-    min-height: 20%;
+    width: 100%;
     border: 2px solid var(--black);
     border-radius: 0.5rem;
     font-family: inherit;
@@ -320,6 +394,7 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+  width: 60%;
 }
 
 input[type=submit] {
