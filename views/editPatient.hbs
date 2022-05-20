@@ -1,41 +1,60 @@
 {{> menuNav}}
 
-<h1>Patient Details</h1>
-<form action="editPatient"> 
-    <label for="firstName">First Name</label>
-    <input type="text" class="form__input" autofocus name="firstName" id="firstName"><br>
-    <label for="lastName">Last Name</label>
-    <input type="text" class="form__input" autofocus name="lastName" id="lastName"><br>
-    <label for="gender">Gender</label>
-    <select type="text" autofocus name="gender" id="gender">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
-    </select><br>
-    <label for="dob">Date of Birth</label>
-    <input type="date" class="form__input" autofocus name="dob" id="dob"><br>
-    <label for="glucose">Glucose</label>
-    <input type="checkbox" class="form__input" autofocus name="glucose" id="glucose"><br>
-    <label for="glucose__low">Low</label>
-    <input type="text" class="form__input" autofocus name="glucose__low" id="glucose__low"><br>
-    <label for="glucose__high">High</label>
-    <input type="text" class="form__input" autofocus name="glucose__high" id="glucose__high"><br>
-    <label for="insulin">Insulin</label>
-    <input type="checkbox" class="form__input" autofocus name="insulin" id="insulin"><br>
-    <label for="insulin__low">Low</label>
-    <input type="text" class="form__input" autofocus name="insulin__low" id="insulin__low"><br>
-    <label for="insulin__high">High</label>
-    <input type="text" class="form__input" autofocus name="insulin__high" id="insulin__high"><br>
-    <label for="steps">Steps</label>
-    <input type="checkbox" class="form__input" autofocus name="steps" id="steps"><br>
-    <label for="steps__low">Low</label>
-    <input type="text" class="form__input" autofocus name="steps__low" id="steps__low"><br>
-    <label for="steps__high">High</label>
-    <input type="text" class="form__input" autofocus name="steps__high" id="steps__high"><br>
-    <label for="weight">Weight</label>
-    <input type="checkbox" class="form__input" autofocus name="weight" id="weight"><br>
-    <label for="weight__low">Low</label>
-    <input type="text" class="form__input" autofocus name="weight__low" id="weight__low"><br>
-    <label for="weight__high">High</label>
-    <input type="text" class="form__input" autofocus name="weight__high" id="weight__high"><br>
-</form>
+<main>
+    <div class = "container">
+        <div class = "content">
+            <h1>Patient Details</h1>
+            <form action="editPatient"> 
+                <label for="firstName">First Name</label>
+                <input type="text" class="form__input" autofocus name="firstName" id="firstName"><br>
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form__input" autofocus name="lastName" id="lastName"><br>
+                <label for="gender">Gender</label>
+                <select type="text" autofocus name="gender" id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select><br>
+                <label for="dob">Date of Birth</label>
+                <input type="date" class="form__input" autofocus name="dob" id="dob"><br>
+
+                
+                <label for="glucose">Glucose</label>
+                <input type="checkbox" class="form__input" autofocus name="glucose" id="glucose"><br>
+                <div class="threshold-container-0">
+                    <label for="glucose__low">Low</label>
+                    <input type="text" class="form__input" autofocus name="glucose__low" id="glucose__low"><br>
+                    <label for="glucose__high">High</label>
+                    <input type="text" class="form__input" autofocus name="glucose__high" id="glucose__high"><br>
+                </div>
+                
+                <label for="insulin">Insulin</label>
+                <input type="checkbox" class="form__input" autofocus name="insulin" id="insulin"><br>
+                <div class="threshold-container-1">
+                    <label for="insulin__low">Low</label>
+                    <input type="text" class="form__input" autofocus name="insulin__low" id="insulin__low"><br>
+                    <label for="insulin__high">High</label>
+                    <input type="text" class="form__input" autofocus name="insulin__high" id="insulin__high"><br>
+                </div>
+                
+                <label for="steps">Steps</label>
+                <input type="checkbox" class="form__input" autofocus name="steps" id="steps"><br>
+                <div class="threshold-container-2">
+                    <label for="steps__low">Low</label>
+                    <input type="text" class="form__input" autofocus name="steps__low" id="steps__low"><br>
+                    <label for="steps__high">High</label>
+                    <input type="text" class="form__input" autofocus name="steps__high" id="steps__high"><br>
+                </div>
+
+                <label for="weight">Weight</label>
+                <input type="checkbox" class="form__input" autofocus name="weight" id="weight"><br>
+                <div class="threshold-container-3">
+                    <label for="weight__low">Low</label>
+                    <input type="text" class="form__input" autofocus name="weight__low" id="weight__low"><br>
+                    <label for="weight__high">High</label>
+                    <input type="text" class="form__input" autofocus name="weight__high" id="weight__high"><br>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
