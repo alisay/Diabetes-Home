@@ -24,11 +24,6 @@ if (process.env.NODE_ENV === 'production') {
     configToken.sameSite = 'none';
 }
 
-// REGISTER USER
-export function registerNew(req, res) {
-    res.render('aboutWebsite', { css: 'stylesheets/index.css' });
-}
-
 export function register(req, res, next) {
     if (req.user == null) return registerClinician(req, res, next);
     if (req.user.type === 'clinician') return registerPatient(req, res, next);
@@ -44,7 +39,6 @@ export async function registerClinician(req, res, next) {
                 const token = jwt.sign({ sub: req.user._id }, process.env.JWT_SECRET);
                 res.cookie('jwt', token, configToken);
                 res.send(user);
-                // res.render('accountSettings', {user: user});
             }
         });
     };
@@ -60,7 +54,12 @@ export async function registerClinician(req, res, next) {
 }
 
 export async function registerPatient(req, res, next) {
-    const user = await Patient.create(req.body); // dangerous?
+    const user = await Patient.create(req.body); 
+    if (user != null) {
+        res.redirect("/editPatient?username=" + user.username);
+    } else {
+        res.send("An unexpected error occurred.");
+    }
 }
 
 // LOGOUT USER
@@ -89,7 +88,7 @@ export function forgotPassword(req, res) {
     if (req.body.email === '') {
         res.status(400).send('email required');
     }
-    // console.error(req.body.email)
+
     updateForForgotPassword(req).then((user) => {
         if (user === null) {
             res.status(403).send("Sorry, we can't send you a link to reset your password.");

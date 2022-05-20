@@ -1,8 +1,7 @@
 import express from 'express';
 import passport from 'passport';
-import { Joi, celebrate, errors } from 'celebrate';
+import { Joi, celebrate } from 'celebrate';
 import {
-    registerNew,
     logOut,
     loginNew,
     loginCreate,
@@ -11,18 +10,16 @@ import {
     sendResetPassword,
     register,
 } from '../controllers/authController.js';
-import { userValidationRules, validate, accountSettingValidationRules } from '../middleware/validator.js';
+import { userValidationRules, validate } from '../middleware/validator.js';
+import { isLoggedOut } from '../middleware/auth.js';
 
 const router = express.Router();
-
-// GET Route for Register Page
-router.get('/register', registerNew);
 
 // POST Route for registering and creating a user
 router.post('/register', userValidationRules(), validate, register);
 
 // GET Route for Login page
-router.get('/login', loginNew);
+router.get('/login', isLoggedOut, loginNew);
 
 // POST Route for finding the user and logging them in
 router.post(

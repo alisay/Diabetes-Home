@@ -110,7 +110,8 @@ export async function editPatient(req, res) {
     const username = req.query.username;
     const user = await getPatient(username);
     if (user == null) {
-        return; // error
+        res.status(401).redirect("/login");
+        return;
     }
     const dob = user.dob != null ? format(user.dob, "yyyy-MM-dd") : "";
 
