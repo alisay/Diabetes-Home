@@ -21,7 +21,7 @@ router.get('/:username', displaySinglePatient)
 router.patch("/:username", editPatient)
 
 // POST Route for registering and creating a patient
-router.post('/:username/register', userValidationRules(), validate, createPatient);
+router.post('/registerPatient', userValidationRules(), validate, createPatient);
 
 // PATCH Route for updating a patient's details as a clinician
 router.patch('/:username/account-settings', editPatient);

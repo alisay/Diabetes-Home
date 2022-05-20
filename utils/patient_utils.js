@@ -8,7 +8,7 @@ export const getAllPatients = function (req) {
 // ADD Patient
 export const addPatient = async function (req) {
     const { email, password, username } = req.body;
-    const clinician = await Clinician.findOne({ username: req.params.username }).exec();
+    const clinician = req.user;
 
     const newPatient = await Patient.create({
         email, password, username, clinician: clinician._id ,
@@ -23,7 +23,8 @@ export const addPatient = async function (req) {
     }
 
     await Clinician.findOneAndUpdate({
-        username: clinician.username,
+        username: clinician.username
+    }, {
         patients: clinician.patients,
     });
 
